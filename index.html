@@ -21,7 +21,7 @@
             </a>
             <nav class="nav-links" id="navLinks">
                 <button class="nav-btn" onclick="scrollToSection('companies-section')">For Companies</button>
-                <a class="nav-student-link" href="PLATFORM_REGISTER_URL" target="_blank" rel="noopener noreferrer" aria-label="I'm a Student — opens registration in a new tab">I'm a Student <span class="ext-icon" aria-hidden="true">&#8599;</span></a>
+                <a class="nav-student-link" href="https://forms.gle/779kBq4fc2fJdco4A" target="_blank" rel="noopener noreferrer" aria-label="I'm a Student — opens registration form in a new tab">I'm a Student <span class="ext-icon" aria-hidden="true">&#8599;</span></a>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMobileNav()">
                 <span></span><span></span><span></span>
@@ -197,7 +197,7 @@
                     <div class="company-form">
                         <div class="form-container">
                             <h4>Company Application</h4>
-                            <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
+                            <form id="companyForm" class="custom-form">
                                 <input type="hidden" name="lead_type" value="Company_Leads">
                                 <div class="input-group">
                                     <label for="companyName">Company Name</label>
@@ -216,13 +216,14 @@
                                     <div class="select-wrapper">
                                         <select id="scopeNeeded" name="scope_needed" required>
                                             <option value="" disabled selected>Select a scope&hellip;</option>
-                                            <option value="software-development">Software Development</option>
-                                            <option value="digital-marketing">Digital Marketing</option>
-                                            <option value="not-sure">Not sure yet</option>
+                                            <option value="Software Development">Software Development</option>
+                                            <option value="Digital Marketing">Digital Marketing</option>
+                                            <option value="Not sure yet">Not sure yet</option>
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Post a Job</button>
+                                <button type="submit" id="submitBtn" class="btn btn-primary btn-block">Post a Job</button>
+                                <p id="formStatus" style="display: none; margin-top: 1rem; text-align: center; font-size: 0.9rem; font-weight: 600;"></p>
                             </form>
                         </div>
                     </div>
@@ -237,6 +238,7 @@
                     <h2>Ready to work with us?</h2>
                     <div class="closing-cta-actions">
                         <button class="btn btn-primary" onclick="scrollToSection('companies-section')">Post a Job</button>
+                        <a href="https://forms.gle/779kBq4fc2fJdco4A" target="_blank" rel="noopener noreferrer" class="closing-cta-email">Are you a student? Join the talent network &rarr;</a>
                         <a href="mailto:unipact.my@gmail.com" class="closing-cta-email">or email us at unipact.my@gmail.com</a>
                     </div>
                 </div>
@@ -258,6 +260,46 @@
     </footer>
 
     <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-N6kcIULA32Ltht_7F6PVnMCfneqplIV_iNR5uri7IlQawXbDk8Zstv8CvSyws9sd9g/exec";
+
+        document.getElementById('companyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            const formData = new FormData(form);
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting...";
+            formStatus.style.display = "none";
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                submitBtn.textContent = "Application Submitted!";
+                submitBtn.style.background = "#00AEEF";
+                formStatus.textContent = "Thank you! We received your application and will match your project soon.";
+                formStatus.style.color = "#00AEEF";
+                formStatus.style.display = "block";
+                form.reset();
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Post a Job";
+                }, 5000);
+            })
+            .catch(error => {
+                console.error("Submission error:", error);
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Post a Job";
+                formStatus.textContent = "Submission issue. Please email us directly at unipact.my@gmail.com";
+                formStatus.style.color = "#ff6b6b";
+                formStatus.style.display = "block";
+            });
+        });
+
         function scrollToSection(sectionId) {
             closeMobileNav();
             const section = document.getElementById(sectionId);
