@@ -15,56 +15,62 @@
 
     <header class="navbar">
         <div class="container nav-content">
-            <a href="#" class="logo-link">
-                <img src="logo.png" alt="UniPact" class="logo-img">
+            <a href="#" class="logo-link" aria-label="UniPact home">
+                <span class="logo-mark"><img src="logo.png" alt="" class="logo-mark-img"></span>
+                <span class="logo-wordmark"><span class="logo-uni">UNI</span><span class="logo-pact">PACT</span></span>
             </a>
-            <nav class="nav-links">
+            <nav class="nav-links" id="navLinks">
                 <button class="nav-btn" onclick="scrollToSection('students-section')">For Students</button>
                 <button class="nav-btn" onclick="scrollToSection('companies-section')">For Companies</button>
             </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main>
         <!-- Hero -->
-        <section class="hero container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <p class="eyebrow"><span class="eyebrow-dot"></span>Student talent marketplace &mdash; closed beta</p>
-                    <h1 class="headline">Post a job. Get matched.<br>Pay for verified work.</h1>
-                    <p class="sub-headline">
-                        UniPact matches every job to one best-fit, verified student &mdash; not a pile of applications to sort through. Work is paid milestone by milestone through escrow, so both sides only pay, and get paid, for what's actually delivered.
-                    </p>
-                    <div class="scope-pill">
-                        <span>Now matching</span>
-                        <strong>Software Development</strong>
-                        <span class="scope-sep">&middot;</span>
-                        <strong>Digital Marketing</strong>
+        <section class="hero">
+            <div class="hero-inner container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <p class="eyebrow"><span class="eyebrow-dot"></span>Student talent marketplace &mdash; closed beta</p>
+                        <h1 class="headline">Post a job. Get matched.<br>Pay for verified work.</h1>
+                        <p class="sub-headline">
+                            UniPact matches every job to one best-fit, verified student &mdash; not a pile of applications to sort through. Work is paid milestone by milestone through escrow, so both sides only pay, and get paid, for what's actually delivered.
+                        </p>
+                        <div class="scope-pill">
+                            <span>Now matching</span>
+                            <strong>Software Development</strong>
+                            <span class="scope-sep">&middot;</span>
+                            <strong>Digital Marketing</strong>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="scrollToSection('students-section')">I'm a Student</button>
+                            <button class="btn btn-outline" onclick="scrollToSection('companies-section')">I'm a Company</button>
+                        </div>
                     </div>
-                    <div class="hero-actions">
-                        <button class="btn btn-primary" onclick="scrollToSection('students-section')">I'm a Student</button>
-                        <button class="btn btn-outline" onclick="scrollToSection('companies-section')">I'm a Company</button>
-                    </div>
-                </div>
 
-                <aside class="hero-proof">
-                    <p class="eyebrow eyebrow-on-panel"><span class="eyebrow-dot"></span>Proof of work</p>
-                    <p class="hero-proof-id">Bounty #UP-001</p>
-                    <p class="hero-proof-stat">7 <span>days</span></p>
-                    <p class="hero-proof-caption">From brief to a live sales CRM dashboard</p>
-                    <div class="hero-proof-rule"></div>
-                    <div class="hero-proof-row">
-                        <div>
-                            <p class="hero-proof-mini-stat">15 hrs</p>
-                            <p class="hero-proof-mini-label">Saved / week / agent</p>
+                    <aside class="hero-proof">
+                        <p class="eyebrow eyebrow-on-panel"><span class="eyebrow-dot"></span>Proof of work</p>
+                        <p class="hero-proof-id">Bounty #UP-001</p>
+                        <p class="hero-proof-stat">7 <span>days</span></p>
+                        <p class="hero-proof-caption">From brief to a live sales CRM dashboard</p>
+                        <div class="hero-proof-rule"></div>
+                        <div class="hero-proof-row">
+                            <div>
+                                <p class="hero-proof-mini-stat">15 hrs</p>
+                                <p class="hero-proof-mini-label">Saved / week / agent</p>
+                            </div>
+                            <div>
+                                <p class="hero-proof-mini-stat">200</p>
+                                <p class="hero-proof-mini-label">Agents on the new workflow</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="hero-proof-mini-stat">200</p>
-                            <p class="hero-proof-mini-label">Agents on the new workflow</p>
-                        </div>
-                    </div>
-                    <a href="#proof-section" class="hero-proof-link" onclick="event.preventDefault(); scrollToSection('proof-section');">Full case study &rarr;</a>
-                </aside>
+                        <a href="#proof-section" class="hero-proof-link" onclick="event.preventDefault(); scrollToSection('proof-section');">Full case study &rarr;</a>
+                    </aside>
+                </div>
             </div>
         </section>
 
@@ -253,6 +259,7 @@
 
     <script>
         function scrollToSection(sectionId) {
+            closeMobileNav();
             const section = document.getElementById(sectionId);
             if (section) {
                 const navHeight = document.querySelector('.navbar').offsetHeight;
@@ -262,6 +269,22 @@
                     behavior: 'smooth'
                 });
             }
+        }
+
+        function toggleMobileNav() {
+            const links = document.getElementById('navLinks');
+            const toggle = document.getElementById('navToggle');
+            const isOpen = links.classList.toggle('open');
+            toggle.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function closeMobileNav() {
+            const links = document.getElementById('navLinks');
+            const toggle = document.getElementById('navToggle');
+            links.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
         }
     </script>
 </body>
