@@ -20,8 +20,8 @@
                 <span class="logo-wordmark"><span class="logo-uni">UNI</span><span class="logo-pact">PACT</span></span>
             </a>
             <nav class="nav-links" id="navLinks">
-                <button class="nav-btn" onclick="scrollToSection('students-section')">For Students</button>
                 <button class="nav-btn" onclick="scrollToSection('companies-section')">For Companies</button>
+                <a class="nav-student-link" href="PLATFORM_REGISTER_URL" target="_blank" rel="noopener noreferrer" aria-label="I'm a Student — opens registration in a new tab">I'm a Student <span class="ext-icon" aria-hidden="true">&#8599;</span></a>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMobileNav()">
                 <span></span><span></span><span></span>
@@ -38,7 +38,7 @@
                         <p class="eyebrow"><span class="eyebrow-dot"></span>Student talent marketplace &mdash; closed beta</p>
                         <h1 class="headline">Post a job. Get matched.<br>Pay for verified work.</h1>
                         <p class="sub-headline">
-                            UniPact matches every job to one best-fit, verified student &mdash; not a pile of applications to sort through. Work is paid milestone by milestone through escrow, so both sides only pay, and get paid, for what's actually delivered.
+                            Post a paid job in Software Development or Digital Marketing and UniPact matches you with one verified, best-fit student &mdash; no applicant pile to sort through. Pay milestone by milestone through escrow, so you only pay for work that's actually delivered.
                         </p>
                         <div class="scope-pill">
                             <span>Now matching</span>
@@ -47,8 +47,7 @@
                             <strong>Digital Marketing</strong>
                         </div>
                         <div class="hero-actions">
-                            <button class="btn btn-primary" onclick="scrollToSection('students-section')">I'm a Student</button>
-                            <button class="btn btn-outline" onclick="scrollToSection('companies-section')">I'm a Company</button>
+                            <button class="btn btn-primary" onclick="scrollToSection('companies-section')">I'm a Company</button>
                         </div>
                     </div>
 
@@ -70,6 +69,54 @@
                         </div>
                         <a href="#proof-section" class="hero-proof-link" onclick="event.preventDefault(); scrollToSection('proof-section');">Full case study &rarr;</a>
                     </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proof of Work -->
+        <section id="proof-section" class="proof-section">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-dot"></span>Proof of work &mdash; Bounty #UP-001</p>
+                <h2 class="section-title">A working sales CRM.<br>Built and verified in 7 days.</h2>
+                <p class="proof-copy">A UniPact team was matched to a financial consulting agency that needed a sales CRM built from scratch. The brief was scoped, the milestones were set, and the work was delivered and verified against the original brief &mdash; escrow released on completion.</p>
+
+                <div class="stat-bar">
+                    <div class="stat">
+                        <p class="stat-value">7</p>
+                        <p class="stat-label">Days, brief to live dashboard</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat-value">15<span class="stat-unit">hrs</span></p>
+                        <p class="stat-label">Saved per week, per agent</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat-value">200</p>
+                        <p class="stat-label">Agents on the new workflow</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat-value">RM3,000</p>
+                        <p class="stat-label">Saved per year on CRM licences</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Currently In The Pipeline -->
+        <section class="pipeline container">
+            <p class="eyebrow"><span class="eyebrow-dot"></span>Currently in the pipeline</p>
+            <h2 class="section-title">Real projects, underway right now.</h2>
+            <p class="pipeline-intro">Bounty #UP-001 is delivered and verified. These two are still in progress &mdash; no numbers yet, just work in motion.</p>
+
+            <div class="pipeline-grid">
+                <div class="pipeline-card">
+                    <span class="pipeline-tag">In development</span>
+                    <h3>Tuition centre operations</h3>
+                    <p>A traditional tuition centre is moving off pen-and-paper &mdash; scheduling, records, and day-to-day admin are being rebuilt as proper software.</p>
+                </div>
+                <div class="pipeline-card">
+                    <span class="pipeline-tag">In development</span>
+                    <h3>Interior visualization app</h3>
+                    <p>An app where you photograph a room, then drag and drop furniture into the photo &mdash; so clients can see how a space could look before committing.</p>
                 </div>
             </div>
         </section>
@@ -123,137 +170,81 @@
             </div>
         </section>
 
-        <!-- Portals -->
-        <div class="sections-wrapper container">
-            <section id="companies-section" class="portal-card">
-                <div class="portal-header">
-                    <p class="eyebrow"><span class="eyebrow-dot"></span>For companies</p>
-                    <h2>Post the job. We match the talent.</h2>
-                    <p>Skip the applicant pile. Tell us the scope and the payout &mdash; UniPact matches one verified student who fits, and escrow handles the rest.</p>
-                </div>
-
-                <ul class="feature-list">
-                    <li>Post a fixed-scope job with a fixed payout</li>
-                    <li>Get matched with one verified, best-fit student</li>
-                    <li>Pay per milestone, held in escrow until work is verified</li>
-                    <li>Walk away with a delivery report</li>
-                </ul>
-
-                <div class="form-container">
-                    <h4>Company Application</h4>
-                    <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
-                        <input type="hidden" name="lead_type" value="Company_Leads">
-                        <div class="input-group">
-                            <label for="companyName">Company Name</label>
-                            <input type="text" id="companyName" name="company_name" required placeholder="Acme Corp">
-                        </div>
-                        <div class="input-group">
-                            <label for="contactPerson">Contact Person</label>
-                            <input type="text" id="contactPerson" name="contact_person" required placeholder="Jane Doe">
-                        </div>
-                        <div class="input-group">
-                            <label for="corpEmail">Email Address</label>
-                            <input type="email" id="corpEmail" name="corp_email" required placeholder="jane@acmecorp.com">
-                        </div>
-                        <div class="input-group">
-                            <label for="scopeNeeded">Scope Needed</label>
-                            <div class="select-wrapper">
-                                <select id="scopeNeeded" name="scope_needed" required>
-                                    <option value="" disabled selected>Select a scope&hellip;</option>
-                                    <option value="software-development">Software Development</option>
-                                    <option value="digital-marketing">Digital Marketing</option>
-                                    <option value="not-sure">Not sure yet</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Post a Job</button>
-                    </form>
-                </div>
-            </section>
-
-            <section id="students-section" class="portal-card">
-                <div class="portal-header">
-                    <p class="eyebrow"><span class="eyebrow-dot"></span>For students</p>
-                    <h2>Get matched to paid work.</h2>
-                    <p>Real jobs from real companies &mdash; not another application queue. Get matched, get paid per milestone, and build a verified record employers can trust.</p>
-                </div>
-
-                <ul class="feature-list">
-                    <li>Get matched to real, paid work in your scope</li>
-                    <li>Two scopes live: Software Development, Digital Marketing</li>
-                    <li>Paid at each milestone as you deliver, via escrow</li>
-                    <li>Every job builds a verified talent record for your portfolio</li>
-                </ul>
-
-                <div class="form-container">
-                    <h4>Student Application</h4>
-                    <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
-                        <input type="hidden" name="lead_type" value="Student_Leads">
-                        <div class="input-group">
-                            <label for="studentName">Full Name</label>
-                            <input type="text" id="studentName" name="student_name" required placeholder="John Doe">
-                        </div>
-                        <div class="input-group">
-                            <label for="university">University</label>
-                            <input type="text" id="university" name="university" required placeholder="University of Malaya">
-                        </div>
-                        <div class="input-group">
-                            <label for="studentEmail">Email Address</label>
-                            <input type="email" id="studentEmail" name="student_email" required placeholder="john@university.edu">
-                        </div>
-                        <div class="input-group">
-                            <label for="primarySkill">Primary Skill</label>
-                            <div class="select-wrapper">
-                                <select id="primarySkill" name="primary_skill" required>
-                                    <option value="" disabled selected>Select a skill&hellip;</option>
-                                    <option value="software-development">Software Development</option>
-                                    <option value="digital-marketing">Digital Marketing</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="whatsappNumber">WhatsApp Number <span class="optional-tag">Optional</span></label>
-                            <input type="tel" id="whatsappNumber" name="whatsapp_number" placeholder="+60 12 345 6789">
-                        </div>
-                        <button type="submit" class="btn btn-outline btn-block">Apply for Beta Access</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-
-        <!-- Proof of Work -->
-        <section id="proof-section" class="proof-section">
+        <!-- For Companies -->
+        <section id="companies-section" class="company-section">
             <div class="container">
-                <p class="eyebrow"><span class="eyebrow-dot"></span>Proof of work &mdash; Bounty #UP-001</p>
-                <h2 class="section-title">A working sales CRM.<br>Built and verified in 7 days.</h2>
-                <p class="proof-copy">A UniPact team was matched to a financial consulting agency that needed a sales CRM built from scratch. The brief was scoped, the milestones were set, and the work was delivered and verified against the original brief &mdash; escrow released on completion.</p>
+                <div class="company-grid">
+                    <div class="company-pitch">
+                        <p class="eyebrow"><span class="eyebrow-dot"></span>For companies</p>
+                        <h2>Post the job. We match the talent.</h2>
+                        <p>Skip the applicant pile. Tell us the scope and the payout &mdash; UniPact matches one verified student who fits, and escrow handles the rest.</p>
 
-                <div class="stat-bar">
-                    <div class="stat">
-                        <p class="stat-value">7</p>
-                        <p class="stat-label">Days, brief to live dashboard</p>
+                        <ul class="feature-list">
+                            <li>Post a fixed-scope job with a fixed payout</li>
+                            <li>Get matched with one verified, best-fit student</li>
+                            <li>Pay per milestone, held in escrow until work is verified</li>
+                            <li>Walk away with a delivery report</li>
+                        </ul>
                     </div>
-                    <div class="stat">
-                        <p class="stat-value">15<span class="stat-unit">hrs</span></p>
-                        <p class="stat-label">Saved per week, per agent</p>
+
+                    <div class="company-form">
+                        <div class="form-container">
+                            <h4>Company Application</h4>
+                            <form class="custom-form" action="YOUR_TALLY_OR_WEBHOOK_URL" method="POST">
+                                <input type="hidden" name="lead_type" value="Company_Leads">
+                                <div class="input-group">
+                                    <label for="companyName">Company Name</label>
+                                    <input type="text" id="companyName" name="company_name" required placeholder="Acme Corp">
+                                </div>
+                                <div class="input-group">
+                                    <label for="contactPerson">Contact Person</label>
+                                    <input type="text" id="contactPerson" name="contact_person" required placeholder="Jane Doe">
+                                </div>
+                                <div class="input-group">
+                                    <label for="corpEmail">Email Address</label>
+                                    <input type="email" id="corpEmail" name="corp_email" required placeholder="jane@acmecorp.com">
+                                </div>
+                                <div class="input-group">
+                                    <label for="scopeNeeded">Scope Needed</label>
+                                    <div class="select-wrapper">
+                                        <select id="scopeNeeded" name="scope_needed" required>
+                                            <option value="" disabled selected>Select a scope&hellip;</option>
+                                            <option value="software-development">Software Development</option>
+                                            <option value="digital-marketing">Digital Marketing</option>
+                                            <option value="not-sure">Not sure yet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Post a Job</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <p class="stat-value">200</p>
-                        <p class="stat-label">Agents on the new workflow</p>
-                    </div>
-                    <div class="stat">
-                        <p class="stat-value">RM3,000</p>
-                        <p class="stat-label">Saved per year on CRM licences</p>
-                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing CTA -->
+        <section class="closing-cta container">
+            <div class="closing-cta-box">
+                <h2>Ready to work with us?</h2>
+                <div class="closing-cta-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('companies-section')">I'm a Company</button>
+                    <a href="mailto:unipact.my@gmail.com" class="closing-cta-email">or email us at unipact.my@gmail.com</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
-            <p class="footer-tag">Impact Ledgers.</p>
-            <p class="footer-copy">&copy; 2026 UniPact. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="footer-tag">Impact Ledgers.</p>
+                    <a class="footer-email" href="mailto:unipact.my@gmail.com">unipact.my@gmail.com</a>
+                </div>
+                <p class="footer-copy">&copy; 2026 UniPact. All rights reserved.</p>
+            </div>
+            <p class="footer-credibility">Built by a team of UniKL MIIT students.</p>
         </div>
     </footer>
 

@@ -153,7 +153,8 @@ a {
 
 .nav-links {
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 1.25rem;
 }
 
 .nav-btn {
@@ -172,6 +173,29 @@ a {
 
 .nav-btn:hover {
     background: rgba(11, 30, 99, 0.06);
+}
+
+.nav-student-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 44px;
+    padding: 0.75rem 0.25rem;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.nav-student-link:hover {
+    color: var(--navy-deep);
+}
+
+.nav-student-link .ext-icon {
+    font-size: 0.75rem;
+    opacity: 0.7;
 }
 
 /* Mobile nav toggle */
@@ -216,8 +240,7 @@ a {
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.6px);
     background-size: 24px 24px;
     padding-top: 4.5rem;
-    padding-bottom: 7rem;
-    clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+    padding-bottom: 4.5rem;
     overflow: hidden;
 }
 
@@ -291,17 +314,6 @@ a {
 
 .hero-actions .btn-primary:hover {
     background: var(--white);
-    border-color: var(--white);
-}
-
-.hero-actions .btn-outline {
-    background: transparent;
-    color: var(--white);
-    border-color: rgba(255, 255, 255, 0.55);
-}
-
-.hero-actions .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.12);
     border-color: var(--white);
 }
 
@@ -541,60 +553,104 @@ a {
     opacity: 0.5;
 }
 
-/* Portals */
-.sections-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    padding: 1rem 0 5.5rem;
+/* Currently In The Pipeline */
+.pipeline {
+    padding: 5.5rem 0;
 }
 
-@media (max-width: 968px) {
-    .sections-wrapper {
+.pipeline-intro {
+    color: var(--text-muted);
+    max-width: 640px;
+    font-size: 1.05rem;
+    margin-bottom: 2.75rem;
+}
+
+.pipeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 800px) {
+    .pipeline-grid {
         grid-template-columns: 1fr;
     }
 }
 
-.portal-card {
+.pipeline-card {
     background: var(--white);
-    border-radius: 14px;
-    padding: 2.75rem;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 20px rgba(10, 23, 72, 0.05);
-    transition: var(--transition-normal);
+    border: 1.5px dashed var(--border-strong);
+    border-radius: 12px;
+    padding: 2.25rem;
 }
 
-.portal-card:hover {
-    box-shadow: 0 16px 36px rgba(10, 23, 72, 0.1);
+.pipeline-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1.25rem;
 }
 
-.portal-header p {
+.pipeline-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+}
+
+.pipeline-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.pipeline-card p {
     color: var(--text-muted);
     margin-bottom: 0;
 }
 
-.portal-header h2 {
-    font-size: 1.75rem;
-}
-
-/* Companies card: bold navy fill */
-#companies-section {
+/* For Companies (expanded, primary conversion section) */
+.company-section {
+    padding: 6rem 0;
     background: var(--navy-deep);
     background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.6px);
     background-size: 22px 22px;
 }
 
-#companies-section .eyebrow {
-    color: var(--cyan);
+.company-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
 }
 
-#companies-section h2 {
+@media (max-width: 968px) {
+    .company-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.company-pitch h2 {
+    font-size: 2.25rem;
     color: var(--white);
 }
 
-#companies-section .portal-header p {
+.company-pitch > p {
     color: rgba(255, 255, 255, 0.68);
+}
+
+#companies-section .eyebrow {
+    color: var(--cyan);
 }
 
 #companies-section .feature-list {
@@ -644,12 +700,6 @@ a {
 #companies-section .btn-primary:hover {
     background: var(--white);
     border-color: var(--white);
-}
-
-/* Students card: white with bold cyan accent bar */
-#students-section {
-    position: relative;
-    border-top: 6px solid var(--cyan);
 }
 
 /* Feature list */
@@ -766,12 +816,11 @@ select {
 /* Proof of Work */
 .proof-section {
     position: relative;
-    padding: 6.5rem 0 6rem;
+    padding: 4.5rem 0 6rem;
     background-color: var(--navy-deep);
     background-image: radial-gradient(rgba(0, 174, 239, 0.16) 1.5px, transparent 1.6px);
     background-size: 24px 24px;
     color: var(--white);
-    clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
 }
 
 .proof-section .eyebrow {
@@ -828,6 +877,58 @@ select {
     line-height: 1.4;
 }
 
+/* Closing CTA */
+.closing-cta {
+    padding: 1rem 0 6rem;
+}
+
+.closing-cta-box {
+    background: var(--navy-deep);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.6px);
+    background-size: 22px 22px;
+    border-radius: 16px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(10, 23, 72, 0.18);
+}
+
+.closing-cta-box h2 {
+    color: var(--white);
+    font-size: 1.9rem;
+    margin-bottom: 1.75rem;
+}
+
+.closing-cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.closing-cta-box .btn-primary {
+    background: var(--cyan);
+    color: var(--navy-deep);
+    border-color: var(--cyan);
+}
+
+.closing-cta-box .btn-primary:hover {
+    background: var(--white);
+    border-color: var(--white);
+}
+
+.closing-cta-email {
+    display: inline-block;
+    padding: 0.5rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.closing-cta-email:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     padding: 3rem 0 2.5rem;
@@ -836,9 +937,32 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-email {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.footer-email:hover {
+    color: var(--navy);
+    text-decoration: underline;
+}
+
+.footer-credibility {
+    margin-top: 1.75rem;
+    color: rgba(10, 23, 72, 0.45);
+    font-size: 0.75rem;
 }
 
 .footer-tag {
@@ -933,10 +1057,16 @@ footer {
         padding: 0.75rem 1rem;
     }
 
+    .nav-links .nav-student-link {
+        width: 100%;
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+
     .hero {
         padding-top: 2.5rem;
-        padding-bottom: 3.5rem;
-        clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%);
+        padding-bottom: 2.5rem;
     }
 
     .headline {
@@ -975,21 +1105,36 @@ footer {
         padding: 3.5rem 0;
     }
 
-    .sections-wrapper {
+    .proof-section {
+        padding: 3rem 0 4rem;
+    }
+
+    .pipeline {
+        padding: 3.5rem 0;
+    }
+
+    .pipeline-card {
+        padding: 1.75rem;
+    }
+
+    .company-section {
+        padding: 3.5rem 0;
+    }
+
+    .company-grid {
+        gap: 2.5rem;
+    }
+
+    .closing-cta {
         padding: 0.5rem 0 3.5rem;
     }
 
-    .proof-section {
-        padding: 4rem 0 4rem;
-        clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+    .closing-cta-box {
+        padding: 2.5rem 1.5rem;
     }
 
     .container {
         padding: 0 1.25rem;
-    }
-
-    .portal-card {
-        padding: 2rem 1.5rem;
     }
 
     .btn {
