@@ -58,7 +58,8 @@ a {
 .container {
     max-width: 1160px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .eyebrow {
@@ -239,10 +240,60 @@ a {
     background-color: var(--navy-deep);
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.6px);
     background-size: 24px 24px;
-    padding-top: 4.5rem;
-    padding-bottom: 7rem;
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+    border-bottom: 3px solid var(--cyan);
     overflow: hidden;
+}
+
+/* Glowing background orb */
+.hero-glow {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 174, 239, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero badge (replaces eyebrow) */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 174, 239, 0.12);
+    border: 1px solid rgba(0, 174, 239, 0.35);
+    border-radius: 100px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.3);
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 174, 239, 0.1); }
 }
 
 .hero-grid {
@@ -261,6 +312,7 @@ a {
     letter-spacing: -1.2px;
     margin-bottom: 1.5rem;
     color: var(--white);
+    line-height: 1.15;
 }
 
 .sub-headline {
@@ -268,37 +320,39 @@ a {
     color: rgba(255, 255, 255, 0.72);
     margin-bottom: 2rem;
     max-width: 560px;
+    line-height: 1.65;
 }
 
-.scope-pill {
-    display: inline-flex;
+.headline-mobile,
+.sub-headline-mobile {
+    display: none;
+}
+
+.headline-desktop,
+.sub-headline-desktop {
+    display: block;
+}
+
+/* Scope tags (replace scope-pill) */
+.scope-tags {
+    display: flex;
     flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.25rem;
+}
+
+.scope-tag {
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.1rem;
-    border: 1.5px solid var(--cyan);
-    border-radius: 8px;
-    font-size: 0.85rem;
-    margin-bottom: 2.5rem;
-    background: var(--white);
-}
-
-.scope-pill span:first-child {
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.7rem;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.82rem;
     font-weight: 600;
-}
-
-.scope-pill strong {
-    color: var(--navy-deep);
-    font-weight: 600;
-}
-
-.scope-sep {
-    color: var(--cyan-deep);
-    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 .hero-actions {
@@ -463,7 +517,7 @@ a {
 
 /* How It Works */
 .how-it-works {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
 }
 
 .steps {
@@ -556,7 +610,8 @@ a {
 
 /* Currently In The Pipeline */
 .pipeline {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .pipeline-intro {
@@ -622,11 +677,12 @@ a {
 /* For Companies (expanded, primary conversion section) */
 .company-section {
     position: relative;
-    padding: 6rem 0 9rem;
+    padding: 6rem 0;
     background: var(--navy-deep);
     background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.6px);
     background-size: 22px 22px;
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    border-top: 3px solid var(--cyan);
+    border-bottom: 3px solid var(--cyan);
 }
 
 .company-grid {
@@ -819,12 +875,12 @@ select {
 /* Proof of Work */
 .proof-section {
     position: relative;
-    padding: 6.5rem 0 6rem;
+    padding: 6rem 0;
     background-color: var(--navy);
     background-image: radial-gradient(rgba(0, 174, 239, 0.16) 1.5px, transparent 1.6px);
     background-size: 24px 24px;
     color: var(--white);
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    border-bottom: 3px solid var(--cyan);
 }
 
 .proof-section .eyebrow {
@@ -851,6 +907,14 @@ select {
 @media (max-width: 800px) {
     .stat-bar {
         grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-bar {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
     }
 }
 
@@ -883,7 +947,7 @@ select {
 
 /* Closing CTA */
 .closing-cta {
-    padding: 5rem 0 6rem;
+    padding: 6rem 0;
 }
 
 .closing-cta-box {
@@ -1000,6 +1064,10 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .hero-proof {
+        display: none;
+    }
+
     .outcomes {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1069,28 +1137,55 @@ footer {
     }
 
     .hero {
-        padding-top: 2.5rem;
-        padding-bottom: 3rem;
-        /* Fixed-px cut (not %) so the angle stays gentle regardless of
-           how tall this section gets on a narrow, single-column layout. */
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+        padding-top: 3.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .hero-glow {
+        width: 320px;
+        height: 320px;
+        top: -80px;
+        right: -80px;
+    }
+
+    .hero-badge {
+        font-size: 0.68rem;
+        padding: 0.35rem 0.75rem;
+        margin-bottom: 1.25rem;
     }
 
     .headline {
-        font-size: 2.1rem;
-        letter-spacing: -0.8px;
+        font-size: clamp(2.4rem, 9vw, 3rem);
+        letter-spacing: -1px;
         margin-bottom: 1rem;
+        line-height: 1.1;
     }
 
     .sub-headline {
         font-size: 1rem;
         margin-bottom: 1.5rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.78);
     }
 
-    .scope-pill {
-        margin-bottom: 1.75rem;
-        padding: 0.55rem 0.85rem;
+    .headline-desktop,
+    .sub-headline-desktop {
+        display: none;
+    }
+
+    .headline-mobile,
+    .sub-headline-mobile {
+        display: block;
+    }
+
+    .scope-tags {
+        margin-bottom: 2rem;
+        gap: 0.5rem;
+    }
+
+    .scope-tag {
         font-size: 0.78rem;
+        padding: 0.4rem 0.8rem;
     }
 
     .hero-actions {
@@ -1099,64 +1194,81 @@ footer {
         gap: 0.75rem;
     }
 
-    .hero-proof {
-        margin-top: 1.75rem;
-        padding: 1.5rem;
-    }
-
-    .hero-proof-stat {
-        font-size: 2.75rem;
-    }
-
-    .hero-proof-row {
-        gap: 1.25rem;
-        margin-bottom: 2rem;
-    }
-
     .how-it-works {
-        padding: 5.5rem 0;
+        padding: 4.5rem 0;
+    }
+
+    .step {
+        grid-template-columns: 48px 1fr;
+        gap: 1.25rem;
+        padding: 1.5rem 0;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.15rem;
+    }
+
+    .outcomes {
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
     }
 
     .proof-section {
-        padding: 3.5rem 0 5.5rem;
-        clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+        padding: 4.5rem 0;
     }
 
-    .stat-bar {
-        gap: 2.5rem 1.5rem;
+    .proof-copy {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .pipeline {
-        padding: 5.5rem 0;
+        padding: 4.5rem 0;
     }
 
     .pipeline-grid {
-        gap: 2.25rem;
+        gap: 1.5rem;
     }
 
     .pipeline-card {
-        padding: 1.75rem;
+        padding: 1.75rem 1.5rem;
     }
 
     .company-section {
-        padding: 5.5rem 0 5.5rem;
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+        padding: 4.5rem 0;
     }
 
     .company-grid {
-        gap: 2.75rem;
+        gap: 2.5rem;
+    }
+
+    .company-pitch h2 {
+        font-size: 1.85rem;
+    }
+
+    .form-container {
+        padding: 1.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .input-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
     }
 
     .closing-cta {
-        padding: 5rem 0 3.5rem;
+        padding: 4.5rem 0 3.5rem;
     }
 
     .closing-cta-box {
         padding: 2.5rem 1.5rem;
+    }
+
+    .closing-cta-box h2 {
+        font-size: 1.6rem;
     }
 
     .footer-content {
@@ -1168,10 +1280,23 @@ footer {
     }
 
     .container {
-        padding: 0 1.5rem;
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
     }
 
     .btn {
         padding: 0.9rem 1.5rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding-left: 1.35rem;
+        padding-right: 1.35rem;
+    }
+
+    .headline {
+        font-size: 1.85rem;
     }
 }

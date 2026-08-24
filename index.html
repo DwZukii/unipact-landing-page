@@ -32,22 +32,25 @@
     <main>
         <!-- Hero -->
         <section class="hero">
+            <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-inner container">
                 <div class="hero-grid">
                     <div class="hero-content">
-                        <p class="eyebrow"><span class="eyebrow-dot"></span>Student talent marketplace &mdash; closed beta</p>
-                        <h1 class="headline">Post a job. Get matched.<br>Pay for verified work.</h1>
-                        <p class="sub-headline">
+                        <div class="hero-badge"><span class="hero-badge-dot"></span>Closed Beta &mdash; Now Matching</div>
+                        <h1 class="headline headline-desktop">Post a job. Get matched.<br>Pay for verified work.</h1>
+                        <h1 class="headline headline-mobile">Post a job.<br>Get matched.<br>Pay for results.</h1>
+                        <p class="sub-headline sub-headline-desktop">
                             Post a paid job in Software Development or Digital Marketing and UniPact matches you with one verified, best-fit student &mdash; no applicant pile to sort through. Pay milestone by milestone through escrow, so you only pay for work that's actually delivered.
                         </p>
-                        <div class="scope-pill">
-                            <span>Now matching</span>
-                            <strong>Software Development</strong>
-                            <span class="scope-sep">&middot;</span>
-                            <strong>Digital Marketing</strong>
+                        <p class="sub-headline sub-headline-mobile">
+                            One verified student. Milestone payments. Escrow-secured. No applicant pile.
+                        </p>
+                        <div class="scope-tags">
+                            <span class="scope-tag">Software Dev</span>
+                            <span class="scope-tag">Digital Marketing</span>
                         </div>
                         <div class="hero-actions">
-                            <button class="btn btn-primary" onclick="scrollToSection('companies-section')">I'm a Company</button>
+                            <button class="btn btn-primary" onclick="scrollToSection('companies-section')">Post a Job</button>
                         </div>
                     </div>
 
@@ -102,70 +105,74 @@
         </section>
 
         <!-- Currently In The Pipeline -->
-        <section class="pipeline container">
-            <p class="eyebrow"><span class="eyebrow-dot"></span>Currently in the pipeline</p>
-            <h2 class="section-title">Real projects, underway right now.</h2>
-            <p class="pipeline-intro">Bounty #UP-001 is delivered and verified. These two are still in progress &mdash; no numbers yet, just work in motion.</p>
+        <section class="pipeline">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-dot"></span>Currently in the pipeline</p>
+                <h2 class="section-title">Real projects, underway right now.</h2>
+                <p class="pipeline-intro">Bounty #UP-001 is delivered and verified. These two are still in progress &mdash; no numbers yet, just work in motion.</p>
 
-            <div class="pipeline-grid">
-                <div class="pipeline-card">
-                    <span class="pipeline-tag">In development</span>
-                    <h3>Tuition centre operations</h3>
-                    <p>A traditional tuition centre is moving off pen-and-paper &mdash; scheduling, records, and day-to-day admin are being rebuilt as proper software.</p>
-                </div>
-                <div class="pipeline-card">
-                    <span class="pipeline-tag">In development</span>
-                    <h3>Interior visualization app</h3>
-                    <p>An app where you photograph a room, then drag and drop furniture into the photo &mdash; so clients can see how a space could look before committing.</p>
+                <div class="pipeline-grid">
+                    <div class="pipeline-card">
+                        <span class="pipeline-tag">In development</span>
+                        <h3>Tuition centre operations</h3>
+                        <p>A traditional tuition centre is moving off pen-and-paper &mdash; scheduling, records, and day-to-day admin are being rebuilt as proper software.</p>
+                    </div>
+                    <div class="pipeline-card">
+                        <span class="pipeline-tag">In development</span>
+                        <h3>Interior visualization app</h3>
+                        <p>An app where you photograph a room, then drag and drop furniture into the photo &mdash; so clients can see how a space could look before committing.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works -->
-        <section class="how-it-works container">
-            <p class="eyebrow"><span class="eyebrow-dot"></span>How it works</p>
-            <h2 class="section-title">From job brief to verified delivery.</h2>
+        <section class="how-it-works">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-dot"></span>How it works</p>
+                <h2 class="section-title">From job brief to verified delivery.</h2>
 
-            <div class="steps">
-                <div class="step">
-                    <span class="step-number">01</span>
-                    <div class="step-body">
-                        <h3>Company posts a job</h3>
-                        <p>Fixed scope, fixed payout, defined milestones. No vague briefs, no open-ended budgets.</p>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">01</span>
+                        <div class="step-body">
+                            <h3>Company posts a job</h3>
+                            <p>Fixed scope, fixed payout, defined milestones. No vague briefs, no open-ended budgets.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">02</span>
+                        <div class="step-body">
+                            <h3>UniPact matches the talent</h3>
+                            <p>One best-fit, verified student is matched to the job &mdash; not a public applicant pool to filter through.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">03</span>
+                        <div class="step-body">
+                            <h3>Student executes</h3>
+                            <p>Work is delivered against the agreed milestones, tracked from kickoff to handover.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">04</span>
+                        <div class="step-body">
+                            <h3>Paid at each milestone</h3>
+                            <p>Funds sit in escrow and release as each milestone is verified delivered. Both sides are covered.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="step">
-                    <span class="step-number">02</span>
-                    <div class="step-body">
-                        <h3>UniPact matches the talent</h3>
-                        <p>One best-fit, verified student is matched to the job &mdash; not a public applicant pool to filter through.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <span class="step-number">03</span>
-                    <div class="step-body">
-                        <h3>Student executes</h3>
-                        <p>Work is delivered against the agreed milestones, tracked from kickoff to handover.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <span class="step-number">04</span>
-                    <div class="step-body">
-                        <h3>Paid at each milestone</h3>
-                        <p>Funds sit in escrow and release as each milestone is verified delivered. Both sides are covered.</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="outcomes">
-                <div class="outcome">
-                    <p class="outcome-label">Company walks away with</p>
-                    <p class="outcome-value">A delivery report</p>
-                </div>
-                <div class="outcome-rule"></div>
-                <div class="outcome">
-                    <p class="outcome-label">Student walks away with</p>
-                    <p class="outcome-value">A verified talent record</p>
+                <div class="outcomes">
+                    <div class="outcome">
+                        <p class="outcome-label">Company walks away with</p>
+                        <p class="outcome-value">A delivery report</p>
+                    </div>
+                    <div class="outcome-rule"></div>
+                    <div class="outcome">
+                        <p class="outcome-label">Student walks away with</p>
+                        <p class="outcome-value">A verified talent record</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -224,12 +231,14 @@
         </section>
 
         <!-- Closing CTA -->
-        <section class="closing-cta container">
-            <div class="closing-cta-box">
-                <h2>Ready to work with us?</h2>
-                <div class="closing-cta-actions">
-                    <button class="btn btn-primary" onclick="scrollToSection('companies-section')">I'm a Company</button>
-                    <a href="mailto:unipact.my@gmail.com" class="closing-cta-email">or email us at unipact.my@gmail.com</a>
+        <section class="closing-cta">
+            <div class="container">
+                <div class="closing-cta-box">
+                    <h2>Ready to work with us?</h2>
+                    <div class="closing-cta-actions">
+                        <button class="btn btn-primary" onclick="scrollToSection('companies-section')">Post a Job</button>
+                        <a href="mailto:unipact.my@gmail.com" class="closing-cta-email">or email us at unipact.my@gmail.com</a>
+                    </div>
                 </div>
             </div>
         </section>
