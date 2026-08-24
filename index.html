@@ -21,7 +21,21 @@
             </a>
             <nav class="nav-links" id="navLinks">
                 <button class="nav-btn" onclick="scrollToSection('companies-section')">For Companies</button>
-                <a class="nav-student-link" href="https://forms.gle/779kBq4fc2fJdco4A" target="_blank" rel="noopener noreferrer" aria-label="I'm a Student — opens registration form in a new tab">I'm a Student <span class="ext-icon" aria-hidden="true">&#8599;</span></a>
+                <div class="nav-dropdown" id="studentDropdownWrapper">
+                    <button class="nav-student-link nav-dropdown-btn" id="studentDropdownBtn" aria-expanded="false" aria-haspopup="true" onclick="toggleStudentDropdown(event)">
+                        I'm a Student <span class="ext-icon" aria-hidden="true">&#9662;</span>
+                    </button>
+                    <div class="nav-dropdown-menu" id="studentDropdownMenu">
+                        <a class="nav-dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSeHYbC38geeJsw6bE7yFGnOY4fvuD_8SF3EFCtKlmSRg6t_yQ/viewform" target="_blank" rel="noopener noreferrer">
+                            <span class="dropdown-item-title">Software Developer</span>
+                            <span class="dropdown-item-sub">Web, Mobile & Backend</span>
+                        </a>
+                        <a class="nav-dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSfwElJpJ8ovMazRRDb8Fe4LdajhJB2xmbCuRWJUHFCYM7UK7A/viewform" target="_blank" rel="noopener noreferrer">
+                            <span class="dropdown-item-title">Digital Marketing / Video</span>
+                            <span class="dropdown-item-sub">Social, Growth & Video Editing</span>
+                        </a>
+                    </div>
+                </div>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMobileNav()">
                 <span></span><span></span><span></span>
@@ -46,8 +60,12 @@
                             One verified student. Milestone payments. Escrow-secured. No applicant pile.
                         </p>
                         <div class="scope-tags">
-                            <span class="scope-tag">Software Dev</span>
-                            <span class="scope-tag">Digital Marketing</span>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHYbC38geeJsw6bE7yFGnOY4fvuD_8SF3EFCtKlmSRg6t_yQ/viewform" target="_blank" rel="noopener noreferrer" class="scope-tag scope-tag-link" title="Apply as a Software Developer student">
+                                Software Dev <span class="tag-arrow">&nearr;</span>
+                            </a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwElJpJ8ovMazRRDb8Fe4LdajhJB2xmbCuRWJUHFCYM7UK7A/viewform" target="_blank" rel="noopener noreferrer" class="scope-tag scope-tag-link" title="Apply as a Digital Marketing / Video Editing student">
+                                Digital Marketing / Video <span class="tag-arrow">&nearr;</span>
+                            </a>
                         </div>
                         <div class="hero-actions">
                             <button class="btn btn-primary" onclick="scrollToSection('companies-section')">Post a Job</button>
@@ -238,7 +256,17 @@
                     <h2>Ready to work with us?</h2>
                     <div class="closing-cta-actions">
                         <button class="btn btn-primary" onclick="scrollToSection('companies-section')">Post a Job</button>
-                        <a href="https://forms.gle/779kBq4fc2fJdco4A" target="_blank" rel="noopener noreferrer" class="closing-cta-email">Are you a student? Join the talent network &rarr;</a>
+                        <div class="student-links-bar">
+                            <span class="student-links-title">Student applications:</span>
+                            <div class="student-links-pills">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHYbC38geeJsw6bE7yFGnOY4fvuD_8SF3EFCtKlmSRg6t_yQ/viewform" target="_blank" rel="noopener noreferrer" class="student-pill-link">
+                                    Software Developer &rarr;
+                                </a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwElJpJ8ovMazRRDb8Fe4LdajhJB2xmbCuRWJUHFCYM7UK7A/viewform" target="_blank" rel="noopener noreferrer" class="student-pill-link">
+                                    Digital Marketing / Video &rarr;
+                                </a>
+                            </div>
+                        </div>
                         <a href="mailto:unipact.my@gmail.com" class="closing-cta-email">or email us at unipact.my@gmail.com</a>
                     </div>
                 </div>
@@ -327,7 +355,30 @@
             links.classList.remove('open');
             toggle.classList.remove('open');
             toggle.setAttribute('aria-expanded', 'false');
+            closeStudentDropdown();
         }
+
+        function toggleStudentDropdown(e) {
+            e.stopPropagation();
+            const wrapper = document.getElementById('studentDropdownWrapper');
+            const btn = document.getElementById('studentDropdownBtn');
+            const isOpen = wrapper.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+
+        function closeStudentDropdown() {
+            const wrapper = document.getElementById('studentDropdownWrapper');
+            const btn = document.getElementById('studentDropdownBtn');
+            if (wrapper) wrapper.classList.remove('open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+
+        document.addEventListener('click', function(e) {
+            const wrapper = document.getElementById('studentDropdownWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                closeStudentDropdown();
+            }
+        });
     </script>
 </body>
 </html>

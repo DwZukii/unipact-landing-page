@@ -188,6 +188,9 @@ a {
     font-size: 0.85rem;
     text-decoration: none;
     transition: var(--transition-fast);
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .nav-student-link:hover {
@@ -197,6 +200,72 @@ a {
 .nav-student-link .ext-icon {
     font-size: 0.75rem;
     opacity: 0.7;
+    transition: transform var(--transition-fast);
+}
+
+/* Student Dropdown */
+.nav-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 250px;
+    background: var(--white);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(10, 23, 72, 0.15);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 120;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown.open .nav-student-link .ext-icon,
+.nav-dropdown:hover .nav-student-link .ext-icon {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.nav-dropdown-item:hover {
+    background: rgba(0, 174, 239, 0.08);
+}
+
+.dropdown-item-title {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--navy-deep);
+    line-height: 1.2;
+}
+
+.dropdown-item-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
 }
 
 /* Mobile nav toggle */
@@ -353,6 +422,31 @@ a {
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0.01em;
+}
+
+.scope-tag-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.scope-tag-link:hover {
+    background: rgba(0, 174, 239, 0.22);
+    border-color: var(--cyan);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 174, 239, 0.25);
+}
+
+.tag-arrow {
+    color: var(--cyan);
+    font-weight: 700;
+    margin-left: 0.15rem;
+    transition: transform var(--transition-fast);
+}
+
+.scope-tag-link:hover .tag-arrow {
+    transform: translate(2px, -2px);
 }
 
 .hero-actions {
@@ -971,6 +1065,52 @@ select {
     gap: 1.1rem;
 }
 
+.student-links-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0.25rem 0;
+}
+
+.student-links-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.student-links-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+}
+
+.student-pill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1.1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 100px;
+    color: var(--white);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.student-pill-link:hover {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: var(--navy-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 174, 239, 0.3);
+}
+
 .closing-cta-box .btn-primary {
     background: var(--cyan);
     color: var(--navy-deep);
@@ -1115,7 +1255,7 @@ footer {
     }
 
     .nav-links.open {
-        max-height: 220px;
+        max-height: 360px;
         opacity: 1;
         pointer-events: auto;
     }
@@ -1127,11 +1267,34 @@ footer {
         padding: 0.75rem 1rem;
     }
 
+    .nav-dropdown {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     .nav-links .nav-student-link {
         width: 100%;
+        text-align: left;
+        justify-content: space-between;
         min-height: 48px;
         padding: 0.75rem 1rem;
         border-top: 1px solid var(--border-color);
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        padding: 0.25rem 0 0.5rem 0.75rem;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: flex;
+        background: rgba(10, 23, 72, 0.03);
+        border-radius: 8px;
+        margin-bottom: 0.25rem;
     }
 
     .hero {
