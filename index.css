@@ -794,6 +794,7 @@ a {
     }
 }
 
+.company-pitch h1,
 .company-pitch h2 {
     font-size: 2.25rem;
     color: var(--white);
@@ -1603,6 +1604,7 @@ footer {
         gap: 2.5rem;
     }
 
+    .company-pitch h1,
     .company-pitch h2 {
         font-size: 1.85rem;
     }
