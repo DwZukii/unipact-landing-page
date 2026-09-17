@@ -769,6 +769,41 @@ a {
     margin-bottom: 0;
 }
 
+/* FAQ (apply pages) */
+.faq-section {
+    padding: 5rem 0;
+}
+
+.faq-intro {
+    color: var(--text-muted);
+    max-width: 640px;
+    font-size: 1.05rem;
+    margin-bottom: 2.75rem;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+}
+
+@media (max-width: 800px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+}
+
+.faq-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
 /* For Companies (expanded, primary conversion section) */
 .company-section {
     position: relative;
