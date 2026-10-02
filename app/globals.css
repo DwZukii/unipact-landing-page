@@ -593,6 +593,13 @@ a {
     border-color: var(--navy-deep);
 }
 
+/* Must stay after .btn so the smaller navbar sizing wins on equal specificity. */
+.nav-cta {
+    min-height: 40px;
+    padding: 0.6rem 1.3rem;
+    font-size: 0.9rem;
+}
+
 .btn-outline {
     background: transparent;
     color: var(--navy);
@@ -1530,7 +1537,7 @@ footer {
     }
 
     .nav-links.open {
-        max-height: 360px;
+        max-height: 520px;
         opacity: 1;
         pointer-events: auto;
     }
@@ -1540,6 +1547,12 @@ footer {
         text-align: left;
         min-height: 48px;
         padding: 0.75rem 1rem;
+    }
+
+    .nav-links .nav-cta {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 0.25rem;
     }
 
     .nav-dropdown {

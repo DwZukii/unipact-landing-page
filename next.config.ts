@@ -1,12 +1,20 @@
 import type { NextConfig } from "next";
 
+const APP_URL = "https://app.unipact.my";
+
+// 307 rather than 308: browsers cache a permanent redirect indefinitely, which would
+// make it painful to bring these pages back if the signup funnel changes again.
+const toStudentSignup = { destination: `${APP_URL}/register/student`, permanent: false };
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/apply-company.html", destination: "/apply-company", permanent: true },
-      { source: "/apply-software-developer.html", destination: "/apply-software-developer", permanent: true },
-      { source: "/apply-digital-marketing.html", destination: "/apply-digital-marketing", permanent: true },
+      { source: "/apply-software-developer", ...toStudentSignup },
+      { source: "/apply-digital-marketing", ...toStudentSignup },
+      { source: "/apply-software-developer.html", ...toStudentSignup },
+      { source: "/apply-digital-marketing.html", ...toStudentSignup },
       { source: "/privacy-policy.html", destination: "/privacy-policy", permanent: true },
       { source: "/terms.html", destination: "/terms", permanent: true },
       {

@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { ReactNode } from "react";
 import { scrollToSectionId } from "./Navbar";
 import CompanyApplicationForm from "./CompanyApplicationForm";
 
 import type { CaseStudy } from "@/lib/sanity/queries";
+
+const APP_URL = "https://app.unipact.my";
 
 export default function HomeSections({
   headlineDesktop = (
@@ -53,25 +54,25 @@ export default function HomeSections({
                 One verified student. Milestone payments. Escrow-secured. No applicant pile.
               </p>
               <div className="scope-tags">
-                <Link
-                  href="/apply-software-developer"
+                <a
+                  href={`${APP_URL}/register/student`}
                   className="scope-tag scope-tag-link"
                   title="Apply as a Software Developer student"
                 >
                   Software Dev <span className="tag-arrow">↗</span>
-                </Link>
-                <Link
-                  href="/apply-digital-marketing"
+                </a>
+                <a
+                  href={`${APP_URL}/register/student`}
                   className="scope-tag scope-tag-link"
                   title="Apply as a Digital Marketing / Video Editing student"
                 >
                   Digital Marketing / Video <span className="tag-arrow">↗</span>
-                </Link>
+                </a>
               </div>
               <div className="hero-actions">
-                <button className="btn btn-primary" onClick={() => scrollToSectionId("companies-section")}>
-                  Post a Job
-                </button>
+                <a className="btn btn-primary" href={`${APP_URL}/register/company`}>
+                  Post a project
+                </a>
               </div>
             </div>
 
@@ -296,18 +297,18 @@ export default function HomeSections({
           <div className="closing-cta-box">
             <h2>Ready to work with us?</h2>
             <div className="closing-cta-actions">
-              <button className="btn btn-primary" onClick={() => scrollToSectionId("companies-section")}>
-                Post a Job
-              </button>
+              <a className="btn btn-primary" href={`${APP_URL}/register/company`}>
+                Post a project
+              </a>
               <div className="student-links-bar">
                 <span className="student-links-title">Student applications:</span>
                 <div className="student-links-pills">
-                  <Link href="/apply-software-developer" className="student-pill-link">
+                  <a href={`${APP_URL}/register/student`} className="student-pill-link">
                     Software Developer &rarr;
-                  </Link>
-                  <Link href="/apply-digital-marketing" className="student-pill-link">
+                  </a>
+                  <a href={`${APP_URL}/register/student`} className="student-pill-link">
                     Digital Marketing / Video &rarr;
-                  </Link>
+                  </a>
                 </div>
               </div>
               <a href="mailto:unipact.my@gmail.com" className="closing-cta-email">

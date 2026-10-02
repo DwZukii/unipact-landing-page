@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+const APP_URL = "https://app.unipact.my";
+
 export function scrollToSectionId(sectionId: string) {
   const section = document.getElementById(sectionId);
   if (section) {
@@ -105,16 +107,22 @@ export default function Navbar({
               I&apos;m a Student <span className="ext-icon" aria-hidden="true">&#9662;</span>
             </button>
             <div className="nav-dropdown-menu" id="studentDropdownMenu">
-              <Link className="nav-dropdown-item" href="/apply-software-developer">
+              <a className="nav-dropdown-item" href={`${APP_URL}/register/student`}>
                 <span className="dropdown-item-title">Software Developer</span>
                 <span className="dropdown-item-sub">Web, Mobile &amp; Backend</span>
-              </Link>
-              <Link className="nav-dropdown-item" href="/apply-digital-marketing">
+              </a>
+              <a className="nav-dropdown-item" href={`${APP_URL}/register/student`}>
                 <span className="dropdown-item-title">Digital Marketing / Video</span>
                 <span className="dropdown-item-sub">Social, Growth &amp; Video Editing</span>
-              </Link>
+              </a>
             </div>
           </div>
+          <a className="nav-btn" href={`${APP_URL}/login`}>
+            Log in
+          </a>
+          <a className="btn btn-primary nav-cta" href={`${APP_URL}/register/company`}>
+            Post a project
+          </a>
         </nav>
         <button
           className={`nav-toggle${navOpen ? " open" : ""}`}
