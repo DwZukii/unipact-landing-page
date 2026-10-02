@@ -5,7 +5,7 @@ import HomeSections from "@/components/HomeSections";
 
 const TITLE = "UniPact | Paid Student Work, Matched and Verified";
 const DESCRIPTION =
-  "UniPact matches companies with verified students for paid, milestone-based work in Software Development and Digital Marketing. Escrow-secured. Currently in closed beta.";
+  "Post a Software Development or Digital Marketing project for free. UniPact hand-picks a team of verified Malaysian university students, you approve the match, and payment releases from escrow milestone by milestone.";
 
 export const metadata: Metadata = {
   title: TITLE,

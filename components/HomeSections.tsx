@@ -46,12 +46,13 @@ export default function HomeSections({
               <h1 className="headline headline-desktop">{headlineDesktop}</h1>
               <h1 className="headline headline-mobile">{headlineMobile}</h1>
               <p className="sub-headline sub-headline-desktop">
-                Post a paid job in Software Development or Digital Marketing and UniPact matches you with one
-                verified, best-fit student &mdash; no applicant pile to sort through. Pay milestone by milestone
-                through escrow, so you only pay for work that&apos;s actually delivered.
+                Post a Software Development or Digital Marketing project for free. We hand-pick a team of
+                verified university students, you approve the match before anything starts, and payment sits in
+                escrow and releases milestone by milestone &mdash; so you only pay for work that&apos;s actually
+                delivered.
               </p>
               <p className="sub-headline sub-headline-mobile">
-                One verified student. Milestone payments. Escrow-secured. No applicant pile.
+                Free to post. Hand-picked student teams. You approve every match. Escrow-secured.
               </p>
               <div className="scope-tags">
                 <a
@@ -215,25 +216,31 @@ export default function HomeSections({
             <div className="step">
               <span className="step-number">01</span>
               <div className="step-body">
-                <h3>Company posts a job</h3>
-                <p>Fixed scope, fixed payout, defined milestones. No vague briefs, no open-ended budgets.</p>
+                <h3>Post the project</h3>
+                <p>
+                  Fixed scope, fixed budget, defined deliverables. Posting is free and no card is needed. No
+                  vague briefs, no open-ended budgets.
+                </p>
               </div>
             </div>
             <div className="step">
               <span className="step-number">02</span>
               <div className="step-body">
-                <h3>UniPact matches the talent</h3>
+                <h3>We hand-pick the team</h3>
                 <p>
-                  One best-fit, verified student is matched to the job &mdash; not a public applicant pool to
-                  filter through.
+                  A UniPact admin proposes a best-fit team from verified students &mdash; no bidding wars, no
+                  applicant pile to filter through.
                 </p>
               </div>
             </div>
             <div className="step">
               <span className="step-number">03</span>
               <div className="step-body">
-                <h3>Student executes</h3>
-                <p>Work is delivered against the agreed milestones, tracked from kickoff to handover.</p>
+                <h3>You approve, then work starts</h3>
+                <p>
+                  Nothing begins until you confirm the match. Briefs, brand assets and raw footage live in a
+                  shared files vault.
+                </p>
               </div>
             </div>
             <div className="step">
@@ -241,8 +248,8 @@ export default function HomeSections({
               <div className="step-body">
                 <h3>Paid at each milestone</h3>
                 <p>
-                  Funds sit in escrow and release as each milestone is verified delivered. Both sides are
-                  covered.
+                  Funds sit in escrow and release as each milestone is verified delivered. You rate the team and
+                  download a project report.
                 </p>
               </div>
             </div>
@@ -262,6 +269,50 @@ export default function HomeSections({
         </div>
       </section>
 
+      {/* Specialisations */}
+      <section className="how-it-works">
+        <div className="container">
+          <p className="eyebrow">
+            <span className="eyebrow-dot"></span>Two specialisations
+          </p>
+          <h2 className="section-title">Built for the work companies need most.</h2>
+          <p className="proof-copy">
+            Every project follows a structure tailored to its field, so both sides know exactly what gets
+            delivered. Free to post, and UniPact keeps 10% of the project fee once work is approved.
+          </p>
+
+          <div className="capability-grid capability-grid-2">
+            <div className="capability-card">
+              <div className="capability-icon">💻</div>
+              <h3>Software Development</h3>
+              <p>
+                Websites, landing pages, CRM, ERP, HR systems and internal automation tools &mdash; scoped with
+                the tech stack and skills set per project.
+              </p>
+              <div className="tech-tags">
+                <span className="tech-tag">Code repository</span>
+                <span className="tech-tag">Staging URL</span>
+                <span className="tech-tag">Handover documentation</span>
+              </div>
+            </div>
+
+            <div className="capability-card">
+              <div className="capability-icon">🎬</div>
+              <h3>Digital Marketing &amp; Video</h3>
+              <p>
+                TikTok, Instagram Reels and YouTube Shorts campaigns, copywriting and content &mdash; scoped
+                against a campaign objective and target platforms.
+              </p>
+              <div className="tech-tags">
+                <span className="tech-tag">Edited videos</span>
+                <span className="tech-tag">Raw assets in files vault</span>
+                <span className="tech-tag">Performance summary</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* For Companies */}
       <section id="companies-section" className="company-section">
         <div className="container">
@@ -270,17 +321,18 @@ export default function HomeSections({
               <p className="eyebrow">
                 <span className="eyebrow-dot"></span>For companies
               </p>
-              <h2>Post the job. We match the talent.</h2>
+              <h2>Post the project. We match the team.</h2>
               <p>
-                Skip the applicant pile. Tell us the scope and the payout &mdash; UniPact matches one verified
-                student who fits, and escrow handles the rest.
+                Skip the applicant pile. Tell us the scope and the budget &mdash; UniPact hand-picks a team of
+                verified students, you approve them before work starts, and escrow handles the rest.
               </p>
 
               <ul className="feature-list">
-                <li>Post a fixed-scope job with a fixed payout</li>
-                <li>Get matched with one verified, best-fit student</li>
+                <li>Post a fixed-scope project for free, as many as you need</li>
+                <li>Review the proposed team and their portfolios before approving</li>
+                <li>Share briefs and raw assets in a secure files vault</li>
                 <li>Pay per milestone, held in escrow until work is verified</li>
-                <li>Walk away with a delivery report</li>
+                <li>Rate the team and download a project report</li>
               </ul>
             </div>
 

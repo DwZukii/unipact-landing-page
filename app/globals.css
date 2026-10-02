@@ -2032,6 +2032,12 @@ footer {
     margin-top: 3rem;
 }
 
+/* Two-up variant. Must sit after the base rule but before the 960px breakpoint,
+   so equal-specificity source order leaves the mobile single column intact. */
+.capability-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 @media (max-width: 960px) {
     .capability-grid {
         grid-template-columns: 1fr;

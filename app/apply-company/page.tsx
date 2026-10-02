@@ -5,7 +5,7 @@ import CompanyApplicationForm from "@/components/CompanyApplicationForm";
 
 const TITLE = "Hire Student Developers & Marketers in Malaysia | UniPact";
 const DESCRIPTION =
-  "Post a paid job and get matched with one verified student for software development or digital marketing work in Malaysia. Pay per milestone via escrow.";
+  "Post a project for free and get matched with a hand-picked team of verified Malaysian university students for software development or digital marketing work. Pay per milestone via escrow.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -52,17 +52,18 @@ export default function ApplyCompanyPage() {
                 <p className="eyebrow">
                   <span className="eyebrow-dot"></span>For companies
                 </p>
-                <h1>Post the job. We match the talent.</h1>
+                <h1>Post the project. We match the team.</h1>
                 <p>
-                  Skip the applicant pile. Tell us the scope and the payout &mdash; UniPact matches one verified
-                  student who fits, and escrow handles the rest.
+                  Skip the applicant pile. Tell us the scope and the budget &mdash; UniPact hand-picks a team of
+                  verified students, you approve them before work starts, and escrow handles the rest.
                 </p>
 
                 <ul className="feature-list">
-                  <li>Post a fixed-scope job with a fixed payout</li>
-                  <li>Get matched with one verified, best-fit student</li>
+                  <li>Post a fixed-scope project for free, as many as you need</li>
+                  <li>Review the proposed team and their portfolios before approving</li>
+                  <li>Share briefs and raw assets in a secure files vault</li>
                   <li>Pay per milestone, held in escrow until work is verified</li>
-                  <li>Walk away with a delivery report</li>
+                  <li>Rate the team and download a project report</li>
                 </ul>
               </div>
 

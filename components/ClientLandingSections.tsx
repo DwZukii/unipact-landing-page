@@ -372,7 +372,7 @@ export default function ClientLandingSections({
 
               <ul className="feature-list">
                 <li>Fixed-scope milestone pricing (USD / SGD / GBP / MYR)</li>
-                <li>One verified, pre-screened talent match</li>
+                <li>A hand-picked team of verified, pre-screened students</li>
                 <li>Zero upfront payout release &mdash; escrow protected</li>
                 <li>Full source code &amp; IP ownership upon completion</li>
               </ul>
