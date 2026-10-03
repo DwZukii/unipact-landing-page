@@ -798,7 +798,7 @@ a {
 
 /* FAQ (apply pages) */
 .faq-section {
-    padding: 5rem 0;
+    padding: 6rem 0;
 }
 
 .faq-intro {
@@ -1998,7 +1998,7 @@ footer {
 }
 
 .comparison-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--white);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -2131,7 +2131,7 @@ footer {
 }
 
 .capabilities-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--bg);
 }
 
@@ -2193,7 +2193,7 @@ footer {
 }
 
 .how-it-works-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--white);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -2248,7 +2248,7 @@ footer {
 
 /* Malaysian SME Landing Styles */
 .persona-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--bg);
 }
 
@@ -2371,7 +2371,7 @@ footer {
 
 /* Objection Killer Matrix */
 .objection-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--navy-deep);
     background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.6px);
     background-size: 24px 24px;
@@ -2477,7 +2477,7 @@ footer {
 
 /* Package Grid */
 .package-section {
-    padding: 5.5rem 0;
+    padding: 6rem 0;
     background: var(--white);
     border-bottom: 1px solid var(--border-color);
 }
@@ -2553,6 +2553,13 @@ footer {
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    /* Absorb the card's leftover height here, so every CTA sits the same
+       distance below its last feature instead of floating by up to 47px. */
+    flex: 1 1 auto;
+}
+
+.package-card > .btn {
+    margin-top: 0;
 }
 
 .package-list li {
@@ -2571,5 +2578,16 @@ footer {
     left: 0;
 }
 
-
-
+/* Mobile rhythm for the sections defined above; kept here so it is not
+   overridden by their base rules on source order. */
+@media (max-width: 640px) {
+    .comparison-section,
+    .capabilities-section,
+    .how-it-works-section,
+    .persona-section,
+    .objection-section,
+    .package-section,
+    .faq-section {
+        padding: 4.5rem 0;
+    }
+}
