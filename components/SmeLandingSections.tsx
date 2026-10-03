@@ -61,9 +61,6 @@ export default function SmeLandingSections({
         <div className="hero-inner container">
           <div className="hero-grid">
             <div className="hero-content">
-              <div className="hero-badge">
-                <span className="hero-badge-dot"></span>For Malaysian SMEs, F&amp;B &amp; TikTok Shop Brands
-              </div>
               <h1 className="headline headline-desktop">
                 Viral Short-Form Video &amp; Tech.
                 <br />
@@ -105,7 +102,6 @@ export default function SmeLandingSections({
             </div>
 
             <aside className="hero-proof-card">
-              <div className="hero-proof-badge">Local Growth Case Study</div>
               <p className="hero-proof-client">
                 {primaryStudy?.client || "F&B / SME Client Spotlight"}
               </p>
@@ -131,9 +127,6 @@ export default function SmeLandingSections({
       {/* Customer Personas Section */}
       <section id="personas-section" className="persona-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Tailored For Your Growth
-          </p>
           <h2 className="section-title">Built specifically for how Malaysian businesses operate.</h2>
           <p className="proof-copy">
             Whether you run a bustling cafe, an e-commerce store, or a local medical clinic, UniPact eliminates the marketing bottleneck.
@@ -224,9 +217,6 @@ export default function SmeLandingSections({
       {/* Objection Killer Matrix */}
       <section className="objection-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>The UniPact Difference
-          </p>
           <h2 className="section-title">Why local businesses switch to UniPact.</h2>
           <p className="proof-copy">
             We solved the four biggest reasons Malaysian SMEs hesitate to hire marketing help.
@@ -287,9 +277,6 @@ export default function SmeLandingSections({
       {/* Monthly Video Packages */}
       <section className="package-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Structured Packages
-          </p>
           <h2 className="section-title">Transparent packages. No hidden fees.</h2>
           <p className="proof-copy">
             Choose the content velocity your brand needs. All packages include student talent management and escrow protection.
@@ -366,9 +353,6 @@ export default function SmeLandingSections({
         <div className="container">
           <div className="company-grid">
             <div className="company-pitch">
-              <p className="eyebrow">
-                <span className="eyebrow-dot"></span>Let&apos;s Build
-              </p>
               <h2>Tell us about your business. Get your squad in 48h.</h2>
               <p>
                 Whether you need 10 TikTok videos shot this week or a custom internal tool built, tell us your needs and our team will get in touch directly via WhatsApp or Email.

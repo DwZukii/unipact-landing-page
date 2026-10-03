@@ -32,9 +32,6 @@ export default function PrivacyPolicyPage() {
         <section className="legal-section">
           <div className="container legal-container">
             <div className="legal-header">
-              <p className="eyebrow">
-                <span className="eyebrow-dot"></span>Legal &amp; Compliance
-              </p>
               <h1 className="legal-title">Privacy Policy</h1>
               <p className="legal-subtitle">
                 Personal Data Protection Notice in accordance with the Malaysian Personal Data Protection Act

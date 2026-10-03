@@ -61,9 +61,6 @@ export default function ClientLandingSections({
         <div className="hero-inner container">
           <div className="hero-grid">
             <div className="hero-content">
-              <div className="hero-badge">
-                <span className="hero-badge-dot"></span>For Global Startups, Founders &amp; Agencies
-              </div>
               <h1 className="headline headline-desktop">
                 Ship High-Caliber Tech &amp; Video.
                 <br />
@@ -99,7 +96,6 @@ export default function ClientLandingSections({
             </div>
 
             <aside className="hero-proof-card">
-              <div className="hero-proof-badge">Live Case Study</div>
               <p className="hero-proof-client">
                 {primaryStudy?.client || "Fintech Consulting Client"}
               </p>
@@ -133,9 +129,6 @@ export default function ClientLandingSections({
       {/* Comparison: Why Global Founders Choose UniPact */}
       <section className="comparison-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>The Better Alternative
-          </p>
           <h2 className="section-title">
             Stop overpaying agencies.
             <br />
@@ -189,9 +182,6 @@ export default function ClientLandingSections({
       {/* Capabilities Tracks */}
       <section className="capabilities-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Core Tracks
-          </p>
           <h2 className="section-title">What our talent builds for overseas clients.</h2>
           <p className="proof-copy">
             Every student engineer and creator is hand-vetted through technical assessments and portfolio audits from top STEM institutions.
@@ -246,9 +236,6 @@ export default function ClientLandingSections({
       {/* 4-Step Escrow Workflow */}
       <section className="how-it-works-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>The 4-Step Process
-          </p>
           <h2 className="section-title">Zero risk. Clear milestones. Full velocity.</h2>
           <p className="proof-copy">
             Here is how we ensure seamless cross-border delivery with zero upfront exposure for your company.
@@ -285,9 +272,6 @@ export default function ClientLandingSections({
         <div className="container">
           <div className="company-grid">
             <div className="company-pitch">
-              <p className="eyebrow">
-                <span className="eyebrow-dot"></span>Get Started
-              </p>
               <h2>Post a project brief. Get matched in 48h.</h2>
               <p>
                 Tell us what you need built or edited. We will review your scope, match the ideal student talent, and set up your milestone escrow contract.

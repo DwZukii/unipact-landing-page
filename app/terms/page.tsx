@@ -32,9 +32,6 @@ export default function TermsPage() {
         <section className="legal-section">
           <div className="container legal-container">
             <div className="legal-header">
-              <p className="eyebrow">
-                <span className="eyebrow-dot"></span>Terms &amp; Conditions
-              </p>
               <h1 className="legal-title">Terms of Service</h1>
               <p className="legal-subtitle">
                 Agreement governing the use of the UniPact platform, milestone escrow, and deliverables

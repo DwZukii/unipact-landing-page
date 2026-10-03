@@ -333,47 +333,11 @@ a {
     z-index: 1;
 }
 
-/* Hero badge (replaces eyebrow) */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(0, 174, 239, 0.12);
-    border: 1px solid rgba(0, 174, 239, 0.35);
-    border-radius: 100px;
-    padding: 0.4rem 0.9rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-}
-
-.hero-badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.3);
-    flex-shrink: 0;
-    animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.3); }
-    50% { box-shadow: 0 0 0 6px rgba(0, 174, 239, 0.1); }
-}
-
 .hero-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 4rem;
     align-items: start;
-}
-
-.hero-content .eyebrow {
-    color: var(--cyan);
 }
 
 .headline {
@@ -488,10 +452,6 @@ a {
     background: var(--cyan);
 }
 
-.eyebrow-on-panel {
-    margin-bottom: 1rem;
-}
-
 .hero-proof-id {
     font-family: var(--font-body);
     font-size: 0.8rem;
@@ -521,20 +481,6 @@ a {
     color: var(--text-muted);
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
-}
-
-.hero-proof-badge {
-    display: inline-flex;
-    align-items: center;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.68rem;
-    font-weight: 700;
-    color: var(--cyan-deep);
-    background: rgba(0, 174, 239, 0.1);
-    border-radius: 100px;
-    padding: 0.35rem 0.75rem;
-    margin-bottom: 1rem;
 }
 
 .hero-proof-client {
@@ -910,10 +856,6 @@ a {
     color: rgba(255, 255, 255, 0.68);
 }
 
-.company-section .eyebrow {
-    color: var(--cyan);
-}
-
 .company-section .feature-list {
     border-top-color: rgba(255, 255, 255, 0.14);
     border-bottom-color: rgba(255, 255, 255, 0.14);
@@ -1274,10 +1216,6 @@ select {
     background-size: 24px 24px;
     color: var(--white);
     border-bottom: 3px solid var(--cyan);
-}
-
-.proof-section .eyebrow {
-    color: var(--cyan);
 }
 
 .proof-section .section-title {
@@ -1665,12 +1603,6 @@ footer {
         height: 320px;
         top: -80px;
         right: -80px;
-    }
-
-    .hero-badge {
-        font-size: 0.68rem;
-        padding: 0.35rem 0.75rem;
-        margin-bottom: 1.25rem;
     }
 
     .headline {
@@ -2378,10 +2310,6 @@ footer {
     color: var(--white);
     border-top: 3px solid var(--cyan);
     border-bottom: 3px solid var(--cyan);
-}
-
-.objection-section .eyebrow {
-    color: var(--cyan);
 }
 
 .objection-section .section-title {

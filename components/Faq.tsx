@@ -15,9 +15,6 @@ export default function Faq({
   return (
     <section className="faq-section">
       <div className="container">
-        <p className="eyebrow">
-          <span className="eyebrow-dot"></span>Questions
-        </p>
         <h2 className="section-title">{title}</h2>
         <p className="faq-intro">{intro}</p>
 

@@ -40,9 +40,6 @@ export default function HomeSections({
         <div className="hero-inner container">
           <div className="hero-grid">
             <div className="hero-content">
-              <div className="hero-badge">
-                <span className="hero-badge-dot"></span>Closed Beta &mdash; Now Matching
-              </div>
               <h1 className="headline headline-desktop">{headlineDesktop}</h1>
               <h1 className="headline headline-mobile">{headlineMobile}</h1>
               <p className="sub-headline sub-headline-desktop">
@@ -78,9 +75,6 @@ export default function HomeSections({
             </div>
 
             <aside className="hero-proof">
-              <p className="eyebrow eyebrow-on-panel">
-                <span className="eyebrow-dot"></span>Proof of work
-              </p>
               <p className="hero-proof-id">Bounty #UP-001</p>
               <p className="hero-proof-stat">
                 7 <span>days</span>
@@ -115,12 +109,6 @@ export default function HomeSections({
       {/* Proof of Work */}
       <section id="proof-section" className="proof-section">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>
-            {primaryStudy?.client
-              ? `Proof of work — ${primaryStudy.client}`
-              : "Proof of work — Bounty #UP-001"}
-          </p>
           <h2 className="section-title">
             {primaryStudy?.title ? (
               primaryStudy.title
@@ -174,9 +162,6 @@ export default function HomeSections({
       {/* Currently In The Pipeline */}
       <section className="pipeline">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Currently in the pipeline
-          </p>
           <h2 className="section-title">Real projects, underway right now.</h2>
           <p className="pipeline-intro">
             Bounty #UP-001 is delivered and verified. These two are still in progress &mdash; no numbers yet,
@@ -207,9 +192,6 @@ export default function HomeSections({
       {/* How It Works */}
       <section className="how-it-works">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>How it works
-          </p>
           <h2 className="section-title">From job brief to verified delivery.</h2>
 
           <div className="steps">
@@ -272,9 +254,6 @@ export default function HomeSections({
       {/* Specialisations */}
       <section className="how-it-works">
         <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>Two specialisations
-          </p>
           <h2 className="section-title">Built for the work companies need most.</h2>
           <p className="proof-copy">
             Every project follows a structure tailored to its field, so both sides know exactly what gets
@@ -316,9 +295,6 @@ export default function HomeSections({
         <div className="container">
           <div className="company-grid">
             <div className="company-pitch">
-              <p className="eyebrow">
-                <span className="eyebrow-dot"></span>For companies
-              </p>
               <h2>Post the project. We match the team.</h2>
               <p>
                 Skip the applicant pile. Tell us the scope and the budget &mdash; UniPact hand-picks a team of
