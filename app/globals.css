@@ -2574,8 +2574,9 @@ footer {
     content: "✓";
     color: var(--cyan-deep);
     font-weight: 700;
-    position: absolute;
-    left: 0;
+    /* A flex item of the li, spaced by its gap. Positioning it absolutely
+       anchored it to the card instead, on top of the card border. */
+    flex-shrink: 0;
 }
 
 /* Mobile rhythm for the sections defined above; kept here so it is not
