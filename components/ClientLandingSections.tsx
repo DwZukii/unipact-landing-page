@@ -82,10 +82,10 @@ export default function ClientLandingSections({
               </p>
 
               <div className="client-hero-badges">
-                <span className="trust-pill">🛡️ 100% Escrow Protected</span>
-                <span className="trust-pill">⚡ 7&ndash;14 Day MVPs</span>
-                <span className="trust-pill">🎓 Top 1% STEM Talent</span>
-                <span className="trust-pill">💼 Direct IP Transfer</span>
+                <span className="trust-pill">100% Escrow Protected</span>
+                <span className="trust-pill">7&ndash;14 Day MVPs</span>
+                <span className="trust-pill">Top 1% STEM Talent</span>
+                <span className="trust-pill">Direct IP Transfer</span>
               </div>
 
               <div className="hero-actions">
@@ -166,11 +166,11 @@ export default function ClientLandingSections({
               <h3>Western Agencies</h3>
               <p>US / UK / Australian dev &amp; creative agencies</p>
               <p className="comparison-price">$120 &ndash; $200 / hr</p>
-              <ul className="comparison-list">
-                <li>❌ $15,000+ minimum project retainers</li>
-                <li>❌ 6 to 12 week bloated delivery cycles</li>
-                <li>❌ Junior devs assigned anyway with partner markups</li>
-                <li>❌ Rigid change orders and contract negotiations</li>
+              <ul className="comparison-list con">
+                <li> $15,000+ minimum project retainers</li>
+                <li>6 to 12 week bloated delivery cycles</li>
+                <li>Junior devs assigned anyway with partner markups</li>
+                <li>Rigid change orders and contract negotiations</li>
               </ul>
             </div>
 
@@ -178,11 +178,11 @@ export default function ClientLandingSections({
               <h3>Freelance Marketplaces</h3>
               <p>Upwork, Fiverr, and generic job boards</p>
               <p className="comparison-price">Unpredictable</p>
-              <ul className="comparison-list">
-                <li>❌ 80+ copy-pasted AI bids on every posting</li>
-                <li>❌ High risk of ghosting and abandoned projects</li>
-                <li>❌ Zero standardized code review or QA verification</li>
-                <li>❌ Cumbersome dispute resolution processes</li>
+              <ul className="comparison-list con">
+                <li> 80+ copy-pasted AI bids on every posting</li>
+                <li>High risk of ghosting and abandoned projects</li>
+                <li>Zero standardized code review or QA verification</li>
+                <li>Cumbersome dispute resolution processes</li>
               </ul>
             </div>
 
@@ -191,11 +191,11 @@ export default function ClientLandingSections({
               <h3>UniPact Milestone Match</h3>
               <p>Curated Top 1% Malaysian University Talent</p>
               <p className="comparison-price">$800 &ndash; $3,000 / milestone</p>
-              <ul className="comparison-list">
-                <li>✅ 1 verified, best-fit match within 48 hours</li>
-                <li>✅ 100% Escrow-Secured — only pay on approved milestones</li>
-                <li>✅ Fluent English &amp; daily asynchronous velocity</li>
-                <li>✅ Direct IP ownership &amp; clean repository handover</li>
+              <ul className="comparison-list pro">
+                <li> 1 verified, best-fit match within 48 hours</li>
+                <li>100% Escrow-Secured — only pay on approved milestones</li>
+                <li>Fluent English &amp; daily asynchronous velocity</li>
+                <li>Direct IP ownership &amp; clean repository handover</li>
               </ul>
             </div>
           </div>
@@ -215,7 +215,6 @@ export default function ClientLandingSections({
 
           <div className="capability-grid">
             <div className="capability-card">
-              <div className="capability-icon">💻</div>
               <h3>Full-Stack Web &amp; Mobile MVPs</h3>
               <p>
                 From Figma designs to live production deployments. Build functional SaaS MVPs, customer dashboards, and cross-platform apps without full-time payroll.
@@ -230,7 +229,6 @@ export default function ClientLandingSections({
             </div>
 
             <div className="capability-card">
-              <div className="capability-icon">🎬</div>
               <h3>Viral Short-Form &amp; Video Content</h3>
               <p>
                 High-retention editing for TikTok, Instagram Reels, and YouTube Shorts. Dynamic captions, motion hooks, B-roll pacing, and audio design tailored for Western audiences.
@@ -245,7 +243,6 @@ export default function ClientLandingSections({
             </div>
 
             <div className="capability-card">
-              <div className="capability-icon">⚙️</div>
               <h3>Internal Tools &amp; Automation Bots</h3>
               <p>
                 Custom scrapers, CRM integrations, Zapier/Make automations, and AI API wrappers that eliminate hundreds of hours of manual operations.

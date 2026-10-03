@@ -2005,6 +2005,38 @@ footer {
     color: rgba(255, 255, 255, 0.88);
 }
 
+/* Pro/con markers replace the emoji that were inline in the markup. */
+.comparison-list li {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.comparison-list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.comparison-list.con li::before {
+    content: "×";
+    color: var(--text-muted);
+}
+
+.comparison-list.pro li::before {
+    content: "✓";
+    color: var(--cyan);
+}
+
+/* Trust pills lose their emoji; a brand dot keeps the visual rhythm. */
+.trust-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+}
+
 .comparison-badge {
     position: absolute;
     top: -12px;
@@ -2080,11 +2112,6 @@ footer {
     box-shadow: 0 4px 14px rgba(10, 23, 72, 0.03);
     display: flex;
     flex-direction: column;
-}
-
-.capability-icon {
-    font-size: 2rem;
-    margin-bottom: 1.25rem;
 }
 
 .capability-card h3 {
@@ -2210,18 +2237,6 @@ footer {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.25rem;
-}
-
-.persona-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(0, 174, 239, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
 }
 
 .persona-tag {
@@ -2498,9 +2513,12 @@ footer {
     gap: 0.6rem;
 }
 
-.package-list li span.check {
+.package-list li::before {
+    content: "✓";
     color: var(--cyan-deep);
-    font-weight: 800;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
 }
 
 

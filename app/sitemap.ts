@@ -9,8 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/clients",
     "/sme",
     "/apply-company",
-    "/apply-software-developer",
-    "/apply-digital-marketing",
     "/privacy-policy",
     "/terms",
   ].map((path) => ({

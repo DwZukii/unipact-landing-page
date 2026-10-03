@@ -62,7 +62,7 @@ export default function SmeLandingSections({
           <div className="hero-grid">
             <div className="hero-content">
               <div className="hero-badge">
-                <span className="hero-badge-dot"></span>🇲🇾 For Malaysian SMEs, F&amp;B &amp; TikTok Shop Brands
+                <span className="hero-badge-dot"></span>For Malaysian SMEs, F&amp;B &amp; TikTok Shop Brands
               </div>
               <h1 className="headline headline-desktop">
                 Viral Short-Form Video &amp; Tech.
@@ -82,10 +82,10 @@ export default function SmeLandingSections({
               </p>
 
               <div className="client-hero-badges">
-                <span className="trust-pill">⚡ 48&ndash;72h Turnaround</span>
-                <span className="trust-pill">🎬 On-Site Shooting Available</span>
-                <span className="trust-pill">📱 Native Gen-Z Creators</span>
-                <span className="trust-pill">🛡️ RM 0 Agency Lock-In</span>
+                <span className="trust-pill">48&ndash;72h Turnaround</span>
+                <span className="trust-pill">On-Site Shooting Available</span>
+                <span className="trust-pill">Native Gen-Z Creators</span>
+                <span className="trust-pill">RM 0 Agency Lock-In</span>
               </div>
 
               <div className="hero-actions">
@@ -153,7 +153,6 @@ export default function SmeLandingSections({
             {/* Persona A */}
             <div className="persona-card">
               <div className="persona-header">
-                <div className="persona-icon">☕</div>
                 <div>
                   <span className="persona-tag">F&amp;B &amp; Local Retail</span>
                   <h3>The Overwhelmed SME / Cafe Owner</h3>
@@ -180,7 +179,6 @@ export default function SmeLandingSections({
             {/* Persona B */}
             <div className="persona-card">
               <div className="persona-header">
-                <div className="persona-icon">📦</div>
                 <div>
                   <span className="persona-tag">E-Commerce &amp; TikTok Shop</span>
                   <h3>The Stalled E-Commerce Founder</h3>
@@ -207,7 +205,6 @@ export default function SmeLandingSections({
             {/* Persona C */}
             <div className="persona-card">
               <div className="persona-header">
-                <div className="persona-icon">🩺</div>
                 <div>
                   <span className="persona-tag">Clinics &amp; B2B Services</span>
                   <h3>The Local Professional &amp; Clinic</h3>
@@ -314,11 +311,11 @@ export default function SmeLandingSections({
               <p className="package-desc">Consistent, aesthetic short-form content to drive local footfall.</p>
               <span className="package-ideal">Best for Cafes, Bakeries &amp; Retail</span>
               <ul className="package-list">
-                <li><span className="check">✓</span> <strong>8 Edited Videos / month</strong></li>
-                <li><span className="check">✓</span> 1x On-Site 2-Hour Shooting Session</li>
-                <li><span className="check">✓</span> Trending Audio &amp; Hook Research</li>
-                <li><span className="check">✓</span> 48–72h Batch Delivery</li>
-                <li><span className="check">✓</span> 1 Round of Revision per video</li>
+                <li><strong>8 Edited Videos / month</strong></li>
+                <li>1x On-Site 2-Hour Shooting Session</li>
+                <li>Trending Audio &amp; Hook Research</li>
+                <li>48–72h Batch Delivery</li>
+                <li>1 Round of Revision per video</li>
               </ul>
               <button
                 className="btn btn-secondary"
@@ -335,11 +332,11 @@ export default function SmeLandingSections({
               <p className="package-desc">High-volume UGC variations to beat ad fatigue and boost ROAS.</p>
               <span className="package-ideal">Best for Shopee &amp; TikTok Sellers</span>
               <ul className="package-list">
-                <li><span className="check">✓</span> <strong>16 High-Converting Videos / month</strong></li>
-                <li><span className="check">✓</span> Product Unboxing &amp; Problem-Agitate-Solve</li>
-                <li><span className="check">✓</span> Dynamic Subtitles &amp; Call-to-Actions</li>
-                <li><span className="check">✓</span> Rapid 48h Turnaround per Batch</li>
-                <li><span className="check">✓</span> Ad Creative Split-Testing Variations</li>
+                <li><strong>16 High-Converting Videos / month</strong></li>
+                <li>Product Unboxing &amp; Problem-Agitate-Solve</li>
+                <li>Dynamic Subtitles &amp; Call-to-Actions</li>
+                <li>Rapid 48h Turnaround per Batch</li>
+                <li>Ad Creative Split-Testing Variations</li>
               </ul>
               <button
                 className="btn btn-primary"
@@ -355,11 +352,11 @@ export default function SmeLandingSections({
               <p className="package-desc">High-trust educational talking heads that build credibility.</p>
               <span className="package-ideal">Best for Aesthetic Clinics &amp; B2B</span>
               <ul className="package-list">
-                <li><span className="check">✓</span> <strong>12 Educational Reels / month</strong></li>
-                <li><span className="check">✓</span> On-Site Lighting &amp; Wireless Audio Rig</li>
-                <li><span className="check">✓</span> Pre-Scripted Talking Points &amp; Hook Coaching</li>
-                <li><span className="check">✓</span> Premium Subtitles &amp; Brand Styling</li>
-                <li><span className="check">✓</span> Multi-Platform Formatting (IG, TikTok, LinkedIn)</li>
+                <li><strong>12 Educational Reels / month</strong></li>
+                <li>On-Site Lighting &amp; Wireless Audio Rig</li>
+                <li>Pre-Scripted Talking Points &amp; Hook Coaching</li>
+                <li>Premium Subtitles &amp; Brand Styling</li>
+                <li>Multi-Platform Formatting (IG, TikTok, LinkedIn)</li>
               </ul>
               <button
                 className="btn btn-secondary"

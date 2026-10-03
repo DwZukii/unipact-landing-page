@@ -283,7 +283,6 @@ export default function HomeSections({
 
           <div className="capability-grid capability-grid-2">
             <div className="capability-card">
-              <div className="capability-icon">💻</div>
               <h3>Software Development</h3>
               <p>
                 Websites, landing pages, CRM, ERP, HR systems and internal automation tools &mdash; scoped with
@@ -297,7 +296,6 @@ export default function HomeSections({
             </div>
 
             <div className="capability-card">
-              <div className="capability-icon">🎬</div>
               <h3>Digital Marketing &amp; Video</h3>
               <p>
                 TikTok, Instagram Reels and YouTube Shorts campaigns, copywriting and content &mdash; scoped
