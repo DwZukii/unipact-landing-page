@@ -977,6 +977,48 @@ a {
     border-color: var(--white);
 }
 
+/* Company CTA panel (replaces the old Google-Sheet intake form). */
+.company-cta-lead {
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 1.5rem;
+}
+
+.company-cta-points {
+    list-style: none;
+    margin: 0 0 1.75rem;
+    padding: 0;
+}
+
+.company-cta-points li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.company-cta-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    background-color: var(--cyan);
+}
+
+.company-cta-alt {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.company-cta-alt a {
+    color: var(--cyan);
+    font-weight: 600;
+}
+
 /* Feature list */
 .feature-list {
     list-style: none;
@@ -1477,7 +1519,7 @@ footer {
 
 .footer-credibility {
     margin-top: 1.75rem;
-    color: rgba(10, 23, 72, 0.45);
+    color: var(--text-muted);
     font-size: 0.75rem;
 }
 
@@ -2035,6 +2077,14 @@ footer {
     border-radius: 50%;
     background: var(--cyan);
     flex-shrink: 0;
+}
+
+/* Trust pills sit inside the dark hero on /sme and /clients, where the
+   default navy-on-light styling is invisible. */
+.hero .trust-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .comparison-badge {

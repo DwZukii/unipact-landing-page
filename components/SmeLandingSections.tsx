@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import CompanyApplicationForm from "./CompanyApplicationForm";
+import CompanyCta from "./CompanyCta";
 import Faq from "./Faq";
 import type { CaseStudy } from "@/lib/sanity/queries";
 
@@ -123,16 +123,6 @@ export default function SmeLandingSections({
                   <p className="hero-proof-mini-label">Saved vs Agency</p>
                 </div>
               </div>
-              <a
-                href="#proof-section"
-                className="hero-proof-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSectionId("proof-section");
-                }}
-              >
-                Inspect verified proof &rarr;
-              </a>
             </aside>
           </div>
         </div>
@@ -370,64 +360,6 @@ export default function SmeLandingSections({
         </div>
       </section>
 
-      {/* Proof of Work */}
-      <section id="proof-section" className="proof-section">
-        <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>
-            {primaryStudy?.client
-              ? `Verified Deliverable — ${primaryStudy.client}`
-              : "Proof of work — Bounty #UP-001"}
-          </p>
-          <h2 className="section-title">
-            {primaryStudy?.title ? (
-              primaryStudy.title
-            ) : (
-              <>
-                A working sales CRM.
-                <br />
-                Built and verified in 7 days.
-              </>
-            )}
-          </h2>
-          <p className="proof-copy">
-            {primaryStudy?.summary ||
-              "A financial consulting agency needed a custom sales CRM built from scratch. The brief was scoped, milestone escrow was locked, and the work was delivered, tested, and verified against the original spec — escrow released on completion."}
-          </p>
-
-          <div className="stat-bar">
-            {primaryStudy?.metrics && primaryStudy.metrics.length > 0 ? (
-              primaryStudy.metrics.map((metric, idx) => (
-                <div key={idx} className="stat">
-                  <p className="stat-value">{metric.value}</p>
-                  <p className="stat-label">{metric.label}</p>
-                </div>
-              ))
-            ) : (
-              <>
-                <div className="stat">
-                  <p className="stat-value">7</p>
-                  <p className="stat-label">Days, brief to live dashboard</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">
-                    15<span className="stat-unit">hrs</span>
-                  </p>
-                  <p className="stat-label">Saved per week, per agent</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">200</p>
-                  <p className="stat-label">Agents on the new workflow</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">RM3,000</p>
-                  <p className="stat-label">Saved per year on CRM licences</p>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* SME Lead Form */}
       <section id="sme-intake" className="company-section">
@@ -451,7 +383,7 @@ export default function SmeLandingSections({
             </div>
 
             <div className="company-form">
-              <CompanyApplicationForm />
+              <CompanyCta />
             </div>
           </div>
         </div>

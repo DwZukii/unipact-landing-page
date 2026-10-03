@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import CompanyApplicationForm from "./CompanyApplicationForm";
+import CompanyCta from "./CompanyCta";
 import Faq from "./Faq";
 import type { CaseStudy } from "@/lib/sanity/queries";
 
@@ -95,12 +95,6 @@ export default function ClientLandingSections({
                 >
                   Scope a Project
                 </button>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => scrollToSectionId("proof-section")}
-                >
-                  View Proof of Work
-                </button>
               </div>
             </div>
 
@@ -131,16 +125,6 @@ export default function ClientLandingSections({
                   </p>
                 </div>
               </div>
-              <a
-                href="#proof-section"
-                className="hero-proof-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSectionId("proof-section");
-                }}
-              >
-                Inspect verified ledger &rarr;
-              </a>
             </aside>
           </div>
         </div>
@@ -295,64 +279,6 @@ export default function ClientLandingSections({
         </div>
       </section>
 
-      {/* Proof of Work */}
-      <section id="proof-section" className="proof-section">
-        <div className="container">
-          <p className="eyebrow">
-            <span className="eyebrow-dot"></span>
-            {primaryStudy?.client
-              ? `Proof of work — ${primaryStudy.client}`
-              : "Proof of work — Bounty #UP-001"}
-          </p>
-          <h2 className="section-title">
-            {primaryStudy?.title ? (
-              primaryStudy.title
-            ) : (
-              <>
-                A working sales CRM.
-                <br />
-                Built and verified in 7 days.
-              </>
-            )}
-          </h2>
-          <p className="proof-copy">
-            {primaryStudy?.summary ||
-              "A financial consulting agency needed a custom sales CRM built from scratch. The brief was scoped, milestone escrow was locked, and the work was delivered, tested, and verified against the original spec — escrow released on completion."}
-          </p>
-
-          <div className="stat-bar">
-            {primaryStudy?.metrics && primaryStudy.metrics.length > 0 ? (
-              primaryStudy.metrics.map((metric, idx) => (
-                <div key={idx} className="stat">
-                  <p className="stat-value">{metric.value}</p>
-                  <p className="stat-label">{metric.label}</p>
-                </div>
-              ))
-            ) : (
-              <>
-                <div className="stat">
-                  <p className="stat-value">7</p>
-                  <p className="stat-label">Days, brief to live dashboard</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">
-                    15<span className="stat-unit">hrs</span>
-                  </p>
-                  <p className="stat-label">Saved per week, per agent</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">200</p>
-                  <p className="stat-label">Agents on the new workflow</p>
-                </div>
-                <div className="stat">
-                  <p className="stat-value">70%</p>
-                  <p className="stat-label">Savings vs Western dev quotes</p>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Project Scoping & Intake Form */}
       <section id="client-intake" className="company-section">
@@ -376,7 +302,7 @@ export default function ClientLandingSections({
             </div>
 
             <div className="company-form">
-              <CompanyApplicationForm />
+              <CompanyCta />
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import { scrollToSectionId } from "./Navbar";
-import CompanyApplicationForm from "./CompanyApplicationForm";
+import CompanyCta from "./CompanyCta";
 
 import type { CaseStudy } from "@/lib/sanity/queries";
 
@@ -335,7 +335,7 @@ export default function HomeSections({
             </div>
 
             <div className="company-form">
-              <CompanyApplicationForm />
+              <CompanyCta />
             </div>
           </div>
         </div>
