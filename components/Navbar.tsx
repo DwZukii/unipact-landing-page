@@ -26,13 +26,13 @@ export default function Navbar({
   logoAlt?: string;
 }) {
   const [navOpen, setNavOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [openMenu, setOpenMenu] = useState<"company" | "student" | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     function handleDocumentClick(e: MouseEvent) {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     }
     document.addEventListener("click", handleDocumentClick);
@@ -41,7 +41,7 @@ export default function Navbar({
 
   function closeMobileNav() {
     setNavOpen(false);
-    setDropdownOpen(false);
+    setOpenMenu(null);
   }
 
   function handleScrollTo(sectionId: string) {
@@ -82,31 +82,43 @@ export default function Navbar({
             <span className="logo-pact">PACT</span>
           </span>
         </Link>
-        <nav className={`nav-links${navOpen ? " open" : ""}`} id="navLinks">
-          <Link className="nav-btn" href="/sme">
-            For SMEs &amp; Brands
-          </Link>
-          <Link className="nav-btn" href="/clients">
-            Global Clients
-          </Link>
-          <div
-            className={`nav-dropdown${dropdownOpen ? " open" : ""}`}
-            id="studentDropdownWrapper"
-            ref={wrapperRef}
-          >
+        <nav className={`nav-links${navOpen ? " open" : ""}`} id="navLinks" ref={navRef}>
+          <div className={`nav-dropdown${openMenu === "company" ? " open" : ""}`}>
             <button
               className="nav-student-link nav-dropdown-btn"
-              id="studentDropdownBtn"
-              aria-expanded={dropdownOpen}
+              aria-expanded={openMenu === "company"}
               aria-haspopup="true"
               onClick={(e) => {
                 e.stopPropagation();
-                setDropdownOpen((open) => !open);
+                setOpenMenu((open) => (open === "company" ? null : "company"));
+              }}
+            >
+              I&apos;m a Company <span className="ext-icon" aria-hidden="true">&#9662;</span>
+            </button>
+            <div className="nav-dropdown-menu">
+              <Link className="nav-dropdown-item" href="/sme" onClick={closeMobileNav}>
+                <span className="dropdown-item-title">For SMEs &amp; Brands</span>
+                <span className="dropdown-item-sub">Malaysian businesses &amp; local growth</span>
+              </Link>
+              <Link className="nav-dropdown-item" href="/clients" onClick={closeMobileNav}>
+                <span className="dropdown-item-title">Global Clients</span>
+                <span className="dropdown-item-sub">Overseas teams &amp; agency alternatives</span>
+              </Link>
+            </div>
+          </div>
+          <div className={`nav-dropdown${openMenu === "student" ? " open" : ""}`}>
+            <button
+              className="nav-student-link nav-dropdown-btn"
+              aria-expanded={openMenu === "student"}
+              aria-haspopup="true"
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpenMenu((open) => (open === "student" ? null : "student"));
               }}
             >
               I&apos;m a Student <span className="ext-icon" aria-hidden="true">&#9662;</span>
             </button>
-            <div className="nav-dropdown-menu" id="studentDropdownMenu">
+            <div className="nav-dropdown-menu">
               <a className="nav-dropdown-item" href={`${APP_URL}/register/student`}>
                 <span className="dropdown-item-title">Software Developer</span>
                 <span className="dropdown-item-sub">Web, Mobile &amp; Backend</span>

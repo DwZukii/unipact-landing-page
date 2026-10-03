@@ -3,14 +3,22 @@ export interface FaqItem {
   answer: string;
 }
 
-export default function Faq({ intro, items }: { intro: string; items: FaqItem[] }) {
+export default function Faq({
+  title = "Before you apply.",
+  intro,
+  items,
+}: {
+  title?: string;
+  intro: string;
+  items: FaqItem[];
+}) {
   return (
     <section className="faq-section">
       <div className="container">
         <p className="eyebrow">
           <span className="eyebrow-dot"></span>Questions
         </p>
-        <h2 className="section-title">Before you apply.</h2>
+        <h2 className="section-title">{title}</h2>
         <p className="faq-intro">{intro}</p>
 
         <div className="faq-list">

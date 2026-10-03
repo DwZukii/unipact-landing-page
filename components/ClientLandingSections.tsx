@@ -387,6 +387,7 @@ export default function ClientLandingSections({
 
       {/* FAQs */}
       <Faq
+        title="Questions from global clients."
         intro="Everything global founders need to know about milestone escrow, timezone velocity, and intellectual property ownership."
         items={CLIENT_FAQS}
       />

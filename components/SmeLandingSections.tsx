@@ -462,6 +462,7 @@ export default function SmeLandingSections({
 
       {/* FAQs */}
       <Faq
+        title="Questions from Malaysian businesses."
         intro="Frequently asked questions from local business owners, cafes, and e-commerce sellers in Malaysia."
         items={MALAYSIA_FAQS}
       />
