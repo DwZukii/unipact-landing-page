@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -24,6 +24,12 @@ export const metadata: Metadata = {
   verification: {
     google: "0Z9SslifMKD26rQDtAUHCo0Z_o4uS40ldkYddo9CT-w",
   },
+};
+
+// The site is light only: this keeps the browser bar and native form controls light too.
+export const viewport: Viewport = {
+  themeColor: "#F5F7FC",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

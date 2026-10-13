@@ -9,6 +9,12 @@ import styles from "./form.module.css";
 
 const SCOPES = ["Software development", "Digital marketing and video", "Both", "Not sure yet"];
 
+// The form is removed once an enquiry is sent, which would drop keyboard focus back to
+// the top of the page. Moving it to the confirmation keeps people where they were.
+function focusOnMount(element: HTMLElement | null) {
+  element?.focus();
+}
+
 export default function ContactForm() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
@@ -49,7 +55,7 @@ export default function ContactForm() {
 
   if (sentTo !== null) {
     return (
-      <div className={`${ui.card} ${styles.done}`} role="status">
+      <div className={`${ui.card} ${styles.done}`} role="status" tabIndex={-1} ref={focusOnMount}>
         <span className={styles.doneIcon}>
           <CircleCheck size={28} aria-hidden="true" />
         </span>

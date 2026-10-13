@@ -322,19 +322,6 @@ a {
     overflow: hidden;
 }
 
-/* Glowing background orb */
-.hero-glow {
-    position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 174, 239, 0.18) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-}
-
 .hero-inner {
     position: relative;
     z-index: 1;
@@ -1874,7 +1861,7 @@ footer {
 }
 
 .contact-box a {
-    color: var(--cyan-deep);
+    color: #006E99;
     font-weight: 600;
 }
 
@@ -2233,7 +2220,7 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--cyan-deep);
+    color: #006E99;
 }
 
 .persona-card h3 {
@@ -2262,7 +2249,7 @@ footer {
 }
 
 .persona-block.pain .persona-block-title {
-    color: #E63946;
+    color: #C5283A;
 }
 
 .persona-block.solution .persona-block-title {

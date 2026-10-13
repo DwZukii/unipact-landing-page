@@ -21,3 +21,6 @@ leads/
 assets/
 src/
 dragon-coding.jpg
+
+# Local clone of the agent skills repo; the skills themselves live in ~/.claude/skills
+agent-skills/

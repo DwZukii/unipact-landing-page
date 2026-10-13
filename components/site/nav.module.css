@@ -15,6 +15,28 @@
     box-shadow: 0 4px 20px rgba(10, 23, 72, 0.06);
 }
 
+/* Off screen until it is focused with the keyboard. */
+.skip {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+    transform: none;
+}
+
 .bar {
     display: flex;
     align-items: center;
@@ -110,8 +132,12 @@
     background: rgba(10, 23, 72, 0.05);
 }
 
+/* On a short screen the menu scrolls inside itself instead of running off the bottom. */
 .menu {
+    max-height: calc(100dvh - 76px);
     padding: 1rem 0 1.25rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--white);
     border-top: 1px solid rgba(10, 23, 72, 0.08);
 }

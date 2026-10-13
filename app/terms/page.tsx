@@ -28,7 +28,7 @@ export default function TermsPage() {
   return (
     <>
       <SiteNav />
-      <main>
+      <main id="main">
         <section className="legal-section">
           <div className="container legal-container">
             <div className="legal-header">

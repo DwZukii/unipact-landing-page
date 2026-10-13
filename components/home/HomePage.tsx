@@ -1,33 +1,20 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { getImageProps } from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
-  BookOpen,
   Briefcase,
-  Camera,
   ChevronDown,
   CircleCheck,
   CodeXml,
-  CreditCard,
-  FileText,
-  FolderOpen,
   GraduationCap,
-  LayoutDashboard,
-  ListChecks,
   Lock,
   Megaphone,
   MessageSquare,
-  MessagesSquare,
-  Percent,
   RefreshCw,
-  Sparkles,
-  Tag,
   Undo2,
   UserRoundCheck,
-  Users,
-  Video,
-  Wallet,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
@@ -38,6 +25,7 @@ import ui from "@/components/site/ui.module.css";
 import styles from "./home.module.css";
 
 type Item = { icon: LucideIcon; title: string; text: string };
+type Point = { title: string; text: string };
 
 const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; points: string[] }[] = [
   {
@@ -66,24 +54,20 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
   },
 ];
 
-const STEPS: Item[] = [
+const STEPS: Point[] = [
   {
-    icon: Briefcase,
     title: "Post your brief",
     text: "Describe the work, the deadline and your budget. Posting is free and needs no card.",
   },
   {
-    icon: Sparkles,
     title: "Review your team",
     text: "Within 48 hours we propose a hand-picked team of verified students. You see their portfolios first.",
   },
   {
-    icon: Wallet,
     title: "Approve and fund a milestone",
     text: "Nothing starts until you confirm the team. Each milestone is paid into escrow before work on it begins.",
   },
   {
-    icon: CircleCheck,
     title: "Accept the work",
     text: "Review each delivery and ask for revisions if you need them. Payment is released when you accept.",
   },
@@ -122,24 +106,20 @@ const SAFEGUARDS: Item[] = [
   },
 ];
 
-const PRICING: Item[] = [
+const PRICING: Point[] = [
   {
-    icon: Tag,
     title: "Free to post",
     text: "No subscription and no card needed. You pay nothing until you approve a team.",
   },
   {
-    icon: FileText,
     title: "Priced per project",
     text: "Set your own budget or ask us for a quote. The price is agreed in writing before work starts.",
   },
   {
-    icon: Percent,
     title: "One fee, nothing added on top",
-    text: "UniPact's service fee, 10% as standard, comes out of the project fee. Payment gateway charges are on us.",
+    text: "UniPact’s service fee, 10% as standard, comes out of the project fee. Payment gateway charges are on us.",
   },
   {
-    icon: CreditCard,
     title: "Pay the way you already do",
     text: "FPX, DuitNow QR, card, or bank transfer against an invoice from a company registered in Malaysia.",
   },
@@ -151,13 +131,13 @@ const MONEY_STEPS = [
   { title: "You accept the work", text: "The payment is released to your student team." },
 ];
 
-const WORKSPACE: Item[] = [
-  { icon: LayoutDashboard, title: "Overview", text: "The key numbers and the latest activity." },
-  { icon: Users, title: "Team", text: "Who is on your project, with their verified profiles." },
-  { icon: ListChecks, title: "Milestones and work", text: "Each milestone, the work submitted and your approvals." },
-  { icon: MessagesSquare, title: "Messages", text: "One conversation with your team and UniPact." },
-  { icon: Wallet, title: "Payments", text: "What is in escrow, the release schedule and what you have paid." },
-  { icon: FolderOpen, title: "Brief and files", text: "Your brief, brand assets and raw footage in one vault." },
+const WORKSPACE: Point[] = [
+  { title: "Overview", text: "The key numbers and the latest activity." },
+  { title: "Team", text: "Who is on your project, with their verified profiles." },
+  { title: "Milestones and work", text: "Each milestone, the work submitted and your approvals." },
+  { title: "Messages", text: "One conversation with your team and UniPact." },
+  { title: "Payments", text: "What is in escrow, the release schedule and what you have paid." },
+  { title: "Brief and files", text: "Your brief, brand assets and raw footage in one vault." },
 ];
 
 const WORKSPACE_TABS = ["Overview", "Team", "Milestones & work", "Messages", "Payments", "Brief & files"];
@@ -172,22 +152,19 @@ const PROOF_STATS = [
   { value: "7", label: "Days, brief to live dashboard" },
   { value: "15 hrs", label: "Saved per week, per agent" },
   { value: "200", label: "Agents on the new workflow" },
-  { value: "RM 3,000", label: "Saved per year on CRM licences" },
+  { value: "RM\u00A03,000", label: "Saved per year on CRM licences" },
 ];
 
-const PIPELINE: { icon: LucideIcon; name: string; text: string }[] = [
+const PIPELINE: { name: string; text: string }[] = [
   {
-    icon: BookOpen,
     name: "Tuition centre operations",
     text: "A traditional tuition centre is moving off pen and paper. Scheduling, records and day-to-day admin are being rebuilt as proper software.",
   },
   {
-    icon: Camera,
     name: "Interior visualisation app",
     text: "An app where you photograph a room, then drag and drop furniture into the photo, so clients can see a space before committing.",
   },
   {
-    icon: Video,
     name: "Product videos for a software firm",
     text: "A Malaysian software company needs its business systems explained on camera. A student team is producing a run of short videos for social.",
   },
@@ -203,7 +180,7 @@ const STUDENT_POINTS = [
 const FAQS = [
   {
     q: "How much does a project cost?",
-    a: "Posting is free and there is no subscription. Every project is scoped on its own, so there is no fixed price list: you set a budget or ask us for a quote, and the price is agreed in writing before any work starts. UniPact's service fee, 10% as standard, comes out of that project fee and is never added on top.",
+    a: "Posting is free and there is no subscription. Every project is scoped on its own, so there is no fixed price list: you set a budget or ask us for a quote, and the price is agreed in writing before any work starts. UniPact’s service fee, 10% as standard, comes out of that project fee and is never added on top.",
   },
   {
     q: "Who are the students, and how are they verified?",
@@ -215,7 +192,7 @@ const FAQS = [
   },
   {
     q: "What if I am not happy with the work?",
-    a: "Every deliverable includes 2 rounds of minor revisions. You have 5 working days after each delivery to accept it or ask for changes; if we do not hear from you in that time, it is treated as accepted. If a milestone still cannot be delivered to the brief after the included revisions, that milestone's payment is refunded in full.",
+    a: "Every deliverable includes 2 rounds of minor revisions. You have 5 working days after each delivery to accept it or ask for changes; if we do not hear from you in that time, it is treated as accepted. If a milestone still cannot be delivered to the brief after the included revisions, that milestone’s payment is refunded in full.",
   },
   {
     q: "Who owns the finished work?",
@@ -257,7 +234,6 @@ function ProjectPreview() {
   const stages = ["Posted", "Matched", "In progress", "Done"];
   return (
     <div className={styles.preview} aria-hidden="true">
-      <div className={styles.previewGlow} />
       <div className={`${ui.card} ${styles.previewCard}`}>
         <div className={styles.previewTop}>
           <span className={`${ui.badge} ${ui.badgeNavy}`}>Software development</span>
@@ -334,6 +310,34 @@ function WorkspacePreview() {
   );
 }
 
+// The delivered CRM, as one of the client’s agents sees it. A whole desktop screen is
+// unreadable on a phone, so narrow screens get a closer crop.
+function CrmScreenshot() {
+  const alt =
+    "The CRM’s My leads screen: counts of pending, called, WhatsApp and SMS leads, above a list of leads each with a status menu and a Call button.";
+  const { props: wide } = getImageProps({
+    src: "/work/crm-leads.webp",
+    width: 1900,
+    height: 898,
+    alt,
+    unoptimized: true,
+  });
+  const { props: small } = getImageProps({
+    src: "/work/crm-leads-small.webp",
+    width: 680,
+    height: 620,
+    alt,
+    unoptimized: true,
+  });
+
+  return (
+    <picture>
+      <source media="(min-width: 700px)" srcSet={wide.src} width={wide.width} height={wide.height} />
+      <img {...small} alt={alt} />
+    </picture>
+  );
+}
+
 export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
   // A case study published in the CMS replaces the built-in one.
   const study = caseStudies[0];
@@ -344,10 +348,9 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
   const proofStats = study?.metrics?.length ? study.metrics.slice(0, 4) : PROOF_STATS;
 
   return (
-    <main>
+    <main id="main">
       {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroGlow} aria-hidden="true" />
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
             <h1 className={styles.heroTitle}>
@@ -419,16 +422,11 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         <div className="container">
           <SectionHead title="From brief to finished work in four steps" />
           <ol className={styles.steps}>
-            {STEPS.map(({ icon: Icon, title, text }, i) => (
+            {STEPS.map(({ title, text }, i) => (
               <li key={title} className={`${ui.card} ${styles.step}`}>
-                <div className={styles.stepTop}>
-                  <span className={ui.iconTile}>
-                    <Icon size={22} aria-hidden="true" />
-                  </span>
-                  <span className={styles.stepNumber} aria-hidden="true">
-                    0{i + 1}
-                  </span>
-                </div>
+                <span className={styles.stepNumber} aria-hidden="true">
+                  {i + 1}
+                </span>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </li>
@@ -485,11 +483,9 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
           />
           <div className={styles.pricing}>
             <ul className={styles.pricingList}>
-              {PRICING.map(({ icon: Icon, title, text }) => (
+              {PRICING.map(({ title, text }) => (
                 <li key={title}>
-                  <span className={ui.iconTile}>
-                    <Icon size={21} aria-hidden="true" />
-                  </span>
+                  <CircleCheck size={20} className={ui.checkIcon} aria-hidden="true" />
                   <div>
                     <h3>{title}</h3>
                     <p>{text}</p>
@@ -498,7 +494,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               ))}
             </ul>
             <div className={styles.money}>
-              <div className={styles.panelGlow} aria-hidden="true" />
               <h3>Where your money is at each step</h3>
               <ol>
                 {MONEY_STEPS.map(({ title, text }, i) => (
@@ -527,15 +522,10 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
           />
           <div className={styles.workspace}>
             <ul className={styles.workspaceList}>
-              {WORKSPACE.map(({ icon: Icon, title, text }) => (
+              {WORKSPACE.map(({ title, text }) => (
                 <li key={title}>
-                  <span className={ui.iconTile}>
-                    <Icon size={20} aria-hidden="true" />
-                  </span>
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
                 </li>
               ))}
             </ul>
@@ -548,7 +538,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
       <section id="proof" className={ui.section}>
         <div className="container">
           <div className={styles.proof}>
-            <div className={styles.panelGlow} aria-hidden="true" />
             <div className={styles.proofCopy}>
               <h2>{proofTitle}</h2>
               <p>{proofText}</p>
@@ -561,6 +550,12 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 </div>
               ))}
             </dl>
+            {study ? null : (
+              <figure className={styles.proofShot}>
+                <figcaption>The CRM as an agent sees it. Phone numbers are hidden.</figcaption>
+                <CrmScreenshot />
+              </figure>
+            )}
           </div>
 
           <div className={styles.pipelineHead}>
@@ -568,14 +563,9 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             <p>Three more client projects, still being built. No numbers for these yet.</p>
           </div>
           <div className={styles.grid3}>
-            {PIPELINE.map(({ icon: Icon, name, text }) => (
+            {PIPELINE.map(({ name, text }) => (
               <article key={name} className={`${ui.card} ${styles.feature}`}>
-                <div className={styles.pipelineTop}>
-                  <span className={ui.iconTile}>
-                    <Icon size={21} aria-hidden="true" />
-                  </span>
-                  <span className={`${ui.badge} ${ui.badgeMuted}`}>In development</span>
-                </div>
+                <span className={`${ui.badge} ${ui.badgeMuted} ${styles.pipelineBadge}`}>In development</span>
                 <h3>{name}</h3>
                 <p>{text}</p>
               </article>

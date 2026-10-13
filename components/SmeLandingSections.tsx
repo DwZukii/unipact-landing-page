@@ -54,10 +54,9 @@ export default function SmeLandingSections({
   const primaryStudy = caseStudies && caseStudies.length > 0 ? caseStudies[0] : null;
 
   return (
-    <main>
+    <main id="main">
       {/* Hero Section */}
       <section className="hero">
-        <div className="hero-glow" aria-hidden="true"></div>
         <div className="hero-inner container">
           <div className="hero-grid">
             <div className="hero-content">

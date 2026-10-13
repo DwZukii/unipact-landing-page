@@ -4,18 +4,6 @@
     overflow: hidden;
 }
 
-.heroGlow {
-    position: absolute;
-    top: -6rem;
-    right: 0;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    background: rgba(0, 174, 239, 0.1);
-    filter: blur(64px);
-    pointer-events: none;
-}
-
 .heroGrid {
     position: relative;
     display: grid;
@@ -90,14 +78,6 @@
     width: 100%;
     max-width: 28rem;
     margin: 0 auto;
-}
-
-.previewGlow {
-    position: absolute;
-    inset: -1.5rem;
-    border-radius: 2rem;
-    background: rgba(0, 174, 239, 0.1);
-    filter: blur(40px);
 }
 
 .previewCard {
@@ -299,19 +279,20 @@
     padding: 1.5rem;
 }
 
-.stepTop {
+.stepNumber {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     margin-bottom: 1rem;
-}
-
-.stepNumber {
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.875rem;
+    font-weight: 700;
+    font-size: 1rem;
     line-height: 1;
-    color: rgba(10, 23, 72, 0.12);
 }
 
 .step h3,
@@ -349,6 +330,12 @@
     margin-bottom: 1rem;
 }
 
+/* A badge is inline, so it becomes a box of its own to sit on a line above the title. */
+.pipelineBadge {
+    display: flex;
+    width: fit-content;
+}
+
 /* Pricing */
 .pricing {
     display: grid;
@@ -363,11 +350,16 @@
     list-style: none;
 }
 
-.pricingList li,
-.workspaceList li {
+.pricingList li {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.75rem;
+}
+
+/* The cyan bar echoes the marker under the active tab in the workspace. */
+.workspaceList li {
+    padding-left: 0.875rem;
+    border-left: 2px solid rgba(0, 174, 239, 0.5);
 }
 
 .pricingList h3,
@@ -390,18 +382,6 @@
     border-radius: 16px;
     background: var(--navy);
     color: var(--white);
-}
-
-.panelGlow {
-    position: absolute;
-    top: -6rem;
-    right: -3rem;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    background: rgba(0, 174, 239, 0.2);
-    filter: blur(64px);
-    pointer-events: none;
 }
 
 .money {
@@ -497,16 +477,16 @@
     margin-bottom: 1rem;
 }
 
+/* One row only: a tab that does not fit wraps to a second row, which is cut off.
+   So the strip shows whole tabs and never half a label. */
 .tabs {
     display: flex;
-    gap: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0 0.25rem;
+    height: 39px;
     margin-bottom: 1rem;
     overflow: hidden;
     border-bottom: 1px solid var(--border-color);
-    /* The strip is wider than the card, as it is on a phone in the real workspace.
-       Fade the edge so the last tab reads as continuing, not as cut off. */
-    -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent);
-    mask-image: linear-gradient(90deg, #000 78%, transparent);
 }
 
 .tab {
@@ -516,6 +496,7 @@
     color: var(--text-muted);
     font-size: 0.8125rem;
     font-weight: 500;
+    line-height: 1.25rem;
     white-space: nowrap;
 }
 
@@ -641,12 +622,30 @@
     color: var(--text-muted);
 }
 
-.pipelineTop {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+/* The delivered CRM, rising from the bottom edge of the panel. The negative margin
+   cancels the panel's padding so the picture is cut off by the panel itself. */
+.proofShot {
+    position: relative;
+    margin: 2.5rem 0 -2rem;
+}
+
+.proofShot figcaption {
+    margin-bottom: 0.875rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.875rem;
+}
+
+.proofShot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 680 / 420;
+    object-fit: cover;
+    object-position: top left;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    background: #fbf8f3;
 }
 
 /* Students */
@@ -769,6 +768,10 @@
         padding: 3rem;
     }
 
+    .proofShot {
+        margin-bottom: -3rem;
+    }
+
     .students {
         padding: 3rem;
     }
@@ -786,6 +789,11 @@
 
     .workspaceList {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* The wide screenshot from here up (see the <source> in CrmScreenshot). */
+    .proofShot img {
+        aspect-ratio: 1900 / 640;
     }
 }
 

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local clone of the agent skills repo, not part of the site.
+    "agent-skills/**",
   ]),
 ]);
 

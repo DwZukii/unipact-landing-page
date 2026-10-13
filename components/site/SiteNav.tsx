@@ -33,6 +33,9 @@ export default function SiteNav() {
 
   return (
     <header className={`${styles.shell}${scrolled || open ? ` ${styles.raised}` : ""}`}>
+      <a href="#main" className={styles.skip}>
+        Skip to content
+      </a>
       <nav className={`container ${styles.bar}`} aria-label="Main">
         <Link href="/" className={styles.home} aria-label="UniPact home">
           <BrandLogo />

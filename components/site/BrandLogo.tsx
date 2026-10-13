@@ -5,8 +5,10 @@ import styles from "./brand.module.css";
 export default function BrandLogo() {
   return (
     <span className={styles.logo}>
-      <Image src="/unipact-mark.png" alt="" width={421} height={416} className={styles.mark} priority />
-      <span className={styles.word}>UNIPACT</span>
+      <Image src="/unipact-mark.png" alt="" width={421} height={416} className={styles.mark} loading="eager" />
+      <span className={styles.word} translate="no">
+        UNIPACT
+      </span>
     </span>
   );
 }
