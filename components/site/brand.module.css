@@ -1,0 +1,21 @@
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.mark {
+    width: auto;
+    height: 40px;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.word {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--navy-deep);
+}

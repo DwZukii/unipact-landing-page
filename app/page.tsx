@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HomeSections from "@/components/HomeSections";
+import SiteNav from "@/components/site/SiteNav";
+import SiteFooter from "@/components/site/SiteFooter";
+import HomeContent from "@/components/home/HomePage";
 
-const TITLE = "UniPact | Paid Student Work, Matched and Verified";
+const TITLE = "UniPact | Vetted Student Teams for Software & Marketing";
 const DESCRIPTION =
-  "Post a Software Development or Digital Marketing project for free. UniPact hand-picks a team of verified Malaysian university students, you approve the match, and payment releases from escrow milestone by milestone.";
+  "Websites, business systems and social content built by verified Malaysian university students. Team proposed in 48 hours. Pay per approved milestone.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -33,7 +33,8 @@ const jsonLd = {
       name: "UniPact",
       url: "https://www.unipact.my/",
       logo: "https://www.unipact.my/logo.png",
-      description: "UniPact matches companies with verified students for paid, milestone-based work.",
+      description:
+        "UniPact builds websites, business systems and social media content for companies, using vetted teams of Malaysian university students.",
     },
     {
       "@type": "WebSite",
@@ -62,9 +63,9 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar variant="full" />
-      <HomeSections caseStudies={caseStudies} />
-      <Footer variant="full" />
+      <SiteNav />
+      <HomeContent caseStudies={caseStudies} />
+      <SiteFooter />
     </>
   );
 }

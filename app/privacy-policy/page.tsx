@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteNav from "@/components/site/SiteNav";
+import SiteFooter from "@/components/site/SiteFooter";
 
 const TITLE = "Privacy Policy | UniPact";
 const DESCRIPTION =
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Navbar variant="simple" logoAlt="UniPact Logo" />
+      <SiteNav />
       <main>
         <section className="legal-section">
           <div className="container legal-container">
@@ -221,7 +221,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </section>
       </main>
-      <Footer variant="simple" />
+      <SiteFooter />
     </>
   );
 }

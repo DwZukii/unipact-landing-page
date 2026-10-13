@@ -1,0 +1,113 @@
+/* The class also resets the legacy global `footer` padding in globals.css. */
+.footer {
+    padding: 0;
+    background: var(--white);
+    border-top: 1px solid rgba(10, 23, 72, 0.08);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.home {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.blurb {
+    max-width: 20rem;
+    margin-top: 0.75rem;
+}
+
+.heading {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+}
+
+.list {
+    list-style: none;
+}
+
+.list a {
+    display: inline-block;
+    padding: 0.375rem 0;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.list a:hover {
+    color: var(--navy-deep);
+}
+
+.email {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.email:hover {
+    text-decoration: underline;
+}
+
+.band {
+    border-top: 1px solid rgba(10, 23, 72, 0.06);
+}
+
+.team {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+}
+
+.name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy-deep);
+}
+
+.legal {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .brand {
+        grid-column: 1 / -1;
+    }
+
+    .team {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    }
+
+    .brand {
+        grid-column: auto;
+    }
+}

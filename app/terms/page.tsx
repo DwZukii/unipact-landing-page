@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteNav from "@/components/site/SiteNav";
+import SiteFooter from "@/components/site/SiteFooter";
 
 const TITLE = "Terms of Service | UniPact";
 const DESCRIPTION =
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <Navbar variant="simple" logoAlt="UniPact Logo" />
+      <SiteNav />
       <main>
         <section className="legal-section">
           <div className="container legal-container">
@@ -164,7 +164,7 @@ export default function TermsPage() {
           </div>
         </section>
       </main>
-      <Footer variant="simple" />
+      <SiteFooter />
     </>
   );
 }

@@ -1,0 +1,243 @@
+/* Shared building blocks, mirroring the platform's component classes
+   (unipact-mvp/unipact-frontend/src/index.css) so both sites read as one product. */
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+    scroll-margin-top: 76px;
+}
+
+.sectionWhite {
+    background: var(--white);
+    border-top: 1px solid rgba(10, 23, 72, 0.08);
+    border-bottom: 1px solid rgba(10, 23, 72, 0.08);
+}
+
+.sectionFlushTop {
+    padding-top: 0;
+}
+
+@media (min-width: 640px) {
+    .section {
+        padding: 6rem 0;
+    }
+
+    .sectionFlushTop {
+        padding-top: 0;
+    }
+}
+
+.head {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 0;
+    text-wrap: balance;
+}
+
+.lead {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+}
+
+.rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 174, 239, 0.6), transparent);
+}
+
+/* Card */
+.card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(10, 23, 72, 0.05);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnLg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+}
+
+.btnBlock {
+    width: 100%;
+}
+
+.btnNavy {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 1px 2px rgba(10, 23, 72, 0.12);
+}
+
+.btnNavy:hover {
+    background: var(--navy-deep);
+}
+
+/* Navy text rather than the platform's white: white on this cyan is 2.6:1. */
+.btnCyan {
+    background: var(--cyan);
+    color: var(--navy-deep);
+}
+
+.btnCyan:hover {
+    background: #33bef2;
+}
+
+.btnSecondary {
+    background: var(--white);
+    color: var(--navy-deep);
+    border-color: rgba(10, 23, 72, 0.15);
+}
+
+.btnSecondary:hover {
+    border-color: var(--cyan);
+    color: var(--navy);
+}
+
+.btnGhostOnDark {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.btnGhostOnDark:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.15rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.badgeNavy {
+    background: rgba(11, 30, 99, 0.07);
+    color: var(--navy);
+}
+
+.badgeInfo {
+    background: #e6f7fd;
+    border-color: rgba(0, 174, 239, 0.3);
+    color: #00668c;
+}
+
+.badgeGreen {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #047857;
+}
+
+.badgeMuted {
+    background: var(--bg);
+    border-color: rgba(10, 23, 72, 0.1);
+    color: var(--text-muted);
+}
+
+/* Icon tiles */
+.iconTile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(0, 174, 239, 0.1);
+    color: var(--cyan-deep);
+}
+
+.iconTileLg {
+    width: 48px;
+    height: 48px;
+}
+
+.iconTileNavy {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.iconTileCyan {
+    background: var(--cyan);
+    color: var(--navy-deep);
+}
+
+/* Check lists */
+.checkList {
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.checkList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+}
+
+.checkIcon {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    color: var(--cyan-deep);
+}
+
+.checkListOnDark li {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.checkListOnDark .checkIcon {
+    color: var(--cyan);
+}
+
+/* Text link */
+.textLink {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 174, 239, 0.6);
+    text-underline-offset: 3px;
+}
+
+.textLink:hover {
+    text-decoration-color: var(--cyan);
+}
