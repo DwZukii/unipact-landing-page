@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ui from "@/components/site/ui.module.css";
 import PersonaTabs, { type Persona } from "./PersonaTabs";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
@@ -145,6 +146,29 @@ export default function SmePage() {
         primary={{ label: "Get a content squad", href: "#contact" }}
         secondary={{ label: "See the packages", href: "#packages" }}
         ticks={["48–72 hour turnaround", "On-site shooting", "Gen-Z creators", "No lock-in contract"]}
+        visual={
+          <>
+            {/* Team photos for now; to be replaced with phone screenshots of client videos. */}
+            <Image
+              src="/photos/team-pitching.webp"
+              alt=""
+              width={1280}
+              height={721}
+              sizes="460px"
+              loading="lazy"
+              className={styles.visualPhotoWide}
+            />
+            <Image
+              src="/photos/team-group.webp"
+              alt=""
+              width={1400}
+              height={1261}
+              sizes="300px"
+              loading="lazy"
+              className={styles.visualPhotoSmall}
+            />
+          </>
+        }
       />
 
       <section id="who" className={`${ui.section} ${ui.sectionWhite}`}>

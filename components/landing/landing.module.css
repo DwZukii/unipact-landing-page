@@ -495,6 +495,33 @@
         background: var(--white);
     }
 
+    /* Two photos: a wide one at the top, a smaller one overlapping its lower left. The white
+       border keeps the overlap readable. */
+    .visualPhotoWide,
+    .visualPhotoSmall {
+        position: absolute;
+        height: auto;
+        border: 6px solid var(--white);
+        border-radius: 16px;
+        background: var(--white);
+        object-fit: cover;
+    }
+
+    .visualPhotoWide {
+        top: 1.75rem;
+        right: 0;
+        width: 100%;
+    }
+
+    .visualPhotoSmall {
+        top: 49%;
+        left: -1.5rem;
+        z-index: 1;
+        width: 62%;
+        aspect-ratio: 4 / 3;
+        object-position: 50% 30%;
+    }
+
     .visualPhone {
         position: absolute;
         bottom: 0;
