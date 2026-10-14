@@ -495,31 +495,25 @@
         background: var(--white);
     }
 
-    /* Two photos: a wide one at the top, a smaller one overlapping its lower left. The white
-       border keeps the overlap readable. */
-    .visualPhotoWide,
-    .visualPhotoSmall {
+    /* Two vertical video frames as phones, the second lower and in front (as on the homepage). */
+    .visualShoot {
         position: absolute;
+        width: 220px;
         height: auto;
-        border: 6px solid var(--white);
-        border-radius: 16px;
-        background: var(--white);
-        object-fit: cover;
+        border: 7px solid var(--navy);
+        border-radius: 30px;
+        background: var(--navy);
     }
 
-    .visualPhotoWide {
-        top: 1.75rem;
+    .visualShootBack {
+        top: 0;
         right: 0;
-        width: 100%;
     }
 
-    .visualPhotoSmall {
-        top: 49%;
-        left: -1.5rem;
-        z-index: 1;
-        width: 62%;
-        aspect-ratio: 4 / 3;
-        object-position: 50% 30%;
+    /* 150px in from the back phone, but never past the column's left edge. */
+    .visualShootFront {
+        bottom: 0;
+        left: max(0px, calc(100% - 370px));
     }
 
     .visualPhone {

@@ -148,24 +148,24 @@ export default function SmePage() {
         ticks={["48–72 hour turnaround", "On-site shooting", "Gen-Z creators", "No lock-in contract"]}
         visual={
           <>
-            {/* Team photos for now; to be replaced with phone screenshots of client videos. */}
+            {/* Frames from the team's own behind-the-scenes clips of an on-site shoot. */}
             <Image
-              src="/photos/team-pitching.webp"
+              src="/photos/shoot-tripod.webp"
               alt=""
-              width={1280}
-              height={721}
-              sizes="460px"
+              width={540}
+              height={967}
+              sizes="220px"
               loading="lazy"
-              className={styles.visualPhotoWide}
+              className={`${styles.visualShoot} ${styles.visualShootBack}`}
             />
             <Image
-              src="/photos/team-group.webp"
+              src="/photos/shoot-rig.webp"
               alt=""
-              width={1400}
-              height={1261}
-              sizes="300px"
+              width={540}
+              height={967}
+              sizes="220px"
               loading="lazy"
-              className={styles.visualPhotoSmall}
+              className={`${styles.visualShoot} ${styles.visualShootFront}`}
             />
           </>
         }
