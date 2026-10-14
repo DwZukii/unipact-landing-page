@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image, { getImageProps } from "next/image";
 import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
-import { CONTACT_EMAIL, LINKS } from "@/lib/site";
+import { LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
 import styles from "./home.module.css";
@@ -514,9 +514,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               Send a few lines about what you need, and someone from UniPact will reply to help you scope it. You
               decide afterwards whether to post the project.
             </p>
-            <p className={styles.contactEmail}>
-              Prefer email? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            </p>
           </div>
           <div className={styles.contactForm}>
             <ContactForm />
@@ -531,7 +528,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               sizes="(min-width: 1024px) 460px, 100vw"
               className={styles.contactPhoto}
             />
-            <figcaption>Part of the UniPact team, with our mentor Athirah in the middle.</figcaption>
           </figure>
         </div>
       </section>

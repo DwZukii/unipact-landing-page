@@ -17,15 +17,18 @@ export const TEAM = [
   { name: "Akif Najmi", role: "Head of Marketing & Growth", email: "akif.najmi@unipact.com.my" },
 ];
 
-// Everyone on the /team page. Photos are 360 x 450 crops in public/team.
-export const PEOPLE = [
-  { name: "Azizi", role: "Project Lead & Chief Developer", photo: "/team/azizi.webp" },
+// Everyone on the /team page. Photos are 360 x 450 crops in public/team. `talent` is the
+// delivery team a person also works in, matching UniPact's two services.
+export type Talent = "Software Development" | "Digital Marketing";
+
+export const PEOPLE: { name: string; role: string; talent?: Talent; photo: string }[] = [
+  { name: "Azizi", role: "Project Lead & Chief Developer", talent: "Software Development", photo: "/team/azizi.webp" },
   { name: "Naqib", role: "Head of Business Strategy", photo: "/team/naqib.webp" },
   { name: "Akif", role: "Head of Marketing & Growth", photo: "/team/akif.webp" },
-  { name: "Adam", role: "Operations & Project Coordinator, and software developer", photo: "/team/adam.webp" },
-  { name: "Luqman", role: "Head of Media & Content Strategy", photo: "/team/luqman.webp" },
-  { name: "Aliff", role: "Media & Content team", photo: "/team/aliff.webp" },
-  { name: "Alya", role: "Media & Content team", photo: "/team/alya.webp" },
+  { name: "Adam", role: "Operations & Project Coordinator", talent: "Software Development", photo: "/team/adam.webp" },
+  { name: "Luqman", role: "Head of Media & Content Strategy", talent: "Digital Marketing", photo: "/team/luqman.webp" },
+  { name: "Aliff", role: "Media & Content", talent: "Digital Marketing", photo: "/team/aliff.webp" },
+  { name: "Alya", role: "Media & Content", talent: "Digital Marketing", photo: "/team/alya.webp" },
 ];
 
 export const NAV_LINKS = [

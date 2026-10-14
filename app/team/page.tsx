@@ -47,7 +47,7 @@ export default function TeamPage() {
         <section className={styles.peopleSection} aria-label="Team members">
           <div className="container">
             <ul className={styles.people}>
-              {PEOPLE.map(({ name, role, photo }) => (
+              {PEOPLE.map(({ name, role, talent, photo }) => (
                 <li key={name}>
                   <Image
                     src={photo}
@@ -59,6 +59,13 @@ export default function TeamPage() {
                   />
                   <p className={styles.name}>{name}</p>
                   <p className={styles.role}>{role}</p>
+                  {talent ? (
+                    <p
+                      className={`${ui.badge} ${talent === "Software Development" ? ui.badgeNavy : ui.badgeInfo} ${styles.talent}`}
+                    >
+                      {talent}
+                    </p>
+                  ) : null}
                 </li>
               ))}
             </ul>

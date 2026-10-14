@@ -63,6 +63,13 @@
     line-height: 1.45;
 }
 
+/* The badge is inline by default; this keeps it on its own line under the role. */
+.talent {
+    display: flex;
+    width: fit-content;
+    margin-top: 0.75rem;
+}
+
 /* Closing call to action on navy */
 .cta {
     padding: 4rem 0;
