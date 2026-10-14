@@ -725,6 +725,23 @@
             "photo form";
         gap: 2.5rem 4rem;
     }
+
+    /* The photo fills the space left under the text, so its bottom edge lines up with the
+       form's. Taking it out of the flow stops its own height from stretching the row; the
+       crop trims floor, not faces. */
+    .contactFigure {
+        position: relative;
+        align-self: stretch;
+        min-height: 280px;
+    }
+
+    .contactPhoto {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 25%;
+    }
 }
 
 /* From 1200px the hero has room for two phone screens beside the text: the text
