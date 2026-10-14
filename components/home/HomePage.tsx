@@ -1,30 +1,12 @@
-import type { ReactNode } from "react";
 import Link from "next/link";
-import { getImageProps } from "next/image";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Briefcase,
-  ChevronDown,
-  CircleCheck,
-  CodeXml,
-  GraduationCap,
-  Lock,
-  Megaphone,
-  MessageSquare,
-  RefreshCw,
-  Undo2,
-  UserRoundCheck,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+import Image, { getImageProps } from "next/image";
+import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
 import { CONTACT_EMAIL, LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
 import styles from "./home.module.css";
 
-type Item = { icon: LucideIcon; title: string; text: string };
 type Point = { title: string; text: string };
 
 const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; points: string[] }[] = [
@@ -32,11 +14,11 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
     icon: CodeXml,
     tone: ui.iconTileNavy,
     name: "Software development",
-    text: "Websites and landing pages, CRM, ERP and HR systems, and other internal automation tools.",
+    text: "Websites and landing pages, CRM, ERP and HR systems, and internal automation tools.",
     points: [
-      "Tech stack and required skills agreed for each project",
-      "You receive the code repository, a staging link and handover documentation",
-      "Hosting and a domain included for 12 months from go-live",
+      "Tech stack and skills agreed for each project",
+      "Code repository, staging link and handover documents",
+      "Hosting and a domain for 12 months from go-live",
       "30 days of free bug fixes after you accept the work",
     ],
   },
@@ -46,127 +28,64 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
     name: "Digital marketing and video",
     text: "Short videos for TikTok, Instagram Reels and YouTube Shorts, plus copywriting and campaign content.",
     points: [
-      "Campaign objective and target platforms set upfront",
-      "Share raw footage and brand assets through your files vault",
-      "You receive edited videos and a performance summary",
-      "One-off campaigns or a monthly content retainer",
+      "Campaign objective and platforms set up front",
+      "Raw footage and brand assets shared in your files vault",
+      "Edited videos and a performance summary",
+      "One-off campaigns or a monthly retainer",
     ],
   },
 ];
 
 const STEPS: Point[] = [
-  {
-    title: "Post your brief",
-    text: "Describe the work, the deadline and your budget. Posting is free and needs no card.",
-  },
-  {
-    title: "Review your team",
-    text: "Within 48 hours we propose a hand-picked team of verified students. You see their portfolios first.",
-  },
-  {
-    title: "Approve and fund a milestone",
-    text: "Nothing starts until you confirm the team. Each milestone is paid into escrow before work on it begins.",
-  },
-  {
-    title: "Accept the work",
-    text: "Review each delivery and ask for revisions if you need them. Payment is released when you accept.",
-  },
+  { title: "Post your brief", text: "Describe the work, the deadline and your budget. Posting is free." },
+  { title: "Review your team", text: "Within 48 hours we propose verified students, with their portfolios." },
+  { title: "Approve and fund", text: "Nothing starts until you approve. Each milestone is paid into escrow first." },
+  { title: "Accept the work", text: "Ask for revisions if you need them. Payment is released when you accept." },
 ];
 
-const SAFEGUARDS: Item[] = [
+const ESCROW: Point[] = [
+  { title: "You fund a milestone", text: "Before work on it begins." },
+  { title: "It waits in escrow", text: "In a bank account used only for client funds." },
+  { title: "You accept the work", text: "Only then is the payment released to your team." },
+];
+
+const PROTECTIONS: Point[] = [
+  { title: "Two rounds of revisions", text: "Every deliverable includes 2 rounds of minor changes." },
   {
-    icon: Lock,
-    title: "Your money waits in escrow",
-    text: "Each milestone payment sits in a bank account used only for client funds. It is released to the team when you accept the work.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Two rounds of revisions",
-    text: "Every deliverable includes 2 rounds of minor revisions: text, colours, layout, music or small bug fixes.",
-  },
-  {
-    icon: Undo2,
     title: "A refund if we cannot deliver",
-    text: "If a milestone cannot be delivered to the brief after those revisions, its payment is refunded in full.",
+    text: "If a milestone still misses the brief after revisions, its payment is refunded in full.",
   },
   {
-    icon: UserRoundCheck,
     title: "A replacement if someone drops out",
-    text: "If a student becomes unavailable, we assign a replacement at no extra cost and tell you within 2 working days.",
+    text: "At no extra cost, and we tell you within 2 working days.",
   },
-  {
-    icon: BadgeCheck,
-    title: "The work is yours",
-    text: "Once a milestone is paid, all rights in it pass to you. Nothing is shown in a portfolio without your written approval.",
-  },
-  {
-    icon: Wrench,
-    title: "30 days of bug fixes",
-    text: "Software is covered by 30 days of free fixes after you accept it, for anything that does not match the brief.",
-  },
+  { title: "The work is yours", text: "All rights pass to you once a milestone is paid." },
+  { title: "30 days of bug fixes", text: "Free fixes for software that does not match the brief." },
+  { title: "Nothing shown without your say", text: "Your project only appears in a portfolio with your written approval." },
 ];
 
-const PRICING: Point[] = [
-  {
-    title: "Free to post",
-    text: "No subscription and no card needed. You pay nothing until you approve a team.",
-  },
-  {
-    title: "Priced per project",
-    text: "Set your own budget or ask us for a quote. The price is agreed in writing before work starts.",
-  },
-  {
-    title: "One fee, nothing added on top",
-    text: "UniPact’s service fee, 10% as standard, comes out of the project fee. Payment gateway charges are on us.",
-  },
-  {
-    title: "Pay the way you already do",
-    text: "FPX, DuitNow QR, card, or bank transfer against an invoice from a company registered in Malaysia.",
-  },
-];
-
-const MONEY_STEPS = [
-  { title: "You fund a milestone", text: "Paid before work on that milestone begins." },
-  { title: "It waits in escrow", text: "Held in a bank account used only for client funds." },
-  { title: "You accept the work", text: "The payment is released to your student team." },
-];
-
-const WORKSPACE: Point[] = [
-  { title: "Overview", text: "The key numbers and the latest activity." },
-  { title: "Team", text: "Who is on your project, with their verified profiles." },
-  { title: "Milestones and work", text: "Each milestone, the work submitted and your approvals." },
-  { title: "Messages", text: "One conversation with your team and UniPact." },
-  { title: "Payments", text: "What is in escrow, the release schedule and what you have paid." },
-  { title: "Brief and files", text: "Your brief, brand assets and raw footage in one vault." },
-];
-
-const WORKSPACE_TABS = ["Overview", "Team", "Milestones & work", "Messages", "Payments", "Brief & files"];
-
-const MILESTONES = [
-  { name: "Design and data model", badge: "Accepted", tone: ui.badgeGreen, note: "Payment released" },
-  { name: "Build and staging link", badge: "Awaiting your review", tone: ui.badgeInfo, note: "In escrow until you accept" },
-  { name: "Handover and documentation", badge: "Not started", tone: ui.badgeMuted, note: "Funded before work begins" },
-];
-
+// The third figure is read off the screenshot below it, so the page and the picture
+// always agree. (The screenshot shows 157 agents and 19 managers, not the "200 agents"
+// quoted elsewhere, so that number stays off this page until it is confirmed.)
 const PROOF_STATS = [
   { value: "7", label: "Days, brief to live dashboard" },
   { value: "15 hrs", label: "Saved per week, per agent" },
-  { value: "200", label: "Agents on the new workflow" },
-  { value: "RM\u00A03,000", label: "Saved per year on CRM licences" },
+  { value: "61,850", label: "Leads handled in it so far" },
+  { value: "RM 3,000", label: "Saved per year on CRM licences" },
 ];
 
-const PIPELINE: { name: string; text: string }[] = [
+const PIPELINE: Point[] = [
   {
-    name: "Tuition centre operations",
-    text: "A traditional tuition centre is moving off pen and paper. Scheduling, records and day-to-day admin are being rebuilt as proper software.",
+    title: "Tuition centre operations",
+    text: "Moving a tuition centre’s scheduling, records and admin off pen and paper.",
   },
   {
-    name: "Interior visualisation app",
-    text: "An app where you photograph a room, then drag and drop furniture into the photo, so clients can see a space before committing.",
+    title: "Interior visualisation app",
+    text: "Photograph a room, then drag furniture into the photo to see the space before committing.",
   },
   {
-    name: "Product videos for a software firm",
-    text: "A Malaysian software company needs its business systems explained on camera. A student team is producing a run of short videos for social.",
+    title: "Product videos for a software firm",
+    text: "A run of short social videos explaining a Malaysian software company’s business systems.",
   },
 ];
 
@@ -180,31 +99,23 @@ const STUDENT_POINTS = [
 const FAQS = [
   {
     q: "How much does a project cost?",
-    a: "Posting is free and there is no subscription. Every project is scoped on its own, so there is no fixed price list: you set a budget or ask us for a quote, and the price is agreed in writing before any work starts. UniPact’s service fee, 10% as standard, comes out of that project fee and is never added on top.",
+    a: "There is no fixed price list, because every project is scoped on its own. You set a budget or ask us for a quote, and the price is agreed in writing before any work starts. Posting is free, and UniPact’s service fee, 10% as standard, comes out of that price.",
   },
   {
     q: "Who are the students, and how are they verified?",
-    a: "They are students at Malaysian universities. Each one registers with their university details and a student ID or enrolment letter, and a UniPact admin checks their status before they can be matched to any project.",
+    a: "Students at Malaysian universities. Each one registers with their university details and a student ID or enrolment letter, and a UniPact admin checks their status before they can be matched to a project.",
   },
   {
     q: "Do I get to choose the team?",
-    a: "A UniPact admin picks the team for your brief based on skills and track record, and each student confirms they can take it on. We propose the team within 48 hours. You then review their profiles and portfolios, and nothing starts until you approve.",
+    a: "A UniPact admin picks the team for your brief based on skills and track record, and proposes it within 48 hours. You review their profiles and portfolios, and nothing starts until you approve.",
   },
   {
     q: "What if I am not happy with the work?",
-    a: "Every deliverable includes 2 rounds of minor revisions. You have 5 working days after each delivery to accept it or ask for changes; if we do not hear from you in that time, it is treated as accepted. If a milestone still cannot be delivered to the brief after the included revisions, that milestone’s payment is refunded in full.",
+    a: "Every deliverable includes 2 rounds of minor revisions. You have 5 working days after each delivery to accept it or ask for changes; after that it counts as accepted. If a milestone still cannot be delivered to the brief, its payment is refunded in full.",
   },
   {
-    q: "Who owns the finished work?",
-    a: "You do. Once a milestone is paid in full, all rights in its deliverables pass to you. Students keep your files and information confidential, and the project only appears in a portfolio with your written approval.",
-  },
-  {
-    q: "How do I pay?",
-    a: "By FPX, DuitNow QR or card, or by bank transfer against a UniPact invoice. Each milestone is paid before work on it starts, and the money is held in a bank account used only for client funds until you accept the work.",
-  },
-  {
-    q: "What happens if a student drops out part-way?",
-    a: "UniPact assigns a replacement at no extra cost and tells you within 2 working days.",
+    q: "How do I follow progress?",
+    a: "Every client gets a workspace on the UniPact platform: your team, each milestone and the work submitted against it, your payments and what is still in escrow, your files, and one message thread with the team and UniPact.",
   },
   {
     q: "Do you work with companies outside Malaysia?",
@@ -212,144 +123,54 @@ const FAQS = [
   },
 ];
 
-function SectionHead({ title, text }: { title: string; text?: ReactNode }) {
-  return (
-    <div className={ui.head}>
-      <h2 className={ui.title}>{title}</h2>
-      {text && <p className={ui.lead}>{text}</p>}
-    </div>
-  );
-}
-
-function Rule() {
-  return (
-    <div className="container" aria-hidden="true">
-      <div className={ui.rule} />
-    </div>
-  );
-}
-
-// Illustrative view of a project as a client sees it in their workspace.
-function ProjectPreview() {
-  const stages = ["Posted", "Matched", "In progress", "Done"];
-  return (
-    <div className={styles.preview} aria-hidden="true">
-      <div className={`${ui.card} ${styles.previewCard}`}>
-        <div className={styles.previewTop}>
-          <span className={`${ui.badge} ${ui.badgeNavy}`}>Software development</span>
-          <span className={`${ui.badge} ${ui.badgeInfo}`}>In progress</span>
-        </div>
-        <p className={styles.previewTitle}>Sales CRM dashboard</p>
-        <p className={styles.previewMeta}>Milestone 2 of 3 &middot; Due 30 Oct</p>
-
-        <ol className={styles.stages}>
-          {stages.map((stage, i) => (
-            <li key={stage} className={styles.stage}>
-              <span className={`${styles.dot} ${i < 2 ? styles.dotDone : i === 2 ? styles.dotNow : ""}`}>
-                {i < 2 ? <CircleCheck size={13} /> : i + 1}
-              </span>
-              {i < stages.length - 1 && <span className={styles.stageLine} />}
-            </li>
-          ))}
-        </ol>
-
-        <p className={styles.previewLabel}>Your team</p>
-        <div className={styles.members}>
-          {[
-            ["L", "Lead developer", "Full-stack"],
-            ["D", "UI/UX designer", "Product design"],
-          ].map(([initial, role, skill]) => (
-            <div key={role} className={styles.member}>
-              <span className={styles.avatar}>{initial}</span>
-              <span className={styles.memberText}>
-                <span className={styles.memberRole}>{role}</span>
-                <span className={styles.memberSkill}>{skill}</span>
-              </span>
-              <span className={`${ui.badge} ${ui.badgeGreen}`}>
-                <BadgeCheck size={12} /> Verified
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.previewAlert}>
-          <CircleCheck size={16} /> New delivery ready for your review
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function WorkspacePreview() {
-  return (
-    <div className={`${ui.card} ${styles.workspaceCard}`} aria-hidden="true">
-      <div className={styles.workspaceTop}>
-        <p className={styles.previewTitle}>Sales CRM dashboard</p>
-        <span className={`${ui.badge} ${ui.badgeInfo}`}>In progress</span>
-      </div>
-      <div className={styles.tabs}>
-        {WORKSPACE_TABS.map((tab) => (
-          <span key={tab} className={`${styles.tab} ${tab === "Milestones & work" ? styles.tabActive : ""}`}>
-            {tab}
-          </span>
-        ))}
-      </div>
-      <ul className={styles.milestones}>
-        {MILESTONES.map((m, i) => (
-          <li key={m.name} className={styles.milestone}>
-            <span className={styles.milestoneNumber}>{i + 1}</span>
-            <span className={styles.milestoneText}>
-              <span className={styles.milestoneName}>{m.name}</span>
-              <span className={styles.milestoneNote}>{m.note}</span>
-            </span>
-            <span className={`${ui.badge} ${m.tone}`}>{m.badge}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-// The delivered CRM, as one of the client’s agents sees it. A whole desktop screen is
-// unreadable on a phone, so narrow screens get a closer crop.
-function CrmScreenshot() {
-  const alt =
-    "The CRM’s My leads screen: counts of pending, called, WhatsApp and SMS leads, above a list of leads each with a status menu and a Call button.";
-  const { props: wide } = getImageProps({
-    src: "/work/crm-leads.webp",
-    width: 1900,
-    height: 898,
-    alt,
-    unoptimized: true,
-  });
+// Screens from the CRM a UniPact team delivered, with names and phone numbers masked.
+// The wide picture is unreadable on a phone, so narrow screens get a closer crop.
+function Screenshot({
+  name,
+  wideHeight,
+  alt,
+  className,
+}: {
+  name: string;
+  wideHeight: number;
+  alt: string;
+  className?: string;
+}) {
   const { props: small } = getImageProps({
-    src: "/work/crm-leads-small.webp",
+    src: `/work/${name}-small.webp`,
     width: 680,
     height: 620,
     alt,
     unoptimized: true,
   });
-
+  const { props: wide } = getImageProps({
+    src: `/work/${name}.webp`,
+    width: 1900,
+    height: wideHeight,
+    alt,
+    unoptimized: true,
+  });
   return (
     <picture>
       <source media="(min-width: 700px)" srcSet={wide.src} width={wide.width} height={wide.height} />
-      <img {...small} alt={alt} />
+      <img {...small} alt={alt} className={className} />
     </picture>
   );
 }
 
 export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
-  // A case study published in the CMS replaces the built-in one.
+  // A case study published in the CMS replaces the built-in one, and its own
+  // numbers replace the CRM's, so the CRM screenshots are only shown without it.
   const study = caseStudies[0];
   const proofTitle = study?.title || "A working sales CRM. Built and verified in 7 days.";
   const proofText =
     study?.summary ||
-    "A UniPact team was matched to a financial consulting agency that needed a sales CRM built from scratch. The scope was agreed upfront, and the finished work was delivered and verified against the original brief.";
+    "A financial consulting agency needed a sales CRM built from scratch. A UniPact team agreed the scope up front, delivered it, and had it verified against the original brief.";
   const proofStats = study?.metrics?.length ? study.metrics.slice(0, 4) : PROOF_STATS;
 
   return (
     <main id="main">
-      {/* Hero */}
+      {/* Hero: the offer on the left, a real screen from delivered work on the right */}
       <section className={styles.hero}>
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
@@ -357,16 +178,16 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               Get your project built by a <span>vetted student team</span>
             </h1>
             <p className={styles.heroText}>
-              Websites, business systems and social media content, delivered by verified university students and
-              managed by UniPact. We propose your team within 48 hours, you approve it, and you pay milestone by
-              milestone as you accept the work.
+              Websites, business systems and social media content, built by verified university students and managed
+              by UniPact. Your team is proposed within 48 hours, and you pay milestone by milestone as you accept the
+              work.
             </p>
             <div className={styles.heroActions}>
               <a href={LINKS.postProject} className={`${ui.btn} ${ui.btnNavy} ${ui.btnLg}`}>
-                <Briefcase size={18} aria-hidden="true" /> Post a project
+                Post a project
               </a>
               <Link href="/#contact" className={`${ui.btn} ${ui.btnSecondary} ${ui.btnLg}`}>
-                <MessageSquare size={18} aria-hidden="true" /> Talk to us
+                Talk to us
               </Link>
             </div>
             <ul className={styles.heroTrust}>
@@ -383,32 +204,93 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               </Link>
             </p>
           </div>
-          <ProjectPreview />
+
+          {study ? null : (
+            <figure className={styles.heroFigure}>
+              {/* Shown at close to its own size, so the screen's text stays sharp. */}
+              <Image
+                src="/work/crm-leads-small.webp"
+                width={680}
+                height={620}
+                loading="eager"
+                fetchPriority="high"
+                unoptimized
+                className={styles.heroShot}
+                alt="The CRM's My leads screen: counts of pending, called and WhatsApp leads, above a list of leads with a status for each."
+              />
+              <figcaption>
+                From the sales CRM a UniPact team built, as one of the client&rsquo;s agents sees it. Phone numbers are
+                hidden.
+              </figcaption>
+            </figure>
+          )}
         </div>
       </section>
 
-      <Rule />
+      {/* Proof, straight after the hero, on a full-width navy band */}
+      <section id="proof" className={`${ui.section} ${styles.navyBand}`}>
+        <div className="container">
+          <div className={styles.proofHead}>
+            <h2>{proofTitle}</h2>
+            <p>{proofText}</p>
+          </div>
+
+          <dl className={styles.stats}>
+            {proofStats.map(({ value, label }) => (
+              <div key={label}>
+                <dt>{value}</dt>
+                <dd>{label}</dd>
+              </div>
+            ))}
+          </dl>
+
+          {study ? null : (
+            <figure className={styles.proofFigure}>
+              <Screenshot
+                name="crm-performance"
+                wideHeight={877}
+                className={styles.proofShot}
+                alt="The CRM's Performance screen: totals of leads assigned, pending, called, and reached by WhatsApp and SMS, above a table of each agent's figures."
+              />
+              <figcaption>The manager&rsquo;s view: every agent&rsquo;s leads and calls in one place. Names are hidden.</figcaption>
+            </figure>
+          )}
+
+          <div className={styles.pipeline}>
+            <h3>Also in progress</h3>
+            <ul>
+              {PIPELINE.map(({ title, text }) => (
+                <li key={title}>
+                  <span className={styles.pipelineTag}>In development</span>
+                  <p className={styles.pipelineTitle}>{title}</p>
+                  <p className={styles.pipelineText}>{text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
-      <section id="services" className={ui.section}>
+      <section id="services" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className="container">
-          <SectionHead
-            title="What we build for you"
-            text="Two specialisations. Each has a set structure, so you know what you will receive before work starts."
-          />
+          <div className={ui.head}>
+            <h2 className={ui.title}>What we build</h2>
+            <p className={ui.lead}>
+              Two specialisations, each with a set structure, so you know what you will receive before work starts.
+            </p>
+          </div>
           <div className={styles.services}>
             {SERVICES.map(({ icon: Icon, tone, name, text, points }) => (
-              <article key={name} className={`${ui.card} ${styles.service}`}>
+              <article key={name} className={styles.service}>
                 <span className={`${ui.iconTile} ${ui.iconTileLg} ${tone}`}>
                   <Icon size={24} aria-hidden="true" />
                 </span>
                 <h3>{name}</h3>
                 <p className={styles.serviceText}>{text}</p>
-                <ul className={ui.checkList}>
+                <ul className={styles.ruledList}>
                   {points.map((point) => (
-                    <li key={point}>
-                      <CircleCheck size={17} className={ui.checkIcon} aria-hidden="true" /> {point}
-                    </li>
+                    <li key={point}>{point}</li>
                   ))}
                 </ul>
               </article>
@@ -418,12 +300,14 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className={`${ui.section} ${ui.sectionWhite}`}>
+      <section id="how-it-works" className={ui.section}>
         <div className="container">
-          <SectionHead title="From brief to finished work in four steps" />
+          <div className={ui.head}>
+            <h2 className={ui.title}>From brief to finished work in four steps</h2>
+          </div>
           <ol className={styles.steps}>
             {STEPS.map(({ title, text }, i) => (
-              <li key={title} className={`${ui.card} ${styles.step}`}>
+              <li key={title} className={styles.step}>
                 <span className={styles.stepNumber} aria-hidden="true">
                   {i + 1}
                 </span>
@@ -443,179 +327,88 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
-      {/* Safeguards */}
-      <section id="safeguards" className={ui.section}>
+      {/* Pricing and protections */}
+      <section id="pricing" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className="container">
-          <SectionHead
-            title="What protects you"
-            text={
-              <>
-                Every point below is a term in our{" "}
-                <a href={LINKS.clientAgreement} className={ui.textLink}>
-                  Client Service Agreement
-                </a>
-                .
-              </>
-            }
-          />
-          <div className={styles.grid3}>
-            {SAFEGUARDS.map(({ icon: Icon, title, text }) => (
-              <div key={title} className={`${ui.card} ${styles.feature}`}>
-                <span className={ui.iconTile}>
-                  <Icon size={21} aria-hidden="true" />
+          <div className={ui.head}>
+            <h2 className={ui.title}>Your money is held until you accept the work</h2>
+            <p className={ui.lead}>
+              Every project is priced on its own and agreed in writing before work starts. Posting is free, and
+              UniPact&rsquo;s 10% fee comes out of the price, never on top.
+            </p>
+          </div>
+
+          <ol className={styles.escrow}>
+            {ESCROW.map(({ title, text }, i) => (
+              <li key={title}>
+                <span className={styles.escrowNumber} aria-hidden="true">
+                  {i + 1}
                 </span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Rule />
-
-      {/* Pricing */}
-      <section id="pricing" className={ui.section}>
-        <div className="container">
-          <SectionHead
-            title="How pricing works"
-            text="Every project is different, so we do not publish a fixed price list. What stays the same is how the money moves."
-          />
-          <div className={styles.pricing}>
-            <ul className={styles.pricingList}>
-              {PRICING.map(({ title, text }) => (
-                <li key={title}>
-                  <CircleCheck size={20} className={ui.checkIcon} aria-hidden="true" />
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.money}>
-              <h3>Where your money is at each step</h3>
-              <ol>
-                {MONEY_STEPS.map(({ title, text }, i) => (
-                  <li key={title}>
-                    <span className={styles.moneyNumber} aria-hidden="true">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <p className={styles.moneyTitle}>{title}</p>
-                      <p className={styles.moneyText}>{text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Workspace */}
-      <section id="workspace" className={`${ui.section} ${ui.sectionWhite}`}>
-        <div className="container">
-          <SectionHead
-            title="Follow the whole project in one place"
-            text="Every client gets a workspace on the UniPact platform. This is what is inside."
-          />
-          <div className={styles.workspace}>
-            <ul className={styles.workspaceList}>
-              {WORKSPACE.map(({ title, text }) => (
-                <li key={title}>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </li>
-              ))}
-            </ul>
-            <WorkspacePreview />
-          </div>
-        </div>
-      </section>
-
-      {/* Proof */}
-      <section id="proof" className={ui.section}>
-        <div className="container">
-          <div className={styles.proof}>
-            <div className={styles.proofCopy}>
-              <h2>{proofTitle}</h2>
-              <p>{proofText}</p>
-            </div>
-            <dl className={styles.stats}>
-              {proofStats.map(({ value, label }) => (
-                <div key={label}>
-                  <dt>{value}</dt>
-                  <dd>{label}</dd>
+                <div>
+                  <p className={styles.escrowTitle}>{title}</p>
+                  <p className={styles.escrowText}>{text}</p>
                 </div>
-              ))}
-            </dl>
-            {study ? null : (
-              <figure className={styles.proofShot}>
-                <figcaption>The CRM as an agent sees it. Phone numbers are hidden.</figcaption>
-                <CrmScreenshot />
-              </figure>
-            )}
-          </div>
-
-          <div className={styles.pipelineHead}>
-            <h3>Also in progress right now</h3>
-            <p>Three more client projects, still being built. No numbers for these yet.</p>
-          </div>
-          <div className={styles.grid3}>
-            {PIPELINE.map(({ name, text }) => (
-              <article key={name} className={`${ui.card} ${styles.feature}`}>
-                <span className={`${ui.badge} ${ui.badgeMuted} ${styles.pipelineBadge}`}>In development</span>
-                <h3>{name}</h3>
-                <p>{text}</p>
-              </article>
+              </li>
             ))}
+          </ol>
+          <p className={styles.payNote}>
+            Pay by FPX, DuitNow QR, card, or bank transfer against an invoice. Payment gateway charges are on us.
+          </p>
+
+          <div className={styles.protectHead}>
+            <h3>What protects you</h3>
+            <p>
+              Each of these is a term in our{" "}
+              <a href={LINKS.clientAgreement} className={ui.textLink}>
+                Client Service Agreement
+              </a>
+              .
+            </p>
           </div>
+          <ul className={styles.protections}>
+            {PROTECTIONS.map(({ title, text }) => (
+              <li key={title}>
+                <p className={styles.protectionTitle}>{title}</p>
+                <p className={styles.protectionText}>{text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-
-      <Rule />
 
       {/* Students */}
       <section id="students" className={ui.section}>
-        <div className="container">
-          <div className={`${ui.card} ${styles.students}`}>
-            <div>
-              <span className={`${ui.iconTile} ${ui.iconTileLg}`}>
-                <GraduationCap size={24} aria-hidden="true" />
-              </span>
-              <h2>Are you a university student?</h2>
-              <p>
-                UniPact pays students for real client projects in software development and digital marketing. You
-                register on the platform, and it takes a few minutes.
-              </p>
-              <div className={styles.studentActions}>
-                <a href={LINKS.joinStudent} className={`${ui.btn} ${ui.btnNavy} ${ui.btnLg}`}>
-                  Create a student account <ArrowRight size={17} aria-hidden="true" />
-                </a>
-                <a href={LINKS.login} className={`${ui.btn} ${ui.btnSecondary} ${ui.btnLg}`}>
-                  Log in
-                </a>
-              </div>
+        <div className={`container ${styles.students}`}>
+          <div>
+            <h2 className={ui.title}>Are you a university student?</h2>
+            <p className={ui.lead}>
+              UniPact pays students for real client projects in software development and digital marketing.
+              Registering takes a few minutes.
+            </p>
+            <div className={styles.studentActions}>
+              <a href={LINKS.joinStudent} className={`${ui.btn} ${ui.btnNavy} ${ui.btnLg}`}>
+                Create a student account <ArrowRight size={17} aria-hidden="true" />
+              </a>
+              <a href={LINKS.login} className={`${ui.btn} ${ui.btnSecondary} ${ui.btnLg}`}>
+                Log in
+              </a>
             </div>
-            <ul className={ui.checkList}>
-              {STUDENT_POINTS.map((point) => (
-                <li key={point}>
-                  <CircleCheck size={17} className={ui.checkIcon} aria-hidden="true" /> {point}
-                </li>
-              ))}
-            </ul>
           </div>
+          <ul className={styles.ruledList}>
+            {STUDENT_POINTS.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* FAQ */}
       <section id="faq" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className={`container ${styles.faq}`}>
-          <SectionHead title="Questions clients ask us" />
+          <h2 className={ui.title}>Questions clients ask us</h2>
           <div className={styles.faqList}>
             {FAQS.map(({ q, a }) => (
-              <details key={q} className={`${ui.card} ${styles.faqItem}`}>
+              <details key={q} className={styles.faqItem}>
                 <summary>
                   {q}
                   <ChevronDown size={18} aria-hidden="true" />
@@ -627,30 +420,17 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className={ui.section}>
+      {/* Contact, on the second navy band */}
+      <section id="contact" className={`${ui.section} ${styles.navyBand}`}>
         <div className={`container ${styles.contact}`}>
-          <div>
+          <div className={styles.contactCopy}>
             <h2 className={ui.title}>Not ready to post yet? Talk to us first.</h2>
             <p className={ui.lead}>
-              Send a few lines about what you need. Someone from the UniPact team will reply to scope it with you.
+              Send a few lines about what you need, and someone from UniPact will reply to help you scope it. You
+              decide afterwards whether to post the project.
             </p>
-            <ul className={`${ui.checkList} ${styles.contactPoints}`}>
-              {[
-                "We reply by email, or on WhatsApp if you leave a number",
-                "We help you turn a rough idea into a clear brief",
-                "You decide afterwards whether to post the project",
-              ].map((point) => (
-                <li key={point}>
-                  <CircleCheck size={17} className={ui.checkIcon} aria-hidden="true" /> {point}
-                </li>
-              ))}
-            </ul>
             <p className={styles.contactEmail}>
-              Prefer email? Write to{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className={ui.textLink}>
-                {CONTACT_EMAIL}
-              </a>
+              Prefer email? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
           </div>
           <ContactForm />

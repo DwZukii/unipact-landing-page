@@ -1,28 +1,35 @@
+/* Homepage. Platform colours and type, laid out the way the better software-house
+   sites are: left-aligned, real screens instead of mock-ups, colour bands instead of
+   boxes, and a different layout for each section. */
+
 /* Hero */
 .hero {
     position: relative;
+    /* Clips the screenshot where it runs off the right edge of the window. */
     overflow: hidden;
 }
 
 .heroGrid {
-    position: relative;
     display: grid;
-    gap: 3rem;
-    align-items: center;
-    padding-top: 3.5rem;
-    padding-bottom: 5rem;
+    gap: 2.5rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
 }
 
-.heroCopy {
-    text-align: center;
+.heroGrid > *,
+.proofHead > *,
+.students > *,
+.faq > *,
+.contact > * {
+    min-width: 0;
 }
 
 .heroTitle {
     margin-bottom: 1.5rem;
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
     text-wrap: balance;
 }
 
@@ -31,14 +38,15 @@
 }
 
 .heroText {
-    max-width: 36rem;
-    margin: 0 auto 2rem;
+    max-width: 34rem;
+    margin-bottom: 2rem;
     color: var(--text-muted);
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    font-size: 1.125rem;
+    line-height: 1.6;
 }
 
-.heroActions {
+.heroActions,
+.studentActions {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -47,7 +55,6 @@
 .heroTrust {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 0.5rem 1.5rem;
     margin-top: 2rem;
     list-style: none;
@@ -67,191 +74,160 @@
 }
 
 .heroStudent {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     color: var(--text-muted);
     font-size: 0.875rem;
 }
 
-/* Project preview (hero) */
-.preview {
-    position: relative;
+.heroFigure figcaption,
+.proofFigure figcaption {
+    max-width: 30rem;
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.heroFigure figcaption {
+    color: var(--text-muted);
+}
+
+.heroShot,
+.proofShot {
+    display: block;
     width: 100%;
-    max-width: 28rem;
-    margin: 0 auto;
+    height: auto;
+    border-radius: 12px;
+    background: #fbf8f3;
 }
 
-.previewCard {
-    position: relative;
-    padding: 1.5rem;
-    box-shadow: 0 20px 25px -5px rgba(10, 23, 72, 0.1), 0 8px 10px -6px rgba(10, 23, 72, 0.08);
+.heroShot {
+    border: 1px solid var(--border-color);
 }
 
-.previewTop {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+/* Navy bands: the proof after the hero, and the contact section at the end */
+.navyBand {
+    background: var(--navy);
+    color: var(--white);
 }
 
-.previewTitle {
+/* Only the band's own text turns white: the contact form keeps its white card and
+   dark text, so these rules name what they colour instead of every h3 and p. */
+.navyBand h2,
+.pipeline h3 {
+    color: var(--white);
+}
+
+.proofHead p,
+.pipelineText,
+.contactCopy p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* Proof */
+.proofHead {
+    display: grid;
+    gap: 1rem;
+}
+
+.proofHead h2 {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.proofHead p {
+    max-width: 36rem;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.stats > div {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.stats dt {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 1.3;
-    color: var(--navy-deep);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--cyan);
 }
 
-.previewMeta {
-    margin-bottom: 1rem;
-    color: var(--text-muted);
+.stats dd {
+    margin-top: 0.4rem;
+    color: rgba(255, 255, 255, 0.72);
     font-size: 0.875rem;
+    line-height: 1.4;
 }
 
-.stages {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+.proofFigure {
+    margin-top: 3rem;
+}
+
+.proofShot {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.proofFigure figcaption {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pipeline {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.pipeline h3 {
+    margin-bottom: 1.75rem;
+    font-size: 1.25rem;
+}
+
+.pipeline ul {
+    display: grid;
+    gap: 2rem;
     list-style: none;
 }
 
-.stage {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: 0.5rem;
-}
-
-.stage:last-child {
-    flex: 0;
-}
-
-.dot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border: 1px solid rgba(10, 23, 72, 0.15);
-    border-radius: 50%;
-    background: var(--bg);
-    color: var(--text-muted);
-    font-size: 0.625rem;
-    font-weight: 700;
-}
-
-.dotDone {
-    border-color: transparent;
-    background: #10b981;
-    color: var(--white);
-}
-
-.dotNow {
-    border-color: transparent;
-    background: var(--navy);
-    color: var(--white);
-}
-
-.stageLine {
-    flex: 1;
-    height: 1px;
-    background: rgba(10, 23, 72, 0.15);
-}
-
-.previewLabel {
-    margin-bottom: 0.5rem;
-    color: var(--text-muted);
+.pipelineTag {
+    display: inline-flex;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(0, 174, 239, 0.16);
+    color: #8fdcf8;
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    line-height: 1.5;
 }
 
-.members {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.member {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.625rem;
-    border-radius: 8px;
-    background: var(--bg);
-}
-
-.avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: var(--cyan);
-    font-size: 0.875rem;
+.navyBand .pipelineTitle {
+    margin: 0.75rem 0 0.375rem;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
     font-weight: 700;
+    line-height: 1.3;
 }
 
-.memberText {
-    flex: 1;
-    min-width: 0;
+.pipelineText {
+    font-size: 0.9375rem;
+    line-height: 1.6;
 }
 
-.memberRole,
-.memberSkill {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.memberRole {
-    color: var(--navy-deep);
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1.35;
-}
-
-.memberSkill {
-    color: var(--text-muted);
-    font-size: 0.75rem;
-}
-
-.previewAlert {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.625rem;
-    border: 1px solid #a7f3d0;
-    border-radius: 8px;
-    background: #ecfdf5;
-    color: #047857;
-    font-size: 0.875rem;
-}
-
-.previewAlert svg {
-    flex-shrink: 0;
-}
-
-/* Services */
+/* Services: two columns split by a line, no boxes */
 .services {
     display: grid;
-    gap: 1.5rem;
-}
-
-.service {
-    padding: 2rem;
-    transition: border-color 0.2s ease;
-}
-
-.service:hover {
-    border-color: var(--cyan);
+    gap: 3rem;
 }
 
 .service h3 {
@@ -260,49 +236,72 @@
 }
 
 .serviceText {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     color: var(--text-muted);
 }
 
-.service li {
-    font-size: 0.9375rem;
+.ruledList {
+    list-style: none;
 }
 
-/* Steps */
+.ruledList li {
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+.ruledList li:last-child {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* How it works: a numbered line, vertical on phones and horizontal on desktop */
 .steps {
     display: grid;
-    gap: 1.25rem;
     list-style: none;
 }
 
 .step {
-    padding: 1.5rem;
+    position: relative;
+    padding: 0 0 2rem 3.5rem;
+}
+
+.step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 44px;
+    bottom: 8px;
+    left: 17px;
+    width: 1px;
+    background: var(--border-strong);
 }
 
 .stepNumber {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 36px;
     height: 36px;
-    margin-bottom: 1rem;
     border-radius: 50%;
     background: var(--navy);
     color: var(--white);
     font-family: var(--font-heading);
-    font-weight: 700;
     font-size: 1rem;
+    font-weight: 700;
     line-height: 1;
 }
 
-.step h3,
-.feature h3 {
+.step h3 {
     margin-bottom: 0.375rem;
+    padding-top: 0.375rem;
     font-size: 1.125rem;
 }
 
-.step p,
-.feature p {
+.step p {
+    max-width: 22rem;
     color: var(--text-muted);
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -311,116 +310,33 @@
 .afterSteps {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 
-/* Three-column card grids (safeguards, pipeline) */
-.grid3 {
+/* Pricing: the escrow sequence, then the protections */
+.escrow {
     display: grid;
     gap: 1.25rem;
-}
-
-.feature {
     padding: 1.5rem;
-}
-
-.feature > span:first-child {
-    margin-bottom: 1rem;
-}
-
-/* A badge is inline, so it becomes a box of its own to sit on a line above the title. */
-.pipelineBadge {
-    display: flex;
-    width: fit-content;
-}
-
-/* Pricing */
-.pricing {
-    display: grid;
-    gap: 2rem;
-    align-items: start;
-}
-
-.pricingList,
-.workspaceList {
-    display: grid;
-    gap: 1.5rem;
+    border-radius: 12px;
+    background: #e6f7fd;
     list-style: none;
 }
 
-.pricingList li {
+.escrow li {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.875rem;
 }
 
-/* The cyan bar echoes the marker under the active tab in the workspace. */
-.workspaceList li {
-    padding-left: 0.875rem;
-    border-left: 2px solid rgba(0, 174, 239, 0.5);
+.escrow li + li {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 144, 198, 0.25);
 }
 
-.pricingList h3,
-.workspaceList h3 {
-    margin-bottom: 0.25rem;
-    font-size: 1.0625rem;
-}
-
-.pricingList p,
-.workspaceList p {
-    color: var(--text-muted);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-}
-
-.money,
-.proof {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    background: var(--navy);
-    color: var(--white);
-}
-
-.money {
-    padding: 2rem;
-}
-
-.money h3 {
-    position: relative;
-    margin-bottom: 1.5rem;
-    color: var(--white);
-    font-size: 1.25rem;
-}
-
-.money ol {
-    position: relative;
-    display: grid;
-    gap: 1.25rem;
-    list-style: none;
-}
-
-.money li {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-/* The line joining one step number to the next. */
-.money li:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 15px;
-    top: 36px;
-    bottom: -1.25rem;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.moneyNumber {
+.escrowNumber {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -434,253 +350,98 @@
     font-weight: 700;
 }
 
-.moneyTitle {
+.escrowTitle {
+    color: var(--navy-deep);
     font-family: var(--font-heading);
-    font-weight: 700;
     font-size: 1.0625rem;
-    line-height: 1.4;
-}
-
-.moneyText {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.9375rem;
-}
-
-/* Workspace */
-.workspace {
-    display: grid;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-/* Grid items default to min-width: auto, which let the mock's unwrappable tab
-   strip set the width of the whole column on phones. */
-.workspace > *,
-.heroGrid > *,
-.pricing > *,
-.students > *,
-.contact > * {
-    min-width: 0;
-}
-
-.workspaceCard {
-    padding: 1.25rem;
-    background: var(--bg);
-    box-shadow: 0 10px 15px -3px rgba(10, 23, 72, 0.08), 0 4px 6px -4px rgba(10, 23, 72, 0.06);
-}
-
-.workspaceTop {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-/* One row only: a tab that does not fit wraps to a second row, which is cut off.
-   So the strip shows whole tabs and never half a label. */
-.tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 0.25rem;
-    height: 39px;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.tab {
-    flex-shrink: 0;
-    padding: 0.5rem 0.625rem;
-    border-bottom: 2px solid transparent;
-    color: var(--text-muted);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 1.25rem;
-    white-space: nowrap;
-}
-
-.tabActive {
-    border-bottom-color: var(--cyan);
-    color: var(--navy-deep);
-    font-weight: 600;
-}
-
-.milestones {
-    display: grid;
-    gap: 0.625rem;
-    list-style: none;
-}
-
-.milestone {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.75rem;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--white);
-}
-
-.milestoneNumber {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(11, 30, 99, 0.07);
-    color: var(--navy);
-    font-size: 0.8125rem;
     font-weight: 700;
-}
-
-.milestoneText {
-    flex: 1;
-    min-width: 9rem;
-}
-
-.milestoneName {
-    display: block;
-    color: var(--navy-deep);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.35;
-}
-
-.milestoneNote {
-    display: block;
-    color: var(--text-muted);
-    font-size: 0.8125rem;
-}
-
-/* Proof */
-.proof {
-    padding: 2rem;
-}
-
-.proofCopy {
-    position: relative;
-    max-width: 48rem;
-}
-
-.proofCopy h2 {
-    margin-bottom: 1rem;
-    color: var(--white);
-    font-size: clamp(1.75rem, 3.2vw, 2.25rem);
-    font-weight: 800;
-    line-height: 1.2;
-    text-wrap: balance;
-}
-
-.proofCopy p {
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.65;
-}
-
-.stats {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-}
-
-.stats > div {
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.stats dt {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(1.75rem, 3.2vw, 2.25rem);
-    line-height: 1.15;
-    color: var(--cyan);
-}
-
-.stats dd {
-    margin-top: 0.4rem;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.875rem;
     line-height: 1.4;
 }
 
-.pipelineHead {
-    margin: 4rem auto 2rem;
-    text-align: center;
+.escrowText {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
 }
 
-.pipelineHead h3 {
-    margin-bottom: 0.5rem;
+.payNote {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+}
+
+.protectHead {
+    margin: 3.5rem 0 1.75rem;
+}
+
+.protectHead h3 {
+    margin-bottom: 0.25rem;
     font-size: 1.5rem;
 }
 
-.pipelineHead p {
+.protectHead p {
     color: var(--text-muted);
 }
 
-/* The delivered CRM, rising from the bottom edge of the panel. The negative margin
-   cancels the panel's padding so the picture is cut off by the panel itself. */
-.proofShot {
+.protections {
+    display: grid;
+    gap: 1.75rem 2.5rem;
+    list-style: none;
+}
+
+/* A hairline with a short cyan mark at its start. */
+.protections li {
     position: relative;
-    margin: 2.5rem 0 -2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
-.proofShot figcaption {
-    margin-bottom: 0.875rem;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.875rem;
+.protections li::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--cyan);
 }
 
-.proofShot img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 680 / 420;
-    object-fit: cover;
-    object-position: top left;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-bottom: 0;
-    border-radius: 12px 12px 0 0;
-    background: #fbf8f3;
+.protectionTitle {
+    margin-bottom: 0.25rem;
+    color: var(--navy-deep);
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 700;
+}
+
+.protectionText {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
 }
 
 /* Students */
 .students {
     display: grid;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
-    padding: 2rem;
-}
-
-.students h2 {
-    margin: 1.25rem 0 0.75rem;
-    font-size: clamp(1.625rem, 3vw, 2rem);
-}
-
-.students p {
-    max-width: 34rem;
-    color: var(--text-muted);
 }
 
 .studentActions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
-/* FAQ */
+/* FAQ: heading on the left, questions on the right */
 .faq {
-    max-width: 52rem;
+    display: grid;
+    gap: 2rem;
 }
 
-.faqList {
-    display: grid;
-    gap: 0.75rem;
+.faqItem {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faqItem:first-child {
+    border-top: 1px solid var(--border-color);
 }
 
 .faqItem summary {
@@ -688,8 +449,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1.25rem;
-    border-radius: 12px;
+    padding: 1.25rem 0;
     color: var(--navy-deep);
     font-weight: 600;
     cursor: pointer;
@@ -698,6 +458,10 @@
 
 .faqItem summary::-webkit-details-marker {
     display: none;
+}
+
+.faqItem summary:hover {
+    color: var(--navy);
 }
 
 .faqItem summary:focus-visible {
@@ -711,16 +475,13 @@
     transition: transform 0.2s ease;
 }
 
-.faqItem[open] {
-    border-color: rgba(0, 174, 239, 0.5);
-}
-
 .faqItem[open] summary svg {
     transform: rotate(180deg);
 }
 
 .faqItem p {
-    padding: 0 1.25rem 1.25rem;
+    max-width: 60ch;
+    padding-bottom: 1.25rem;
     color: var(--text-muted);
     line-height: 1.65;
 }
@@ -732,14 +493,29 @@
     align-items: start;
 }
 
-.contactPoints {
-    margin-top: 1.75rem;
+.contactEmail {
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
 }
 
-.contactEmail {
-    margin-top: 1.75rem;
-    color: var(--text-muted);
-    font-size: 0.9375rem;
+.contactEmail a {
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--cyan);
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+.contactEmail a:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faqItem summary svg {
+        transition: none;
+    }
 }
 
 /* From 640px */
@@ -747,117 +523,125 @@
     .heroActions,
     .studentActions {
         flex-direction: row;
-    }
-
-    .heroActions {
-        justify-content: center;
-    }
-
-    .steps {
-        grid-template-columns: repeat(2, 1fr);
+        flex-wrap: wrap;
     }
 
     .afterSteps {
         flex-direction: row;
-        justify-content: center;
+        align-items: center;
         gap: 1.5rem;
     }
 
-    .money,
-    .proof {
-        padding: 3rem;
-    }
-
-    .proofShot {
-        margin-bottom: -3rem;
-    }
-
-    .students {
-        padding: 3rem;
+    .protections {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 /* From 768px */
 @media (min-width: 768px) {
     .services {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
     }
 
-    .grid3 {
-        grid-template-columns: repeat(2, 1fr);
+    .service:first-child {
+        padding-right: 3rem;
     }
 
-    .workspaceList {
-        grid-template-columns: repeat(2, 1fr);
+    .service + .service {
+        padding-left: 3rem;
+        border-left: 1px solid var(--border-color);
     }
 
-    /* The wide screenshot from here up (see the <source> in CrmScreenshot). */
-    .proofShot img {
-        aspect-ratio: 1900 / 640;
+    .pipeline ul {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.5rem;
+    }
+
+    .escrow {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        padding: 1.75rem;
+    }
+
+    .escrow li + li {
+        padding-top: 0;
+        padding-left: 1.5rem;
+        border-top: 0;
+        border-left: 1px solid rgba(0, 144, 198, 0.25);
     }
 }
 
 /* From 1024px */
 @media (min-width: 1024px) {
     .heroGrid {
-        grid-template-columns: 1.1fr 0.9fr;
-        padding-top: 5rem;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 4rem;
+        align-items: center;
+        padding-top: 4.5rem;
         padding-bottom: 6rem;
     }
 
-    .heroCopy {
-        text-align: left;
+    /* The screenshot runs past the container to the edge of the window, where the
+       hero clips it, so it reads as a window onto the app rather than a framed card. */
+    .heroFigure {
+        margin-right: calc(-2rem - max(0px, (100vw - 1160px) / 2));
     }
 
-    .heroText {
-        margin-left: 0;
+    .heroShot {
+        border-right: 0;
+        border-radius: 12px 0 0 12px;
     }
 
-    .heroActions,
-    .heroTrust {
-        justify-content: flex-start;
-    }
-
-    .preview {
-        max-width: none;
-    }
-
-    .steps {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .grid3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .pricing {
-        grid-template-columns: 1.1fr 0.9fr;
+    .proofHead {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 4rem;
-        align-items: center;
-    }
-
-    .workspace {
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
+        align-items: end;
     }
 
     .stats {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 2rem;
     }
 
-    .students {
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 3rem;
+    .steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .contact {
-        grid-template-columns: 0.9fr 1.1fr;
+    .step {
+        padding: 3.5rem 2rem 0 0;
+    }
+
+    .step:not(:last-child)::before {
+        top: 17px;
+        bottom: auto;
+        left: 52px;
+        right: 16px;
+        width: auto;
+        height: 1px;
+    }
+
+    .afterSteps {
+        margin-top: 3rem;
+    }
+
+    .protections {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .students {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
         gap: 4rem;
     }
 
-    .contact h2,
-    .contact h2 + p {
-        text-align: left;
+    .faq {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .contact {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 4rem;
     }
 }

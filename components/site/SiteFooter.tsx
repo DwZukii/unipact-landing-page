@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
+import WhatsAppButton from "./WhatsAppButton";
 import { CONTACT_EMAIL, LINKS, SSM_NUMBER, TEAM } from "@/lib/site";
 import styles from "./footer.module.css";
 
@@ -22,6 +23,7 @@ export default function SiteFooter() {
         <nav aria-label="Services">
           <h2 className={styles.heading}>Services</h2>
           <ul className={styles.list}>
+            <li><Link href="/#proof">Our work</Link></li>
             <li><Link href="/#services">What we build</Link></li>
             <li><Link href="/#how-it-works">How it works</Link></li>
             <li><Link href="/#pricing">Pricing</Link></li>
@@ -70,6 +72,7 @@ export default function SiteFooter() {
           &copy; 2026 UniPact. Registered in Malaysia, SSM no. {SSM_NUMBER}. All rights reserved.
         </p>
       </div>
+      <WhatsAppButton />
     </footer>
   );
 }

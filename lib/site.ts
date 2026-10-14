@@ -18,10 +18,14 @@ export const TEAM = [
 ];
 
 export const NAV_LINKS = [
+  { href: "/#proof", label: "Our work" },
   { href: "/#services", label: "Services" },
   { href: "/#how-it-works", label: "How it works" },
-  { href: "/#safeguards", label: "Safeguards" },
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#proof", label: "Our work" },
   { href: "/#students", label: "For students" },
 ];
+
+// Digits only, with the country code and no plus sign, e.g. "60123456789".
+// Leave empty to hide the WhatsApp button.
+export const WHATSAPP_NUMBER = "";
+export const WHATSAPP_LINK = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : null;
