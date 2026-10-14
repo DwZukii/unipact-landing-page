@@ -74,6 +74,41 @@ const PROOF_STATS = [
   { value: "RM 3,000", label: "Saved per year on CRM licences" },
 ];
 
+type Delivered = {
+  title: string;
+  client: string;
+  text: string;
+  image: { src: string; alt: string };
+  stats?: { value: string; label: string }[];
+};
+
+// Phone screenshots, 780 x 1120. The RSVP one is cropped below the bank's logo, as the
+// bank is not named on this site.
+const DELIVERED: Delivered[] = [
+  {
+    title: "Event RSVP and check-in system",
+    client: "A major Malaysian bank, for a corporate forum in Kuala Lumpur",
+    text: "Guests registered online and got a personal QR pass. On the day, staff checked them in at a kiosk that showed each guest’s table, and a feedback form afterwards fed a two-page report for the organisers.",
+    image: {
+      src: "/work/rsvp-event-page.webp",
+      alt: "The forum's invitation page on a phone: the title, date, time and venue, with a button to share feedback now the event has ended.",
+    },
+    stats: [
+      { value: "261", label: "Guests registered" },
+      { value: "195", label: "Checked in on the day" },
+    ],
+  },
+  {
+    title: "Animated wedding e-invite",
+    client: "A Malaysian couple",
+    text: "Guests open an envelope on their phone to music, then scroll through the programme, a countdown, the venue on Google Maps and Waze, and an RSVP form that fills a Google Sheet. Shared as one WhatsApp link.",
+    image: {
+      src: "/work/wedding-invite.webp",
+      alt: "The invite's first screen on a phone: a sealed envelope among roses, and a button inviting guests to tap it open.",
+    },
+  },
+];
+
 const PIPELINE: Point[] = [
   {
     title: "Tuition centre operations",
@@ -170,7 +205,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
 
   return (
     <main id="main">
-      {/* Hero: the offer on the left, a real screen from delivered work on the right */}
+      {/* Hero: the offer, with the delivered work straight underneath */}
       <section className={styles.hero}>
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
@@ -205,25 +240,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             </p>
           </div>
 
-          {study ? null : (
-            <figure className={styles.heroFigure}>
-              {/* Shown at close to its own size, so the screen's text stays sharp. */}
-              <Image
-                src="/work/crm-leads-small.webp"
-                width={680}
-                height={620}
-                loading="eager"
-                fetchPriority="high"
-                unoptimized
-                className={styles.heroShot}
-                alt="The CRM's My leads screen: counts of pending, called and WhatsApp leads, above a list of leads with a status for each."
-              />
-              <figcaption>
-                From the sales CRM a UniPact team built, as one of the client&rsquo;s agents sees it. Phone numbers are
-                hidden.
-              </figcaption>
-            </figure>
-          )}
         </div>
       </section>
 
@@ -255,6 +271,40 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               <figcaption>The manager&rsquo;s view: every agent&rsquo;s leads and calls in one place. Names are hidden.</figcaption>
             </figure>
           )}
+
+          <div className={styles.pipeline}>
+            <h3>More delivered work</h3>
+            <ul className={styles.delivered}>
+              {DELIVERED.map(({ title, client, text, image, stats }) => (
+                <li key={title}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={780}
+                    height={1120}
+                    sizes="(min-width: 1024px) 220px, (min-width: 640px) 240px, 60vw"
+                    className={styles.phoneShot}
+                  />
+                  <div>
+                    <span className={styles.deliveredTag}>Delivered</span>
+                    <p className={styles.pipelineTitle}>{title}</p>
+                    <p className={styles.deliveredClient}>{client}</p>
+                    <p className={styles.pipelineText}>{text}</p>
+                    {stats ? (
+                      <dl className={styles.miniStats}>
+                        {stats.map(({ value, label }) => (
+                          <div key={label}>
+                            <dt>{value}</dt>
+                            <dd>{label}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    ) : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className={styles.pipeline}>
             <h3>Also in progress</h3>

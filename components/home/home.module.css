@@ -5,18 +5,13 @@
 /* Hero */
 .hero {
     position: relative;
-    /* Clips the screenshot where it runs off the right edge of the window. */
-    overflow: hidden;
 }
 
 .heroGrid {
-    display: grid;
-    gap: 2.5rem;
     padding-top: 3rem;
     padding-bottom: 4rem;
 }
 
-.heroGrid > *,
 .proofHead > *,
 .students > *,
 .faq > *,
@@ -25,8 +20,9 @@
 }
 
 .heroTitle {
+    max-width: 17ch;
     margin-bottom: 1.5rem;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.5rem, 6.4vw, 5.25rem);
     font-weight: 700;
     line-height: 1.04;
     letter-spacing: -0.03em;
@@ -38,11 +34,12 @@
 }
 
 .heroText {
-    max-width: 34rem;
+    max-width: 38rem;
     margin-bottom: 2rem;
     color: var(--text-muted);
     font-size: 1.125rem;
     line-height: 1.6;
+    text-wrap: pretty;
 }
 
 .heroActions,
@@ -79,7 +76,6 @@
     font-size: 0.875rem;
 }
 
-.heroFigure figcaption,
 .proofFigure figcaption {
     max-width: 30rem;
     margin-top: 0.75rem;
@@ -87,21 +83,12 @@
     line-height: 1.5;
 }
 
-.heroFigure figcaption {
-    color: var(--text-muted);
-}
-
-.heroShot,
 .proofShot {
     display: block;
     width: 100%;
     height: auto;
     border-radius: 12px;
     background: #fbf8f3;
-}
-
-.heroShot {
-    border: 1px solid var(--border-color);
 }
 
 /* Navy bands: the proof after the hero, and the contact section at the end */
@@ -222,6 +209,73 @@
 .pipelineText {
     font-size: 0.9375rem;
     line-height: 1.6;
+}
+
+/* Delivered projects: two columns, a green tag, and numbers where there are any */
+.pipeline + .pipeline {
+    margin-top: 3.5rem;
+}
+
+/* Each delivered project is a row: the phone screenshot, then the story. */
+.navyBand ul.delivered {
+    gap: 3rem;
+}
+
+.delivered li {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.delivered li > div {
+    min-width: 0;
+}
+
+.phoneShot {
+    display: block;
+    width: 60%;
+    max-width: 240px;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+}
+
+.deliveredTag {
+    display: inline-flex;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.18);
+    color: #86efc0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.navyBand .deliveredClient {
+    margin-bottom: 0.625rem;
+    color: #8fdcf8;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.miniStats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.5rem;
+    margin-top: 1.25rem;
+}
+
+.miniStats dt {
+    color: var(--cyan);
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.miniStats dd {
+    margin-top: 0.25rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.875rem;
 }
 
 /* Services: two columns split by a line, no boxes */
@@ -558,6 +612,25 @@
         gap: 2.5rem;
     }
 
+    /* One project per row (the in-progress list below uses three columns). */
+    .navyBand ul.delivered {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .delivered li {
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 2.5rem;
+        align-items: center;
+    }
+
+    .phoneShot {
+        width: 100%;
+    }
+
+    .delivered .pipelineText {
+        max-width: 36rem;
+    }
+
     .escrow {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1.5rem;
@@ -575,22 +648,8 @@
 /* From 1024px */
 @media (min-width: 1024px) {
     .heroGrid {
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-        gap: 4rem;
-        align-items: center;
-        padding-top: 4.5rem;
-        padding-bottom: 6rem;
-    }
-
-    /* The screenshot runs past the container to the edge of the window, where the
-       hero clips it, so it reads as a window onto the app rather than a framed card. */
-    .heroFigure {
-        margin-right: calc(-2rem - max(0px, (100vw - 1160px) / 2));
-    }
-
-    .heroShot {
-        border-right: 0;
-        border-radius: 12px 0 0 12px;
+        padding-top: 5rem;
+        padding-bottom: 5.5rem;
     }
 
     .proofHead {
