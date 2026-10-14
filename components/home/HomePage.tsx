@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image, { getImageProps } from "next/image";
 import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
+import ProtectionsRow from "./ProtectionsRow";
 import { LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
@@ -407,7 +408,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               sizes="(min-width: 1024px) 640px, 100vw"
               className={styles.teamPhoto}
             />
-            <figcaption>Akif, Luqman and Naqib presenting UniPact to a panel.</figcaption>
           </figure>
         </div>
       </section>
@@ -436,9 +436,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               </li>
             ))}
           </ol>
-          <p className={styles.payNote}>
-            Pay by FPX, DuitNow QR, card, or bank transfer against an invoice. Payment gateway charges are on us.
-          </p>
 
           <div className={styles.protectHead}>
             <h3>What protects you</h3>
@@ -450,14 +447,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               .
             </p>
           </div>
-          <ul className={styles.protections}>
-            {PROTECTIONS.map(({ title, text }) => (
-              <li key={title}>
-                <p className={styles.protectionTitle}>{title}</p>
-                <p className={styles.protectionText}>{text}</p>
-              </li>
-            ))}
-          </ul>
+          <ProtectionsRow items={PROTECTIONS} />
         </div>
       </section>
 
