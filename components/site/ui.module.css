@@ -2,8 +2,9 @@
    (unipact-mvp/unipact-frontend/src/index.css) so both sites read as one product. */
 
 /* Sections */
+/* Tighter on phones, where the extra space mostly adds scrolling. */
 .section {
-    padding: 5rem 0;
+    padding: 3.75rem 0;
     scroll-margin-top: 76px;
 }
 
@@ -29,7 +30,13 @@
 
 .head {
     max-width: 720px;
-    margin: 0 0 3rem;
+    margin: 0 0 2.25rem;
+}
+
+@media (min-width: 640px) {
+    .head {
+        margin-bottom: 3rem;
+    }
 }
 
 .title {
