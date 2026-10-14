@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Globe, Megaphone, Store, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ProtectionsRow from "./ProtectionsRow";
@@ -35,6 +35,43 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
       "Edited videos and a performance summary",
       "One-off campaigns or a monthly retainer",
     ],
+  },
+];
+
+const AUDIENCES: {
+  icon: LucideIcon;
+  tone: string;
+  name: string;
+  text: string;
+  points: string[];
+  href: string;
+  cta: string;
+}[] = [
+  {
+    icon: Store,
+    tone: ui.iconTileCyan,
+    name: "Malaysian SMEs and brands",
+    text: "Short videos and social content for caf\u00E9s, clinics and online shops, filmed on site.",
+    points: [
+      "Monthly video packages, from 8 videos a month",
+      "On-site shoots, edited within 48\u201372 hours",
+      "450k organic TikTok views in 3 weeks for one F&B client",
+    ],
+    href: "/sme",
+    cta: "See the SME page",
+  },
+  {
+    icon: Globe,
+    tone: ui.iconTileNavy,
+    name: "Companies outside Malaysia",
+    text: "Software and video for overseas teams, run in English and paid by milestone.",
+    points: [
+      "Fixed-scope milestones, each held in escrow",
+      "MVPs in 7\u201314 days, with daily async progress",
+      "You own the code and the IP",
+    ],
+    href: "/clients",
+    cta: "See the global clients page",
   },
 ];
 
@@ -417,8 +454,37 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
+      {/* The two audience pages, laid out like "What we build" */}
+      <section id="who-we-help" className={`${ui.section} ${ui.sectionWhite}`}>
+        <div className="container">
+          <div className={ui.head}>
+            <h2 className={ui.title}>Find the page for your business</h2>
+            <p className={ui.lead}>More detail on how we work with each kind of client.</p>
+          </div>
+          <div className={styles.services}>
+            {AUDIENCES.map(({ icon: Icon, tone, name, text, points, href, cta }) => (
+              <article key={name} className={styles.service}>
+                <span className={`${ui.iconTile} ${ui.iconTileLg} ${tone}`}>
+                  <Icon size={24} aria-hidden="true" />
+                </span>
+                <h3>{name}</h3>
+                <p className={styles.serviceText}>{text}</p>
+                <ul className={styles.ruledList}>
+                  {points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <Link href={href} className={`${ui.btn} ${ui.btnSecondary} ${styles.audienceButton}`}>
+                  {cta} <ArrowRight size={17} aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Students */}
-      <section id="students" className={`${ui.section} ${ui.sectionWhite}`}>
+      <section id="students" className={ui.section}>
         <div className={`container ${styles.students}`}>
           <div>
             <h2 className={ui.title}>Are you a university student?</h2>
@@ -444,7 +510,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
       </section>
 
       {/* FAQ */}
-      <section id="faq" className={ui.section}>
+      <section id="faq" className={`${ui.section} ${ui.sectionWhite} ${styles.faqOnWhite}`}>
         <div className={`container ${styles.faq}`}>
           <h2 className={ui.title}>Questions clients ask us</h2>
           <div className={styles.faqList}>
@@ -457,32 +523,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 <p>{a}</p>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Two audience pages, one card each */}
-      <section id="who-we-help" className={`${ui.section} ${ui.sectionWhite}`}>
-        <div className="container">
-          <div className={ui.head}>
-            <h2 className={ui.title}>Find the page for your business</h2>
-            <p className={ui.lead}>More detail on how we work with each kind of client.</p>
-          </div>
-          <div className={styles.audiences}>
-            <Link href="/sme" className={`${styles.audience} ${styles.audienceLight}`}>
-              <h3>Malaysian SMEs and brands</h3>
-              <p>Short videos and social content for caf&eacute;s, clinics and online shops, filmed on site.</p>
-              <span className={styles.audienceLink}>
-                See the SME page <ArrowRight size={17} aria-hidden="true" />
-              </span>
-            </Link>
-            <Link href="/clients" className={`${styles.audience} ${styles.audienceDark}`}>
-              <h3>Companies outside Malaysia</h3>
-              <p>Software and video for overseas teams, run in English and paid by milestone.</p>
-              <span className={styles.audienceLink}>
-                See the global clients page <ArrowRight size={17} aria-hidden="true" />
-              </span>
-            </Link>
           </div>
         </div>
       </section>

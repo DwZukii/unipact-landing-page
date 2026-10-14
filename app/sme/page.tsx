@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
 import SmeContent from "@/components/landing/SmePage";
-import { client } from "@/lib/sanity/client";
-import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
 
 const TITLE = "Viral Short-Form Video & Tech for Malaysian SMEs | UniPact";
 const DESCRIPTION =
@@ -51,16 +49,7 @@ const jsonLd = {
   ],
 };
 
-export const revalidate = 60; // revalidate every minute
-
-export default async function SmePage() {
-  let caseStudies: CaseStudy[] = [];
-  try {
-    caseStudies = await client.fetch(CASE_STUDIES_QUERY);
-  } catch (error) {
-    console.error("Sanity fetch error (falling back to hardcoded proof):", error);
-  }
-
+export default function SmePage() {
   return (
     <>
       <script
@@ -68,7 +57,7 @@ export default async function SmePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SiteNav />
-      <SmeContent caseStudies={caseStudies} />
+      <SmeContent />
       <SiteFooter />
     </>
   );

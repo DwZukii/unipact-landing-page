@@ -44,10 +44,9 @@ export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
 export const NAV_LINKS = [
   { href: "/#proof", label: "Our work" },
   { href: "/#services", label: "Services" },
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/#pricing", label: "Pricing" },
+  { href: "/sme", label: "For SMEs" },
+  { href: "/clients", label: "Global clients" },
   { href: "/team", label: "Team" },
-  { href: "/#students", label: "For students" },
 ];
 
 // Digits only, with the country code and no plus sign, e.g. "60123456789".

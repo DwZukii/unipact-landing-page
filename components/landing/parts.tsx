@@ -8,28 +8,22 @@ import styles from "./landing.module.css";
 // Building blocks shared by the audience pages (/sme and /clients). They reuse the
 // homepage's styles wherever a pattern already exists there, so the pages look like one site.
 
-export type Figure = { value: string; label: string };
-
 export function LandingHero({
   title,
   text,
   primary,
   secondary,
   ticks,
-  caption,
-  figures,
 }: {
   title: ReactNode;
   text: string;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
   ticks: string[];
-  caption: string;
-  figures: Figure[];
 }) {
   return (
     <section className={styles.hero}>
-      <div className={`container ${styles.heroGrid}`}>
+      <div className={`container ${styles.heroInner}`}>
         <div>
           <h1 className={styles.title}>{title}</h1>
           <p className={home.heroText}>{text}</p>
@@ -48,18 +42,6 @@ export function LandingHero({
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className={styles.proof}>
-          <p className={styles.proofCaption}>{caption}</p>
-          <dl className={styles.figures}>
-            {figures.map(({ value, label }) => (
-              <div key={label}>
-                <dt>{value}</dt>
-                <dd>{label}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>

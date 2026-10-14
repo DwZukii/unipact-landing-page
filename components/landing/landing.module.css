@@ -2,20 +2,14 @@
    homepage; each section gets its own layout, and boxes are kept for the few places
    where a box means something (the chosen tab, the featured package, our column). */
 
-/* Hero: the pitch on the left, real results on the right */
+/* Hero: text only, like the homepage below 1200px */
 .hero {
     position: relative;
 }
 
-.heroGrid {
-    display: grid;
-    gap: 2.5rem;
+.heroInner {
     padding-top: 3rem;
     padding-bottom: 4rem;
-}
-
-.heroGrid > * {
-    min-width: 0;
 }
 
 .title {
@@ -30,36 +24,6 @@
 
 .title span {
     color: var(--cyan-deep);
-}
-
-.proofCaption {
-    max-width: 22rem;
-    margin-bottom: 1.25rem;
-    color: var(--text-muted);
-    font-size: 0.9375rem;
-    line-height: 1.55;
-}
-
-.figures {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem 1rem;
-}
-
-.figures dt {
-    color: var(--navy);
-    font-family: var(--font-heading);
-    font-size: clamp(2.25rem, 4vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.02em;
-}
-
-.figures dd {
-    margin-top: 0.4rem;
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    line-height: 1.4;
 }
 
 /* Lists: a dot per item */
@@ -303,8 +267,16 @@
 /* Compare: three ways to get work done, ours the only one in a box */
 .compare {
     display: grid;
-    gap: 2.5rem;
-    margin-top: 0.5rem;
+    gap: 1rem;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .option h3 {
@@ -338,8 +310,7 @@
 }
 
 .optionOurs {
-    padding: 1.75rem;
-    border-radius: 16px;
+    border-color: var(--white);
     background: var(--white);
 }
 
@@ -447,12 +418,7 @@
 
     .compare {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 2rem;
-        align-items: start;
-    }
-
-    .optionOurs {
-        margin-top: -1.75rem;
+        gap: 1.25rem;
     }
 
     .capabilities {
@@ -478,17 +444,9 @@
 }
 
 @media (min-width: 1024px) {
-    .heroGrid {
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
-        gap: 4rem;
-        align-items: center;
+    .heroInner {
         padding-top: 5rem;
         padding-bottom: 5.5rem;
-    }
-
-    .figures {
-        grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .split {

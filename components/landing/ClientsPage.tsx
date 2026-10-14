@@ -2,13 +2,8 @@ import type { CaseStudy } from "@/lib/sanity/queries";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ui from "@/components/site/ui.module.css";
 import home from "@/components/home/home.module.css";
-import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead, type Figure } from "./parts";
+import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
-
-const FIGURES: Figure[] = [
-  { value: "7 days", label: "From brief to production" },
-  { value: "70%", label: "Saved against Western agency quotes" },
-];
 
 const OPTIONS = [
   {
@@ -99,12 +94,8 @@ const FAQS = [
 ];
 
 export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
-  // A case study published in the CMS replaces the built-in result.
+  // A case study published in the CMS replaces the built-in CRM screenshot.
   const study = caseStudies[0];
-  const caption = study
-    ? `${study.client}: ${study.title}`
-    : "A financial consulting agency went from a blank repo to a live sales CRM in 7 days.";
-  const figures = study?.metrics?.length ? study.metrics.slice(0, 2) : FIGURES;
 
   return (
     <main id="main">
@@ -118,8 +109,6 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
         primary={{ label: "Scope a project", href: "#contact" }}
         secondary={{ label: "Compare your options", href: "#compare" }}
         ticks={["Every milestone in escrow", "MVPs in 7–14 days", "Top 1% STEM talent", "You own the IP"]}
-        caption={caption}
-        figures={figures}
       />
 
       <section id="compare" className={`${ui.section} ${home.navyBand}`}>

@@ -1,14 +1,7 @@
-import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
 import PersonaTabs, { type Persona } from "./PersonaTabs";
-import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead, type Figure } from "./parts";
+import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
-
-const FIGURES: Figure[] = [
-  { value: "450k", label: "Organic TikTok views in 3 weeks" },
-  { value: "65%", label: "Saved compared with an agency" },
-  { value: "48 hrs", label: "Turnaround per batch" },
-];
 
 const PERSONAS: Persona[] = [
   {
@@ -139,14 +132,7 @@ const FAQS = [
   },
 ];
 
-export default function SmePage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
-  // A case study published in the CMS replaces the built-in result.
-  const study = caseStudies[0];
-  const caption = study
-    ? `${study.client}: ${study.title}`
-    : "An F&B client went from static posters to 450k organic TikTok views in 3 weeks.";
-  const figures = study?.metrics?.length ? study.metrics.slice(0, 3) : FIGURES;
-
+export default function SmePage() {
   return (
     <main id="main">
       <LandingHero
@@ -159,8 +145,6 @@ export default function SmePage({ caseStudies = [] }: { caseStudies?: CaseStudy[
         primary={{ label: "Get a content squad", href: "#contact" }}
         secondary={{ label: "See the packages", href: "#packages" }}
         ticks={["48–72 hour turnaround", "On-site shooting", "Gen-Z creators", "No lock-in contract"]}
-        caption={caption}
-        figures={figures}
       />
 
       <section id="who" className={`${ui.section} ${ui.sectionWhite}`}>
