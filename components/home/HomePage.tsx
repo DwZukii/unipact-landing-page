@@ -235,8 +235,9 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             </p>
           </div>
 
-          {/* Two phone screens from delivered work. Decorative: both appear, described,
-              in the work section right below. Desktop only. */}
+          {/* Two phone screens from delivered work: the RSVP event page behind, the CRM in
+              front (an agent's email is masked). Decorative, since both are described in the
+              work section right below. Desktop only. */}
           <div className={styles.heroWork} aria-hidden="true">
             <Image
               src="/work/rsvp-event-page.webp"
@@ -248,10 +249,10 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               className={`${styles.heroPhone} ${styles.heroPhoneBack}`}
             />
             <Image
-              src="/work/wedding-invite.webp"
+              src="/work/crm-performance-phone.webp"
               alt=""
-              width={780}
-              height={1120}
+              width={517}
+              height={742}
               sizes="240px"
               loading="eager"
               className={`${styles.heroPhone} ${styles.heroPhoneFront}`}
