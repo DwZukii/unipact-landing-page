@@ -166,6 +166,10 @@
 }
 
 @media (min-width: 640px) {
+    .talentList {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .core {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 2.5rem 1.5rem;
@@ -187,12 +191,13 @@
         gap: 2.5rem 1.5rem;
     }
 
+    /* The two groups stack, each with room for six across, so neither wraps early. */
     .talentGroups {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 4rem;
+        gap: 3rem;
     }
 
     .talentList {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 1.5rem 1.25rem;
     }
 

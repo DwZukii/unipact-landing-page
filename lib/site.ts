@@ -35,6 +35,7 @@ export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Amir Hakimi", talent: "Software Development", photo: "/team/amir.webp" },
   { name: "Dinie", talent: "Software Development" },
   { name: "Adam", talent: "Software Development" },
+  { name: "Amirul Eiman", talent: "Software Development" },
   { name: "Aliff Aiman", talent: "Digital Marketing", photo: "/team/aliff.webp" },
   { name: "Alya Zahirah", talent: "Digital Marketing", photo: "/team/alya.webp" },
   { name: "Kimi", talent: "Digital Marketing" },

@@ -93,7 +93,7 @@ export default function TeamPage() {
                   <ul className={styles.talentList}>
                     {TALENTS.filter((person) => person.talent === group).map(({ name, photo }) => (
                       <li key={name}>
-                        <Portrait name={name} photo={photo} sizes="(min-width: 1024px) 150px, 30vw" />
+                        <Portrait name={name} photo={photo} sizes="(min-width: 1024px) 170px, (min-width: 640px) 22vw, 30vw" />
                         <p className={styles.talentName}>{name}</p>
                       </li>
                     ))}
