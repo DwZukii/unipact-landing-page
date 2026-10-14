@@ -237,7 +237,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
 
           {/* Two phone screens from delivered work: the RSVP event page behind, the CRM in
               front (an agent's email is masked). Decorative, since both are described in the
-              work section right below. Desktop only. */}
+              work section right below. Shown from 1200px wide only (see home.module.css). */}
           <div className={styles.heroWork} aria-hidden="true">
             <Image
               src="/work/rsvp-event-page.webp"
@@ -245,7 +245,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               width={780}
               height={1120}
               sizes="240px"
-              loading="eager"
+              loading="lazy"
               className={`${styles.heroPhone} ${styles.heroPhoneBack}`}
             />
             <Image
@@ -254,7 +254,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               width={517}
               height={742}
               sizes="240px"
-              loading="eager"
+              loading="lazy"
               className={`${styles.heroPhone} ${styles.heroPhoneFront}`}
             />
           </div>

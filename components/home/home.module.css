@@ -632,43 +632,8 @@
 /* From 1024px */
 @media (min-width: 1024px) {
     .heroGrid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
-        gap: 3rem;
-        align-items: center;
-        padding-top: 4.5rem;
-        padding-bottom: 5rem;
-    }
-
-    .heroTitle {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-    }
-
-    /* Two phones, the second lower and in front, framed like handsets. */
-    .heroWork {
-        position: relative;
-        display: block;
-        height: 480px;
-    }
-
-    .heroPhone {
-        position: absolute;
-        width: 220px;
-        height: auto;
-        border: 7px solid var(--navy);
-        border-radius: 30px;
-        background: var(--navy);
-    }
-
-    .heroPhoneBack {
-        top: 0;
-        right: 0;
-    }
-
-    /* 150px in from the back phone, but never past the column's left edge. */
-    .heroPhoneFront {
-        bottom: 0;
-        left: max(0px, calc(100% - 370px));
+        padding-top: 5rem;
+        padding-bottom: 5.5rem;
     }
 
     .proofHead {
@@ -721,5 +686,51 @@
     .contact {
         grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
         gap: 4rem;
+    }
+}
+
+/* From 1200px the hero has room for two phone screens beside the text: the text
+   column stays wide enough for the headline, and the phones never touch it.
+   Narrower screens get the text-only hero, and the phones are not even downloaded
+   there (they are lazy-loaded, and a lazy image that is hidden is never fetched). */
+@media (min-width: 1200px) {
+    .heroGrid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+        gap: 3rem;
+        align-items: center;
+        padding-top: 4.5rem;
+        padding-bottom: 5rem;
+    }
+
+    .heroTitle {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    /* Two phones, the second lower and in front, framed like handsets. */
+    .heroWork {
+        position: relative;
+        display: block;
+        height: 480px;
+    }
+
+    .heroPhone {
+        position: absolute;
+        width: 220px;
+        height: auto;
+        border: 7px solid var(--navy);
+        border-radius: 30px;
+        background: var(--navy);
+    }
+
+    .heroPhoneBack {
+        top: 0;
+        right: 0;
+    }
+
+    /* 150px in from the back phone, but never past the column's left edge. */
+    .heroPhoneFront {
+        bottom: 0;
+        left: max(0px, calc(100% - 370px));
     }
 }
