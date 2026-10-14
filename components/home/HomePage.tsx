@@ -385,8 +385,35 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
+      {/* The people behind it, with a link to the full team page */}
+      <section id="team" className={`${ui.section} ${ui.sectionWhite}`}>
+        <div className={`container ${styles.team}`}>
+          <div>
+            <h2 className={ui.title}>Run by people you can talk to</h2>
+            <p className={ui.lead}>
+              UniPact is a small team of university students. We scope your brief, pick your student team and stay
+              your contact until the work is accepted.
+            </p>
+            <Link href="/team" className={`${ui.btn} ${ui.btnSecondary} ${styles.teamLink}`}>
+              Meet the team <ArrowRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+          <figure className={styles.teamFigure}>
+            <Image
+              src="/photos/team-pitching.webp"
+              alt="Akif, Luqman and Naqib presenting UniPact to a panel in a meeting room."
+              width={1280}
+              height={721}
+              sizes="(min-width: 1024px) 640px, 100vw"
+              className={styles.teamPhoto}
+            />
+            <figcaption>Akif, Luqman and Naqib presenting UniPact to a panel.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       {/* Pricing and protections */}
-      <section id="pricing" className={`${ui.section} ${ui.sectionWhite}`}>
+      <section id="pricing" className={ui.section}>
         <div className="container">
           <div className={ui.head}>
             <h2 className={ui.title}>Your money is held until you accept the work</h2>
@@ -435,7 +462,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
       </section>
 
       {/* Students */}
-      <section id="students" className={ui.section}>
+      <section id="students" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className={`container ${styles.students}`}>
           <div>
             <h2 className={ui.title}>Are you a university student?</h2>
@@ -461,7 +488,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
       </section>
 
       {/* FAQ */}
-      <section id="faq" className={`${ui.section} ${ui.sectionWhite}`}>
+      <section id="faq" className={ui.section}>
         <div className={`container ${styles.faq}`}>
           <h2 className={ui.title}>Questions clients ask us</h2>
           <div className={styles.faqList}>
@@ -491,7 +518,21 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               Prefer email? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
           </div>
-          <ContactForm />
+          <div className={styles.contactForm}>
+            <ContactForm />
+          </div>
+          {/* After the form on phones, so the form is not pushed down; under the text on desktop. */}
+          <figure className={styles.contactFigure}>
+            <Image
+              src="/photos/team-group.webp"
+              alt="Six people in formal wear posing together in front of an event backdrop."
+              width={1400}
+              height={1261}
+              sizes="(min-width: 1024px) 460px, 100vw"
+              className={styles.contactPhoto}
+            />
+            <figcaption>Part of the UniPact team, with our mentor Athirah in the middle.</figcaption>
+          </figure>
         </div>
       </section>
     </main>
