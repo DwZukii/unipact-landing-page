@@ -77,7 +77,7 @@ const PACKAGES = [
       "One 2-hour on-site shoot",
       "Trending audio and hook research",
       "48–72 hour batch delivery",
-      "1 round of revisions per video",
+      "2 rounds of revisions per video",
     ],
     cta: "Ask about this package",
   },
