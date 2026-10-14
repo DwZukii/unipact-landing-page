@@ -79,7 +79,6 @@ type Delivered = {
   client: string;
   text: string;
   image: { src: string; alt: string };
-  stats?: { value: string; label: string }[];
 };
 
 // Phone screenshots, 780 x 1120. The RSVP one is cropped below the bank's logo, as the
@@ -93,10 +92,6 @@ const DELIVERED: Delivered[] = [
       src: "/work/rsvp-event-page.webp",
       alt: "The forum's invitation page on a phone: the title, date, time and venue, with a button to share feedback now the event has ended.",
     },
-    stats: [
-      { value: "261", label: "Guests registered" },
-      { value: "195", label: "Checked in on the day" },
-    ],
   },
   {
     title: "Animated wedding e-invite",
@@ -275,7 +270,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
           <div className={styles.pipeline}>
             <h3>More delivered work</h3>
             <ul className={styles.delivered}>
-              {DELIVERED.map(({ title, client, text, image, stats }) => (
+              {DELIVERED.map(({ title, client, text, image }) => (
                 <li key={title}>
                   <Image
                     src={image.src}
@@ -290,16 +285,6 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                     <p className={styles.pipelineTitle}>{title}</p>
                     <p className={styles.deliveredClient}>{client}</p>
                     <p className={styles.pipelineText}>{text}</p>
-                    {stats ? (
-                      <dl className={styles.miniStats}>
-                        {stats.map(({ value, label }) => (
-                          <div key={label}>
-                            <dt>{value}</dt>
-                            <dd>{label}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    ) : null}
                   </div>
                 </li>
               ))}
