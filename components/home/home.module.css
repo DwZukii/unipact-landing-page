@@ -278,19 +278,30 @@
     color: var(--text-muted);
 }
 
-.ruledList {
+/* Points under a service, an audience or the student pitch: a cyan dot per item,
+   at every width, instead of a line between items. */
+.pointList {
+    display: grid;
+    gap: 0.625rem;
     list-style: none;
 }
 
-.ruledList li {
-    padding: 0.875rem 0;
-    border-top: 1px solid var(--border-color);
+.pointList li {
+    position: relative;
+    padding-left: 1.125rem;
     font-size: 0.9375rem;
     line-height: 1.5;
 }
 
-.ruledList li:last-child {
-    border-bottom: 1px solid var(--border-color);
+.pointList li::before {
+    content: "";
+    position: absolute;
+    top: 0.6em;
+    left: 0.125rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
 }
 
 /* How it works: a numbered line, vertical on phones and horizontal on desktop */
@@ -790,25 +801,6 @@
    lists use dots or spacing instead, related items sit in one panel, and the FAQ
    becomes separate rows. */
 @media (max-width: 767px) {
-    /* Service and student points: a dot per item instead of a line between items. */
-    .ruledList li,
-    .ruledList li:last-child {
-        position: relative;
-        padding: 0.375rem 0 0.375rem 1.125rem;
-        border: 0;
-    }
-
-    .ruledList li::before {
-        content: "";
-        position: absolute;
-        top: 0.9em;
-        left: 0.125rem;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--cyan);
-    }
-
     .serviceText {
         margin-bottom: 1rem;
     }

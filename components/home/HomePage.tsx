@@ -350,7 +350,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 </span>
                 <h3>{name}</h3>
                 <p className={styles.serviceText}>{text}</p>
-                <ul className={styles.ruledList}>
+                <ul className={styles.pointList}>
                   {points.map((point) => (
                     <li key={point}>{point}</li>
                   ))}
@@ -469,7 +469,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 </span>
                 <h3>{name}</h3>
                 <p className={styles.serviceText}>{text}</p>
-                <ul className={styles.ruledList}>
+                <ul className={styles.pointList}>
                   {points.map((point) => (
                     <li key={point}>{point}</li>
                   ))}
@@ -501,7 +501,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               </a>
             </div>
           </div>
-          <ul className={styles.ruledList}>
+          <ul className={styles.pointList}>
             {STUDENT_POINTS.map((point) => (
               <li key={point}>{point}</li>
             ))}
