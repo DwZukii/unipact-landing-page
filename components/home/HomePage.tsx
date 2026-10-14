@@ -235,6 +235,28 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             </p>
           </div>
 
+          {/* Two phone screens from delivered work. Decorative: both appear, described,
+              in the work section right below. Desktop only. */}
+          <div className={styles.heroWork} aria-hidden="true">
+            <Image
+              src="/work/rsvp-event-page.webp"
+              alt=""
+              width={780}
+              height={1120}
+              sizes="240px"
+              loading="eager"
+              className={`${styles.heroPhone} ${styles.heroPhoneBack}`}
+            />
+            <Image
+              src="/work/wedding-invite.webp"
+              alt=""
+              width={780}
+              height={1120}
+              sizes="240px"
+              loading="eager"
+              className={`${styles.heroPhone} ${styles.heroPhoneFront}`}
+            />
+          </div>
         </div>
       </section>
 
