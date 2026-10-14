@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ui from "@/components/site/ui.module.css";
@@ -109,6 +110,30 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
         primary={{ label: "Scope a project", href: "#contact" }}
         secondary={{ label: "Compare your options", href: "#compare" }}
         ticks={["Every milestone in escrow", "MVPs in 7–14 days", "Top 1% STEM talent", "You own the IP"]}
+        visual={
+          <>
+            {/* The CRM a UniPact team delivered: an agent's leads on desktop, the manager's view
+                on a phone. Phone numbers, names and emails are masked. */}
+            <Image
+              src="/work/crm-leads-window.webp"
+              alt=""
+              width={1000}
+              height={700}
+              sizes="460px"
+              loading="lazy"
+              className={styles.visualWindow}
+            />
+            <Image
+              src="/work/crm-performance-phone.webp"
+              alt=""
+              width={517}
+              height={742}
+              sizes="180px"
+              loading="lazy"
+              className={styles.visualPhone}
+            />
+          </>
+        }
       />
 
       <section id="compare" className={`${ui.section} ${home.navyBand}`}>

@@ -14,16 +14,19 @@ export function LandingHero({
   primary,
   secondary,
   ticks,
+  visual,
 }: {
   title: ReactNode;
   text: string;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
   ticks: string[];
+  /** Shown beside the text from 1200px wide; hidden, and not downloaded, below that. */
+  visual?: ReactNode;
 }) {
   return (
     <section className={styles.hero}>
-      <div className={`container ${styles.heroInner}`}>
+      <div className={`container ${styles.heroInner} ${visual ? styles.heroWithVisual : ""}`}>
         <div>
           <h1 className={styles.title}>{title}</h1>
           <p className={home.heroText}>{text}</p>
@@ -43,6 +46,11 @@ export function LandingHero({
             ))}
           </ul>
         </div>
+        {visual ? (
+          <div className={styles.heroVisual} aria-hidden="true">
+            {visual}
+          </div>
+        ) : null}
       </div>
     </section>
   );

@@ -12,6 +12,10 @@
     padding-bottom: 4rem;
 }
 
+.heroVisual {
+    display: none;
+}
+
 .title {
     max-width: 18ch;
     margin-bottom: 1.5rem;
@@ -456,6 +460,50 @@
 
     .objections {
         gap: 2.25rem;
+    }
+}
+
+/* From 1200px a hero with a picture gets a second column. The picture is lazy-loaded,
+   and a lazy image that is hidden is never fetched, so phones don't download it. */
+@media (min-width: 1200px) {
+    .heroWithVisual {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .heroWithVisual > * {
+        min-width: 0;
+    }
+
+    .heroVisual {
+        position: relative;
+        display: block;
+        height: 440px;
+    }
+
+    /* A desktop screen in a plain frame, with a phone screen overlapping its lower left. */
+    .visualWindow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        background: var(--white);
+    }
+
+    .visualPhone {
+        position: absolute;
+        bottom: 0;
+        left: -1.5rem;
+        width: 170px;
+        height: auto;
+        border: 7px solid var(--navy);
+        border-radius: 28px;
+        background: var(--navy);
     }
 }
 
