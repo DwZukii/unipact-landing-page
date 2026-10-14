@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Image, { getImageProps } from "next/image";
+import Image from "next/image";
 import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
+import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ProtectionsRow from "./ProtectionsRow";
 import { LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
@@ -154,41 +155,6 @@ const FAQS = [
   },
 ];
 
-// Screens from the CRM a UniPact team delivered, with names and phone numbers masked.
-// The wide picture is unreadable on a phone, so narrow screens get a closer crop.
-function Screenshot({
-  name,
-  wideHeight,
-  alt,
-  className,
-}: {
-  name: string;
-  wideHeight: number;
-  alt: string;
-  className?: string;
-}) {
-  const { props: small } = getImageProps({
-    src: `/work/${name}-small.webp`,
-    width: 680,
-    height: 620,
-    alt,
-    unoptimized: true,
-  });
-  const { props: wide } = getImageProps({
-    src: `/work/${name}.webp`,
-    width: 1900,
-    height: wideHeight,
-    alt,
-    unoptimized: true,
-  });
-  return (
-    <picture>
-      <source media="(min-width: 700px)" srcSet={wide.src} width={wide.width} height={wide.height} />
-      <img {...small} alt={alt} className={className} />
-    </picture>
-  );
-}
-
 export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
   // A case study published in the CMS replaces the built-in one, and its own
   // numbers replace the CRM's, so the CRM screenshots are only shown without it.
@@ -281,7 +247,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
 
           {study ? null : (
             <figure className={styles.proofFigure}>
-              <Screenshot
+              <WorkScreenshot
                 name="crm-performance"
                 wideHeight={877}
                 className={styles.proofShot}
@@ -491,6 +457,32 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 <p>{a}</p>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Two audience pages, one card each */}
+      <section id="who-we-help" className={`${ui.section} ${ui.sectionWhite}`}>
+        <div className="container">
+          <div className={ui.head}>
+            <h2 className={ui.title}>Find the page for your business</h2>
+            <p className={ui.lead}>More detail on how we work with each kind of client.</p>
+          </div>
+          <div className={styles.audiences}>
+            <Link href="/sme" className={`${styles.audience} ${styles.audienceLight}`}>
+              <h3>Malaysian SMEs and brands</h3>
+              <p>Short videos and social content for caf&eacute;s, clinics and online shops, filmed on site.</p>
+              <span className={styles.audienceLink}>
+                See the SME page <ArrowRight size={17} aria-hidden="true" />
+              </span>
+            </Link>
+            <Link href="/clients" className={`${styles.audience} ${styles.audienceDark}`}>
+              <h3>Companies outside Malaysia</h3>
+              <p>Software and video for overseas teams, run in English and paid by milestone.</p>
+              <span className={styles.audienceLink}>
+                See the global clients page <ArrowRight size={17} aria-hidden="true" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>

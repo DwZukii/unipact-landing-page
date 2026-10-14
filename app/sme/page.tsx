@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
-import SmeLandingSections from "@/components/SmeLandingSections";
+import SmeContent from "@/components/landing/SmePage";
 import { client } from "@/lib/sanity/client";
 import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
 
@@ -68,7 +68,7 @@ export default async function SmePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SiteNav />
-      <SmeLandingSections caseStudies={caseStudies} />
+      <SmeContent caseStudies={caseStudies} />
       <SiteFooter />
     </>
   );
