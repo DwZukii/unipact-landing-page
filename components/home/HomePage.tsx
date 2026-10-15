@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Globe, Megaphone, Store, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ProtectionsRow from "./ProtectionsRow";
@@ -39,38 +39,21 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
   },
 ];
 
-const AUDIENCES: {
-  icon: LucideIcon;
-  tone: string;
-  name: string;
-  text: string;
-  points: string[];
-  href: string;
-  cta: string;
-}[] = [
+// Each audience page as a door, showing the picture from that page's hero.
+const AUDIENCES: { key: "sme" | "global"; name: string; text: string; proof: string; href: string; cta: string }[] = [
   {
-    icon: Store,
-    tone: ui.iconTileCyan,
+    key: "sme",
     name: "Malaysian SMEs and brands",
-    text: "Short videos and social content for caf\u00E9s, clinics and online shops, filmed on site.",
-    points: [
-      "Monthly video packages, from 8 videos a month",
-      "On-site shoots, edited within 48\u201372 hours",
-      "450k organic TikTok views in 3 weeks for one F&B client",
-    ],
+    text: "Monthly short-video packages for cafés, clinics and online shops, filmed on site and edited within 48–72 hours.",
+    proof: "450k organic TikTok views in 3 weeks for one F&B client",
     href: "/sme",
     cta: "See the SME page",
   },
   {
-    icon: Globe,
-    tone: ui.iconTileNavy,
+    key: "global",
     name: "Companies outside Malaysia",
-    text: "Software and video for overseas teams, run in English and paid by milestone.",
-    points: [
-      "Fixed-scope milestones, each held in escrow",
-      "MVPs in 7\u201314 days, with daily async progress",
-      "You own the code and the IP",
-    ],
+    text: "Software and video for overseas teams, run in English, with each fixed-scope milestone held in escrow.",
+    proof: "MVPs in 7–14 days, and you own the code and the IP",
     href: "/clients",
     cta: "See the global clients page",
   },
@@ -491,29 +474,70 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
-      {/* The two audience pages, laid out like "What we build" */}
+      {/* The two audience pages, as doors showing a preview of each page's picture */}
       <section id="who-we-help" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className="container">
           <div className={ui.head}>
             <h2 className={ui.title}>Find the page for your business</h2>
             <p className={ui.lead}>More detail on how we work with each kind of client.</p>
           </div>
-          <div className={styles.services}>
-            {AUDIENCES.map(({ icon: Icon, tone, name, text, points, href, cta }) => (
-              <article key={name} className={styles.service}>
-                <span className={`${ui.iconTile} ${ui.iconTileLg} ${tone}`}>
-                  <Icon size={24} aria-hidden="true" />
-                </span>
-                <h3>{name}</h3>
-                <p className={styles.serviceText}>{text}</p>
-                <ul className={styles.pointList}>
-                  {points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <Link href={href} className={`${ui.btn} ${ui.btnSecondary} ${styles.audienceButton}`}>
-                  {cta} <ArrowRight size={17} aria-hidden="true" />
-                </Link>
+          <div className={styles.doors}>
+            {AUDIENCES.map(({ key, name, text, proof, href, cta }) => (
+              <article key={key} className={styles.door}>
+                <div className={`${styles.doorStage} ${key === "sme" ? styles.doorStageSme : styles.doorStageGlobal}`}>
+                  {key === "sme" ? (
+                    <>
+                      <Image
+                        src="/photos/shoot-tripod.webp"
+                        alt=""
+                        width={540}
+                        height={967}
+                        sizes="170px"
+                        className={`${styles.doorPhone} ${styles.doorPhoneBack}`}
+                      />
+                      <Image
+                        src="/photos/shoot-rig.webp"
+                        alt=""
+                        width={540}
+                        height={967}
+                        sizes="170px"
+                        className={`${styles.doorPhone} ${styles.doorPhoneFront}`}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Image
+                        src="/work/crm-leads-window.webp"
+                        alt=""
+                        width={1000}
+                        height={700}
+                        sizes="(min-width: 768px) 480px, 100vw"
+                        className={styles.doorWindow}
+                      />
+                      <Image
+                        src="/work/crm-performance-phone.webp"
+                        alt=""
+                        width={517}
+                        height={742}
+                        sizes="150px"
+                        className={`${styles.doorPhone} ${styles.doorPhoneCrm}`}
+                      />
+                    </>
+                  )}
+                </div>
+                <div className={styles.doorBody}>
+                  {/* The title link covers the whole door, so the door is one click target. */}
+                  <h3>
+                    <Link href={href} className={styles.doorLink}>
+                      {name}
+                    </Link>
+                  </h3>
+                  <p className={styles.doorText}>{text}</p>
+                  <p className={styles.doorProof}>{proof}</p>
+                  <span className={styles.doorCta} aria-hidden="true">
+                    {cta} <ArrowRight size={17} />
+                  </span>
+                </div>
               </article>
             ))}
           </div>

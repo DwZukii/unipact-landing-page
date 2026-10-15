@@ -674,9 +674,202 @@
     line-height: 1.65;
 }
 
-/* Audience pages: laid out like the services, with a button under each list */
-.audienceButton {
-    margin-top: 1.5rem;
+/* Audience pages: two doors. Each shows the picture from the page it opens, rising
+   out of the bottom of a tinted stage, with the title, one line and one result below.
+   The title link is stretched over the whole door. */
+.doors {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.door {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.door:has(.doorLink:focus-visible) {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+.doorStage {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+}
+
+.doorStageSme {
+    background: #e6f7fd;
+}
+
+.doorStageGlobal {
+    background: var(--navy);
+}
+
+/* Phone screens: the frames run off the bottom of the stage. */
+.doorPhone {
+    position: absolute;
+    width: 118px;
+    height: auto;
+    border: 6px solid var(--navy);
+    border-radius: 24px;
+    background: var(--navy);
+}
+
+.doorPhoneBack {
+    top: 1.75rem;
+    left: calc(50% - 120px);
+}
+
+.doorPhoneFront {
+    top: 3.5rem;
+    left: calc(50% + 2px);
+}
+
+/* On navy, the phone's frame is the darker navy with a faint edge so it still reads. */
+.doorPhoneCrm {
+    top: 4.25rem;
+    left: 1.25rem;
+    width: 104px;
+    border-color: var(--navy-deep);
+    border-radius: 20px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.doorWindow {
+    position: absolute;
+    top: 1.75rem;
+    left: 4.5rem;
+    width: 420px;
+    max-width: none;
+    height: auto;
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.doorBody {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.5rem 1.25rem 1.375rem;
+}
+
+.doorBody h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.375rem;
+}
+
+.doorLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.doorLink::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.doorLink:focus-visible {
+    outline: none;
+}
+
+.doorText {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* The one result, marked with a cyan rule on its left. */
+.doorProof {
+    margin-bottom: 1.5rem;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--cyan);
+    color: var(--navy-deep);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.doorCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: auto;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.doorCta svg {
+    transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+    .door:hover {
+        border-color: var(--border-strong);
+        box-shadow: 0 12px 32px rgba(10, 23, 72, 0.08);
+    }
+
+    .door:hover .doorCta svg {
+        transform: translateX(4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .door,
+    .doorCta svg {
+        transition: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .doors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .doorStage {
+        height: 270px;
+    }
+
+    .doorPhone {
+        width: 150px;
+        border-width: 7px;
+        border-radius: 28px;
+    }
+
+    .doorPhoneBack {
+        top: 2.25rem;
+        left: calc(50% - 150px);
+    }
+
+    .doorPhoneFront {
+        top: 4.5rem;
+        left: calc(50% + 4px);
+    }
+
+    .doorPhoneCrm {
+        top: 5rem;
+        left: 1.75rem;
+        width: 128px;
+        border-radius: 24px;
+    }
+
+    .doorWindow {
+        top: 2.25rem;
+        left: 5.5rem;
+        width: 520px;
+    }
+
+    .doorBody {
+        padding: 1.75rem 1.75rem 1.625rem;
+    }
 }
 
 /* Contact */
