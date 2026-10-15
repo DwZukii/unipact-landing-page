@@ -11,10 +11,11 @@ export const LINKS = {
 export const CONTACT_EMAIL = "unipact.my@gmail.com";
 export const SSM_NUMBER = "202603205508";
 
+// The three people clients can contact directly, listed in the footer.
 export const TEAM = [
-  { name: "Azizi Sahari", role: "Project Lead & Chief Developer", email: "azizi.sahari@unipact.com.my" },
-  { name: "Mohamed Naqiib", role: "Head of Business Strategy", email: "naqiib@unipact.com.my" },
-  { name: "Akif Najmi", role: "Head of Marketing & Growth", email: "akif.najmi@unipact.com.my" },
+  { name: "Azizi Sahari", role: "Project Lead & Chief Developer", email: "azizi.sahari@unipact.com.my", phone: "+60 13-347 4009" },
+  { name: "Mohamed Naqiib", role: "Head of Business Strategy", email: "naqiib@unipact.com.my", phone: "+60 11-5109 3058" },
+  { name: "Akif Najmi", role: "Head of Marketing & Growth", email: "akif.najmi@unipact.com.my", phone: "+60 17-350 5631" },
 ];
 
 // The /team page. Photos are 360 x 450 crops in public/team. `talent` is the delivery
@@ -35,7 +36,7 @@ export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Amir Hakimi", talent: "Software Development", photo: "/team/amir.webp" },
   { name: "Dinie", talent: "Software Development" },
   { name: "Adam", talent: "Software Development" },
-  { name: "Amirul Eiman", talent: "Software Development", photo: "/team/amirul.webp" },
+  { name: "Amirul Eiman", talent: "Software Development", photo: "/team/amirul-portrait.webp" },
   { name: "Aliff Aiman", talent: "Digital Marketing", photo: "/team/aliff.webp" },
   { name: "Alya Zahirah", talent: "Digital Marketing", photo: "/team/alya.webp" },
   { name: "Raziq Syahmee", talent: "Digital Marketing", photo: "/team/raziq.webp" },

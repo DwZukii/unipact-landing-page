@@ -63,6 +63,21 @@
     text-decoration: underline;
 }
 
+/* Under the email, on its own line. */
+.phone {
+    display: block;
+    width: fit-content;
+    margin-top: 0.25rem;
+    padding: 0.125rem 0;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.phone:hover {
+    color: var(--navy-deep);
+    text-decoration: underline;
+}
+
 .band {
     border-top: 1px solid rgba(10, 23, 72, 0.06);
 }

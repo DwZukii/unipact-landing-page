@@ -183,17 +183,18 @@ export default function SmePage() {
 
       <section id="why" className={ui.section}>
         <div className={`container ${styles.split}`}>
-          <div>
+          <div className={styles.splitHead}>
             <h2 className={ui.title}>Why local businesses switch to UniPact</h2>
             <p className={ui.lead}>
               The four reasons Malaysian SMEs hold back from hiring marketing help, and how we deal with each.
             </p>
           </div>
-          <ul className={styles.objections}>
+          {/* Set out as a chat: what owners tell us, then our reply. */}
+          <ul className={styles.chat}>
             {OBJECTIONS.map(({ worry, answer }) => (
-              <li key={worry}>
-                <p className={styles.objectionQuote}>&ldquo;{worry}&rdquo;</p>
-                <p className={styles.objectionAnswer}>{answer}</p>
+              <li key={worry} className={styles.exchange}>
+                <p className={styles.said}>&ldquo;{worry}&rdquo;</p>
+                <p className={styles.reply}>{answer}</p>
               </li>
             ))}
           </ul>

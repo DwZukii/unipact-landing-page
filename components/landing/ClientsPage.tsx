@@ -43,19 +43,32 @@ const OPTIONS = [
   },
 ];
 
+// Each picture is a real UniPact project of that kind.
 const CAPABILITIES = [
   {
     name: "Full-stack web and mobile MVPs",
+    image: {
+      src: "/work/interior-studio.webp",
+      alt: "A tablet app UniPact is building for interior designers: a cabinet designed in 3D, with its price worked out live.",
+    },
     text: "From Figma designs to live production. SaaS MVPs, customer dashboards and cross-platform apps, without full-time payroll.",
     tags: ["React / Next.js", "Node.js / Express", "Python / FastAPI", "Flutter", "PostgreSQL / Supabase"],
   },
   {
     name: "Short-form and video content",
+    image: {
+      src: "/work/product-video.webp",
+      alt: "A frame from a product video made for a Malaysian software company: a man in a green polo shirt being interviewed in an office.",
+    },
     text: "High-retention editing for TikTok, Instagram Reels and YouTube Shorts: dynamic captions, motion hooks, b-roll pacing and sound design for Western audiences.",
     tags: ["Premiere Pro", "After Effects", "CapCut Pro", "Motion graphics", "YouTube long-form"],
   },
   {
     name: "Internal tools and automation",
+    image: {
+      src: "/work/tuition-timetable.webp",
+      alt: "The timetable in a scheduling and records system UniPact is building for a tuition centre. Teachers' names are hidden.",
+    },
     text: "Custom scrapers, CRM integrations, Zapier and Make automations, and AI integrations that remove hundreds of hours of manual work.",
     tags: ["Web scraping", "OpenAI / Claude APIs", "CRM pipelines", "Automated invoicing", "Data pipelines"],
   },
@@ -164,9 +177,17 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
             title="What our talent builds for overseas clients"
             lead="Every developer and creator is vetted through technical assessments and portfolio reviews, from Malaysia's top STEM universities."
           />
-          <div className={styles.capabilities}>
-            {CAPABILITIES.map(({ name, text, tags }) => (
-              <div key={name} className={styles.capability}>
+          <ul className={styles.capabilities}>
+            {CAPABILITIES.map(({ name, image, text, tags }) => (
+              <li key={name} className={styles.capability}>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={1040}
+                  height={650}
+                  sizes="(min-width: 1200px) 370px, (min-width: 900px) 30vw, 100vw"
+                  className={styles.capabilityShot}
+                />
                 <h3>{name}</h3>
                 <p>{text}</p>
                 <ul className={styles.tags}>
@@ -174,9 +195,9 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           {study ? null : (
             <figure className={styles.buildFigure}>
               <WorkScreenshot

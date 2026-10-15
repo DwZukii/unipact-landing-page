@@ -151,7 +151,8 @@
     line-height: 1.6;
 }
 
-/* Objections: the worry in large type, our answer underneath. No boxes, no lines. */
+/* Objections: one white panel holding a chat. The owner's worry comes in on the left
+   in grey, our reply goes out on the right in navy. */
 .split {
     display: grid;
     gap: 2rem;
@@ -161,25 +162,45 @@
     min-width: 0;
 }
 
-.objections {
+.chat {
     display: grid;
-    gap: 2rem;
+    gap: 1.75rem;
+    padding: 1.25rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--white);
     list-style: none;
 }
 
-.objectionQuote {
-    margin-bottom: 0.5rem;
-    color: var(--navy-deep);
-    font-family: var(--font-heading);
-    font-size: clamp(1.125rem, 1.8vw, 1.3125rem);
-    font-weight: 700;
-    line-height: 1.35;
+.exchange {
+    display: grid;
+    gap: 0.5rem;
 }
 
-.objectionAnswer {
-    max-width: 38rem;
-    color: var(--text-muted);
-    line-height: 1.65;
+.said,
+.reply {
+    max-width: 90%;
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
+}
+
+.said {
+    justify-self: start;
+    border-radius: 18px 18px 18px 4px;
+    background: #edf0f8;
+    color: var(--navy-deep);
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.reply {
+    justify-self: end;
+    border-radius: 18px 18px 4px 18px;
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
 }
 
 /* Packages: one panel split into columns, the featured one in navy */
@@ -338,10 +359,30 @@
     background: var(--cyan);
 }
 
-/* What we build: three columns split by lines on desktop, no boxes */
+/* What we build: each kind of work under a picture of a real project of that kind.
+   Three columns on desktop, with the tags lined up along the bottom. */
 .capabilities {
     display: grid;
-    gap: 2.5rem;
+    gap: 2.75rem;
+    list-style: none;
+}
+
+.capability {
+    display: flex;
+    flex-direction: column;
+}
+
+.capabilityShot {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg);
+    object-fit: cover;
+    object-position: top;
 }
 
 .capability h3 {
@@ -353,6 +394,10 @@
     margin-bottom: 1.125rem;
     color: var(--text-muted);
     line-height: 1.65;
+}
+
+.capability .tags {
+    margin-top: auto;
 }
 
 .tags {
@@ -427,23 +472,7 @@
 
     .capabilities {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0;
-    }
-
-    .capability {
-        padding: 0 2rem;
-    }
-
-    .capability:first-child {
-        padding-left: 0;
-    }
-
-    .capability:last-child {
-        padding-right: 0;
-    }
-
-    .capability + .capability {
-        border-left: 1px solid var(--border-color);
+        gap: 2rem;
     }
 }
 
@@ -458,8 +487,26 @@
         gap: 4rem;
     }
 
-    .objections {
-        gap: 2.25rem;
+    /* The heading stays in view beside the chat as it scrolls past. */
+    .splitHead {
+        position: sticky;
+        top: 100px;
+        align-self: start;
+    }
+
+    .chat {
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .said,
+    .reply {
+        max-width: 80%;
+        padding: 0.875rem 1.125rem;
+    }
+
+    .reply {
+        font-size: 1rem;
     }
 }
 

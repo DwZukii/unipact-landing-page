@@ -63,6 +63,9 @@ export default function SiteFooter() {
               <a href={`mailto:${person.email}`} className={styles.email}>
                 {person.email}
               </a>
+              <a href={`tel:${person.phone.replace(/[^+\d]/g, "")}`} className={styles.phone}>
+                {person.phone}
+              </a>
             </div>
           ))}
         </div>

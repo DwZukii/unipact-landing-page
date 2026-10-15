@@ -91,12 +91,15 @@ export default function TeamPage() {
                     <span className={`${ui.badge} ${badgeTone(group)}`}>{group}</span>
                   </h3>
                   <ul className={styles.talentList}>
-                    {TALENTS.filter((person) => person.talent === group).map(({ name, photo }) => (
-                      <li key={name}>
-                        <Portrait name={name} photo={photo} sizes="(min-width: 1024px) 170px, (min-width: 640px) 22vw, 30vw" />
-                        <p className={styles.talentName}>{name}</p>
-                      </li>
-                    ))}
+                    {/* People with a photo first; the sort is stable, so the list order holds within each. */}
+                    {TALENTS.filter((person) => person.talent === group)
+                      .sort((a, b) => Number(!a.photo) - Number(!b.photo))
+                      .map(({ name, photo }) => (
+                        <li key={name}>
+                          <Portrait name={name} photo={photo} sizes="(min-width: 1024px) 170px, (min-width: 640px) 22vw, 30vw" />
+                          <p className={styles.talentName}>{name}</p>
+                        </li>
+                      ))}
                   </ul>
                 </div>
               ))}
