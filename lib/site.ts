@@ -26,19 +26,20 @@ export const CORE_TEAM: { name: string; role: string; talent?: Talent; photo: st
   { name: "Mohamed Naqiib", role: "Head of Business Strategy", photo: "/team/naqib.webp" },
   { name: "Akif Najmi", role: "Head of Marketing & Growth", photo: "/team/akif.webp" },
   { name: "Adam Haikal", role: "Operations & Project Coordinator", talent: "Software Development", photo: "/team/adam.webp" },
-  { name: "Muhammad Luqman", role: "Head of Media & Content Strategy", talent: "Digital Marketing", photo: "/team/luqman.webp" },
+  { name: "Muhammad Luqman", role: "Head of Media & Content Strategy", talent: "Digital Marketing", photo: "/team/luqman-portrait.webp" },
 ];
 
-// Talents without a photo yet show their initial instead. Kimi, Dinie and Adam are
+// Talents without a photo yet show their initial instead. Miki, Dinie and Adam are
 // short names until their full names come in.
 export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Amir Hakimi", talent: "Software Development", photo: "/team/amir.webp" },
   { name: "Dinie", talent: "Software Development" },
   { name: "Adam", talent: "Software Development" },
-  { name: "Amirul Eiman", talent: "Software Development" },
+  { name: "Amirul Eiman", talent: "Software Development", photo: "/team/amirul.webp" },
   { name: "Aliff Aiman", talent: "Digital Marketing", photo: "/team/aliff.webp" },
   { name: "Alya Zahirah", talent: "Digital Marketing", photo: "/team/alya.webp" },
-  { name: "Kimi", talent: "Digital Marketing" },
+  { name: "Raziq Syahmee", talent: "Digital Marketing", photo: "/team/raziq.webp" },
+  { name: "Miki", talent: "Digital Marketing" },
 ];
 
 export const NAV_LINKS = [
