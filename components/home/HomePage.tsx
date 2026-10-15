@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Globe, Megaphone, Store,
 import ContactForm from "@/components/site/ContactForm";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ProtectionsRow from "./ProtectionsRow";
+import VideoStill from "./VideoStill";
 import { LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
@@ -145,7 +146,7 @@ const DELIVERED: Delivered[] = [
 
 // Pictures are 1040 x 650 (16:10). The tuition app's teacher names are blanked out and its
 // sidebar, which names the centre, is cropped off. The video item uses a frame from the shoot.
-const PIPELINE: (Point & { image?: { src: string; alt: string } })[] = [
+const PIPELINE: (Point & { image?: { src: string; alt: string }; video?: { src: string; seconds: number } })[] = [
   {
     title: "Tuition centre operations",
     text: "Moving a tuition centre’s scheduling, records and admin off pen and paper.",
@@ -164,6 +165,8 @@ const PIPELINE: (Point & { image?: { src: string; alt: string } })[] = [
   },
   {
     title: "Product videos for a software firm",
+    // A 12-second muted clip from the interview, played in place when pressed.
+    video: { src: "/work/product-video.mp4", seconds: 12 },
     text: "A run of short social videos explaining a Malaysian software company’s business systems.",
     image: {
       src: "/work/product-video.webp",
@@ -335,17 +338,27 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
           <div className={styles.pipeline}>
             <h3>Also in progress</h3>
             <ul>
-              {PIPELINE.map(({ title, text, image }) => (
+              {PIPELINE.map(({ title, text, image, video }) => (
                 <li key={title} className={image ? styles.pipelineWithShot : undefined}>
-                  {image ? (
-                    <Image
-                      src={image.src}
+                  {image && video ? (
+                    <VideoStill
+                      poster={image.src}
+                      src={video.src}
                       alt={image.alt}
-                      width={1040}
-                      height={650}
+                      seconds={video.seconds}
                       sizes="(min-width: 768px) 340px, 128px"
-                      className={styles.pipelineShot}
                     />
+                  ) : image ? (
+                    <div className={styles.pipelineMedia}>
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        width={1040}
+                        height={650}
+                        sizes="(min-width: 768px) 340px, 128px"
+                        className={styles.pipelineShot}
+                      />
+                    </div>
                   ) : null}
                   <span className={styles.pipelineTag}>In development</span>
                   <p className={styles.pipelineTitle}>{title}</p>

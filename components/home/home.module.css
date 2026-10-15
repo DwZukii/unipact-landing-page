@@ -215,6 +215,103 @@
     background: var(--white);
 }
 
+/* Holds a picture, or a video still with its play button and progress bar. */
+.pipelineMedia {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.pipelineMedia .pipelineShot {
+    margin-bottom: 0;
+}
+
+/* The whole picture is the play/pause button. */
+.videoButton {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.videoButton:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+/* A round play button in the middle. */
+.videoPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 52px;
+    height: 52px;
+    margin: -26px 0 0 -26px;
+    border-radius: 50%;
+    background: rgba(10, 23, 72, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.videoPlay::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    border-color: transparent transparent transparent var(--white);
+    transform: translate(-50%, -50%);
+}
+
+@media (hover: hover) {
+    .videoButton:hover .videoPlay {
+        background: rgba(10, 23, 72, 0.8);
+    }
+}
+
+/* While playing: hidden, and a pause sign on hover or keyboard focus. */
+.videoButton[data-playing="true"] .videoPlay {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.videoButton[data-playing="true"]:focus-visible .videoPlay {
+    opacity: 1;
+}
+
+/* Only with a mouse: on touch screens a tap leaves "hover" on, which would keep the
+   pause sign over the playing video. */
+@media (hover: hover) {
+    .videoButton[data-playing="true"]:hover .videoPlay {
+        opacity: 1;
+    }
+}
+
+.videoButton[data-playing="true"] .videoPlay::after {
+    left: 50%;
+    width: 12px;
+    height: 16px;
+    border: 0;
+    border-right: 4px solid var(--white);
+    border-left: 4px solid var(--white);
+}
+
+/* A thin progress bar along the bottom, filled as the clip plays. */
+.videoBar {
+    --progress: 0%;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--white) 0 var(--progress), rgba(255, 255, 255, 0.4) var(--progress) 100%);
+    pointer-events: none;
+}
+
 .navyBand .pipelineTitle {
     margin: 0.75rem 0 0.375rem;
     color: var(--white);
@@ -991,10 +1088,30 @@
         align-items: start;
     }
 
-    .pipelineWithShot .pipelineShot {
+    .pipelineWithShot .pipelineMedia {
         grid-row: 1 / span 2;
         margin-bottom: 0;
+    }
+
+    .pipelineWithShot .pipelineShot {
         border-radius: 8px;
+    }
+
+    .pipelineWithShot .videoPlay {
+        width: 30px;
+        height: 30px;
+        margin: -15px 0 0 -15px;
+    }
+
+    .pipelineWithShot .videoPlay::after {
+        border-width: 6px 0 6px 10px;
+    }
+
+    .pipelineWithShot .videoBar {
+        right: 6px;
+        bottom: 6px;
+        left: 6px;
+        height: 3px;
     }
 
     .pipelineWithShot .pipelineTag {
