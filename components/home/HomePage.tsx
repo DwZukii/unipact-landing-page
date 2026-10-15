@@ -143,18 +143,32 @@ const DELIVERED: Delivered[] = [
   },
 ];
 
-const PIPELINE: Point[] = [
+// Pictures are 1040 x 650 (16:10). The tuition app's teacher names are blanked out and its
+// sidebar, which names the centre, is cropped off. The video item uses a frame from the shoot.
+const PIPELINE: (Point & { image?: { src: string; alt: string } })[] = [
   {
     title: "Tuition centre operations",
     text: "Moving a tuition centre’s scheduling, records and admin off pen and paper.",
+    image: {
+      src: "/work/tuition-timetable.webp",
+      alt: "The tuition centre app's weekly timetable: class cards with each room's capacity, one marked full and one over capacity.",
+    },
   },
   {
     title: "Interior visualisation app",
-    text: "Photograph a room, then drag furniture into the photo to see the space before committing.",
+    text: "A tablet app for designers: map the client’s room, design the cabinets in 3D with live pricing, and send the cut list to the factory.",
+    image: {
+      src: "/work/interior-studio.webp",
+      alt: "The interior design app's 3D studio: a wooden base cabinet and a wall cabinet in a room, with a panel of finishes to choose from.",
+    },
   },
   {
     title: "Product videos for a software firm",
     text: "A run of short social videos explaining a Malaysian software company’s business systems.",
+    image: {
+      src: "/work/product-video.webp",
+      alt: "A frame from one of the videos: a man in a green polo shirt and glasses being interviewed in an office.",
+    },
   },
 ];
 
@@ -321,8 +335,18 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
           <div className={styles.pipeline}>
             <h3>Also in progress</h3>
             <ul>
-              {PIPELINE.map(({ title, text }) => (
-                <li key={title}>
+              {PIPELINE.map(({ title, text, image }) => (
+                <li key={title} className={image ? styles.pipelineWithShot : undefined}>
+                  {image ? (
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={1040}
+                      height={650}
+                      sizes="(min-width: 768px) 340px, 128px"
+                      className={styles.pipelineShot}
+                    />
+                  ) : null}
                   <span className={styles.pipelineTag}>In development</span>
                   <p className={styles.pipelineTitle}>{title}</p>
                   <p className={styles.pipelineText}>{text}</p>
