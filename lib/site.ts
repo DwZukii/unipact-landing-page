@@ -13,7 +13,7 @@ export const SSM_NUMBER = "202603205508";
 
 // The three people clients can contact directly, listed in the footer.
 export const TEAM = [
-  { name: "Azizi Sahari", role: "Project Lead & Chief Developer", email: "azizi.sahari@unipact.com.my", phone: "+60 13-347 4009" },
+  { name: "Azizi Sahari", role: "Chief Development Officer", email: "azizi.sahari@unipact.com.my", phone: "+60 13-347 4009" },
   { name: "Mohamed Naqiib", role: "Head of Business Strategy", email: "naqiib@unipact.com.my", phone: "+60 11-5109 3058" },
   { name: "Akif Najmi", role: "Head of Marketing & Growth", email: "akif.najmi@unipact.com.my", phone: "+60 17-350 5631" },
 ];
@@ -23,19 +23,19 @@ export const TEAM = [
 export type Talent = "Software Development" | "Digital Marketing";
 
 export const CORE_TEAM: { name: string; role: string; talent?: Talent; photo: string }[] = [
-  { name: "Azizi Sahari", role: "Project Lead & Chief Developer", talent: "Software Development", photo: "/team/azizi.webp" },
+  { name: "Azizi Sahari", role: "Chief Development Officer", talent: "Software Development", photo: "/team/azizi.webp" },
   { name: "Mohamed Naqiib", role: "Head of Business Strategy", photo: "/team/naqib.webp" },
   { name: "Akif Najmi", role: "Head of Marketing & Growth", photo: "/team/akif.webp" },
   { name: "Adam Haikal", role: "Operations & Project Coordinator", talent: "Software Development", photo: "/team/adam.webp" },
   { name: "Muhammad Luqman", role: "Head of Media & Content Strategy", talent: "Digital Marketing", photo: "/team/luqman-portrait.webp" },
 ];
 
-// Talents without a photo yet show their initial instead. Miki, Dinie and Adam are
-// short names until their full names come in.
+// Talents without a photo yet show their initial instead. Miki is a short name until
+// the full name comes in.
 export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Amir Hakimi", talent: "Software Development", photo: "/team/amir.webp" },
-  { name: "Dinie", talent: "Software Development" },
-  { name: "Adam", talent: "Software Development" },
+  { name: "Dinie Putra", talent: "Software Development", photo: "/team/dinie.webp" },
+  { name: "Adam Al-Luqman", talent: "Software Development" },
   { name: "Amirul Eiman", talent: "Software Development", photo: "/team/amirul-portrait.webp" },
   { name: "Aliff Aiman", talent: "Digital Marketing", photo: "/team/aliff.webp" },
   { name: "Alya Zahirah", talent: "Digital Marketing", photo: "/team/alya.webp" },
