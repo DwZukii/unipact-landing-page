@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, CircleCheck, CodeXml, Megaphone, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChevronDown, CircleCheck, Globe, Store, type LucideIcon } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
 import WorkScreenshot from "@/components/site/WorkScreenshot";
 import ProtectionsRow from "./ProtectionsRow";
@@ -12,10 +12,11 @@ import styles from "./home.module.css";
 
 type Point = { title: string; text: string };
 
-const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; points: string[] }[] = [
+// Each service under a picture of real work: the CRM a team delivered, and frames
+// from the team's own on-site shoot.
+const SERVICES: { stage: "software" | "video"; name: string; text: string; points: string[] }[] = [
   {
-    icon: CodeXml,
-    tone: ui.iconTileNavy,
+    stage: "software",
     name: "Software development",
     text: "Websites and landing pages, CRM, ERP and HR systems, and internal automation tools.",
     points: [
@@ -26,8 +27,7 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
     ],
   },
   {
-    icon: Megaphone,
-    tone: ui.iconTileCyan,
+    stage: "video",
     name: "Digital marketing and video",
     text: "Short videos for TikTok, Instagram Reels and YouTube Shorts, plus copywriting and campaign content.",
     points: [
@@ -39,21 +39,38 @@ const SERVICES: { icon: LucideIcon; tone: string; name: string; text: string; po
   },
 ];
 
-// Each audience page as a door, showing the picture from that page's hero.
-const AUDIENCES: { key: "sme" | "global"; name: string; text: string; proof: string; href: string; cta: string }[] = [
+const AUDIENCES: {
+  icon: LucideIcon;
+  tone: string;
+  name: string;
+  text: string;
+  points: string[];
+  href: string;
+  cta: string;
+}[] = [
   {
-    key: "sme",
+    icon: Store,
+    tone: ui.iconTileCyan,
     name: "Malaysian SMEs and brands",
-    text: "Monthly short-video packages for cafés, clinics and online shops, filmed on site and edited within 48–72 hours.",
-    proof: "450k organic TikTok views in 3 weeks for one F&B client",
+    text: "Short videos and social content for cafés, clinics and online shops, filmed on site.",
+    points: [
+      "Monthly video packages, from 8 videos a month",
+      "On-site shoots, edited within 48–72 hours",
+      "450k organic TikTok views in 3 weeks for one F&B client",
+    ],
     href: "/sme",
     cta: "See the SME page",
   },
   {
-    key: "global",
+    icon: Globe,
+    tone: ui.iconTileNavy,
     name: "Companies outside Malaysia",
-    text: "Software and video for overseas teams, run in English, with each fixed-scope milestone held in escrow.",
-    proof: "MVPs in 7–14 days, and you own the code and the IP",
+    text: "Software and video for overseas teams, run in English and paid by milestone.",
+    points: [
+      "Fixed-scope milestones, each held in escrow",
+      "MVPs in 7–14 days, with daily async progress",
+      "You own the code and the IP",
+    ],
     href: "/clients",
     cta: "See the global clients page",
   },
@@ -239,15 +256,15 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             </p>
           </div>
 
-          {/* Two phone screens from delivered work: the RSVP event page behind, the CRM in
-              front (an agent's email is masked). Decorative, since both are described in the
-              work section right below. Shown from 1200px wide only (see home.module.css). */}
+          {/* Two phone screens, one for each service: a frame from the team's own on-site
+              shoot behind, and the CRM a team delivered in front (an agent's email is masked).
+              Decorative. Shown from 1200px wide only (see home.module.css). */}
           <div className={styles.heroWork} aria-hidden="true">
             <Image
-              src="/work/rsvp-event-page.webp"
+              src="/photos/shoot-tripod.webp"
               alt=""
-              width={780}
-              height={1120}
+              width={540}
+              height={967}
               sizes="240px"
               loading="lazy"
               className={`${styles.heroPhone} ${styles.heroPhoneBack}`}
@@ -362,19 +379,61 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
               Two specialisations, each with a set structure, so you know what you will receive before work starts.
             </p>
           </div>
-          <div className={styles.services}>
-            {SERVICES.map(({ icon: Icon, tone, name, text, points }) => (
-              <article key={name} className={styles.service}>
-                <span className={`${ui.iconTile} ${ui.iconTileLg} ${tone}`}>
-                  <Icon size={24} aria-hidden="true" />
-                </span>
-                <h3>{name}</h3>
-                <p className={styles.serviceText}>{text}</p>
-                <ul className={styles.pointList}>
-                  {points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+          <div className={styles.showcase}>
+            {SERVICES.map(({ stage, name, text, points }) => (
+              <article key={name} className={styles.showcaseCard}>
+                <div
+                  className={`${styles.showcaseStage} ${stage === "video" ? styles.showcaseStageCyan : styles.showcaseStageNavy}`}
+                >
+                  {stage === "video" ? (
+                    <>
+                      <Image
+                        src="/photos/shoot-tripod.webp"
+                        alt=""
+                        width={540}
+                        height={967}
+                        sizes="170px"
+                        className={`${styles.showcasePhone} ${styles.showcasePhoneBack}`}
+                      />
+                      <Image
+                        src="/photos/shoot-rig.webp"
+                        alt=""
+                        width={540}
+                        height={967}
+                        sizes="170px"
+                        className={`${styles.showcasePhone} ${styles.showcasePhoneFront}`}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Image
+                        src="/work/crm-leads-window.webp"
+                        alt=""
+                        width={1000}
+                        height={700}
+                        sizes="(min-width: 768px) 480px, 100vw"
+                        className={styles.showcaseWindow}
+                      />
+                      <Image
+                        src="/work/crm-performance-phone.webp"
+                        alt=""
+                        width={517}
+                        height={742}
+                        sizes="150px"
+                        className={`${styles.showcasePhone} ${styles.showcasePhoneCrm}`}
+                      />
+                    </>
+                  )}
+                </div>
+                <div className={styles.showcaseBody}>
+                  <h3>{name}</h3>
+                  <p className={styles.serviceText}>{text}</p>
+                  <ul className={styles.pointList}>
+                    {points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
@@ -474,70 +533,29 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
         </div>
       </section>
 
-      {/* The two audience pages, as doors showing a preview of each page's picture */}
+      {/* The two audience pages, laid out in two columns with a button under each list */}
       <section id="who-we-help" className={`${ui.section} ${ui.sectionWhite}`}>
         <div className="container">
           <div className={ui.head}>
             <h2 className={ui.title}>Find the page for your business</h2>
             <p className={ui.lead}>More detail on how we work with each kind of client.</p>
           </div>
-          <div className={styles.doors}>
-            {AUDIENCES.map(({ key, name, text, proof, href, cta }) => (
-              <article key={key} className={styles.door}>
-                <div className={`${styles.doorStage} ${key === "sme" ? styles.doorStageSme : styles.doorStageGlobal}`}>
-                  {key === "sme" ? (
-                    <>
-                      <Image
-                        src="/photos/shoot-tripod.webp"
-                        alt=""
-                        width={540}
-                        height={967}
-                        sizes="170px"
-                        className={`${styles.doorPhone} ${styles.doorPhoneBack}`}
-                      />
-                      <Image
-                        src="/photos/shoot-rig.webp"
-                        alt=""
-                        width={540}
-                        height={967}
-                        sizes="170px"
-                        className={`${styles.doorPhone} ${styles.doorPhoneFront}`}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <Image
-                        src="/work/crm-leads-window.webp"
-                        alt=""
-                        width={1000}
-                        height={700}
-                        sizes="(min-width: 768px) 480px, 100vw"
-                        className={styles.doorWindow}
-                      />
-                      <Image
-                        src="/work/crm-performance-phone.webp"
-                        alt=""
-                        width={517}
-                        height={742}
-                        sizes="150px"
-                        className={`${styles.doorPhone} ${styles.doorPhoneCrm}`}
-                      />
-                    </>
-                  )}
-                </div>
-                <div className={styles.doorBody}>
-                  {/* The title link covers the whole door, so the door is one click target. */}
-                  <h3>
-                    <Link href={href} className={styles.doorLink}>
-                      {name}
-                    </Link>
-                  </h3>
-                  <p className={styles.doorText}>{text}</p>
-                  <p className={styles.doorProof}>{proof}</p>
-                  <span className={styles.doorCta} aria-hidden="true">
-                    {cta} <ArrowRight size={17} />
-                  </span>
-                </div>
+          <div className={styles.services}>
+            {AUDIENCES.map(({ icon: Icon, tone, name, text, points, href, cta }) => (
+              <article key={name} className={styles.service}>
+                <span className={`${ui.iconTile} ${ui.iconTileLg} ${tone}`}>
+                  <Icon size={24} aria-hidden="true" />
+                </span>
+                <h3>{name}</h3>
+                <p className={styles.serviceText}>{text}</p>
+                <ul className={styles.pointList}>
+                  {points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <Link href={href} className={`${ui.btn} ${ui.btnSecondary} ${styles.audienceButton}`}>
+                  {cta} <ArrowRight size={17} aria-hidden="true" />
+                </Link>
               </article>
             ))}
           </div>

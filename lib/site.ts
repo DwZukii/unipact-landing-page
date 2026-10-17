@@ -30,8 +30,7 @@ export const CORE_TEAM: { name: string; role: string; talent?: Talent; photo: st
   { name: "Muhammad Luqman", role: "Head of Media & Content Strategy", talent: "Digital Marketing", photo: "/team/luqman-portrait.webp" },
 ];
 
-// Talents without a photo yet show their initial instead. Miki is a short name until
-// the full name comes in.
+// Talents without a photo yet show their initial instead.
 export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Amir Hakimi", talent: "Software Development", photo: "/team/amir.webp" },
   { name: "Dinie Putra", talent: "Software Development", photo: "/team/dinie.webp" },
@@ -40,7 +39,6 @@ export const TALENTS: { name: string; talent: Talent; photo?: string }[] = [
   { name: "Aliff Aiman", talent: "Digital Marketing", photo: "/team/aliff.webp" },
   { name: "Alya Zahirah", talent: "Digital Marketing", photo: "/team/alya.webp" },
   { name: "Raziq Syahmee", talent: "Digital Marketing", photo: "/team/raziq.webp" },
-  { name: "Miki", talent: "Digital Marketing" },
 ];
 
 export const NAV_LINKS = [
