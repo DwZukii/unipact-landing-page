@@ -256,12 +256,12 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
             </p>
           </div>
 
-          {/* Two phone screens, one for each service: a frame from the team's own on-site
-              shoot behind, and the CRM a team delivered in front (an agent's email is masked).
-              Decorative. Shown from 1200px wide only (see home.module.css). */}
+          {/* Two phone screens, one for each service: the camera rig from the team's own
+              on-site shoot behind, and the CRM a team delivered in front (an agent's email is
+              masked). Decorative. Shown from 1200px wide only (see home.module.css). */}
           <div className={styles.heroWork} aria-hidden="true">
             <Image
-              src="/photos/shoot-tripod.webp"
+              src="/photos/shoot-rig.webp"
               alt=""
               width={540}
               height={967}
