@@ -389,7 +389,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                     <>
                       <Image
                         src="/photos/shoot-tripod.webp"
-                        alt=""
+                        alt="UniPact student videographer setting up a camera on a tripod on location"
                         width={540}
                         height={967}
                         sizes="170px"
@@ -397,7 +397,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                       />
                       <Image
                         src="/photos/shoot-rig.webp"
-                        alt=""
+                        alt="Camera rig with a monitor framing an interview during a UniPact on-site video shoot"
                         width={540}
                         height={967}
                         sizes="170px"
@@ -408,7 +408,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                     <>
                       <Image
                         src="/work/crm-leads-window.webp"
-                        alt=""
+                        alt="Sales CRM built by a UniPact student team, showing an agent's assigned leads and call statuses"
                         width={1000}
                         height={700}
                         sizes="(min-width: 768px) 480px, 100vw"
@@ -416,7 +416,7 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                       />
                       <Image
                         src="/work/crm-performance-phone.webp"
-                        alt=""
+                        alt="The same CRM's manager performance view on a phone"
                         width={517}
                         height={742}
                         sizes="150px"

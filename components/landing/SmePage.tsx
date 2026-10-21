@@ -151,7 +151,7 @@ export default function SmePage() {
             {/* Frames from the team's own behind-the-scenes clips of an on-site shoot. */}
             <Image
               src="/photos/shoot-tripod.webp"
-              alt=""
+              alt="UniPact student videographer setting up a camera on a tripod on location"
               width={540}
               height={967}
               sizes="220px"
@@ -160,7 +160,7 @@ export default function SmePage() {
             />
             <Image
               src="/photos/shoot-rig.webp"
-              alt=""
+              alt="Camera rig with a monitor framing an interview during a UniPact on-site video shoot"
               width={540}
               height={967}
               sizes="220px"

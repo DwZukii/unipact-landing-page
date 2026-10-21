@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
+import { SOCIAL_IMAGE } from "@/lib/site";
+import JsonLd from "@/components/site/JsonLd";
+import { providerRef } from "@/lib/schema";
 import ClientsContent from "@/components/landing/ClientsPage";
 import { client } from "@/lib/sanity/client";
 import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     type: "website",
     url: "https://www.unipact.my/clients",
-    images: ["https://www.unipact.my/logo.png"],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
@@ -31,19 +34,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      name: "UniPact",
-      url: "https://www.unipact.my/",
-      logo: "https://www.unipact.my/logo.png",
-      description: "Milestone-based remote talent matching platform.",
-    },
-    {
       "@type": "Service",
       name: "Cross-Border Milestone Talent Matching",
-      provider: {
-        "@type": "Organization",
-        name: "UniPact",
-      },
+      provider: providerRef,
       serviceType: "Software Development & Video Production",
       areaServed: ["US", "GB", "SG", "AU", "Global"],
       description: DESCRIPTION,
@@ -63,10 +56,7 @@ export default async function ClientsPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <SiteNav />
       <ClientsContent caseStudies={caseStudies} />
       <SiteFooter />

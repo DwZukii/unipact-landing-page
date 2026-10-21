@@ -129,7 +129,7 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
                 on a phone. Phone numbers, names and emails are masked. */}
             <Image
               src="/work/crm-leads-window.webp"
-              alt=""
+              alt="Sales CRM built by a UniPact student team, showing an agent's assigned leads and call statuses"
               width={1000}
               height={700}
               sizes="460px"
@@ -138,7 +138,7 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
             />
             <Image
               src="/work/crm-performance-phone.webp"
-              alt=""
+              alt="The same CRM's manager performance view on a phone"
               width={517}
               height={742}
               sizes="180px"

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
+import JsonLd from "@/components/site/JsonLd";
+import { siteSchema } from "@/lib/schema";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -35,7 +37,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={siteSchema} />
+        {children}
+      </body>
     </html>
   );
 }
