@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
 import HomeContent from "@/components/home/HomePage";
+import JsonLd from "@/components/site/JsonLd";
+import { HOME_FAQS } from "@/lib/faqs";
+import { faqSchema } from "@/lib/schema";
 import { client } from "@/lib/sanity/client";
 import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
 
@@ -38,6 +41,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={{ "@context": "https://schema.org", ...faqSchema(HOME_FAQS) }} />
       <SiteNav />
       <HomeContent caseStudies={caseStudies} />
       <SiteFooter />

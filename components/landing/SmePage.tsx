@@ -3,6 +3,7 @@ import ui from "@/components/site/ui.module.css";
 import PersonaTabs, { type Persona } from "./PersonaTabs";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
+import { SME_FAQS as FAQS } from "@/lib/faqs";
 
 const PERSONAS: Persona[] = [
   {
@@ -107,29 +108,6 @@ const PACKAGES = [
       "Formatted for Instagram, TikTok and LinkedIn",
     ],
     cta: "Ask about this package",
-  },
-];
-
-const FAQS = [
-  {
-    q: "Do your creators come to my shop or clinic to film?",
-    a: "Yes. For cafés, shops and clinics across the Klang Valley (KL and Selangor) and major university towns, our student creator teams film on site with professional mobile rigs, lighting and wireless microphones.",
-  },
-  {
-    q: "How fast is the turnaround from filming to the final edit?",
-    a: "Standard edits are delivered within 48 to 72 hours per batch. For e-commerce ads we prioritise quick variations, so you can refresh TikTok and Shopee campaigns before ad fatigue sets in.",
-  },
-  {
-    q: "How does this compare with hiring a full-time marketing staff member?",
-    a: "A junior marketing executive costs RM 3,000–4,500 a month plus EPF, SOCSO and equipment, and one person is rarely good at shooting, scripting, editing and analytics all at once. UniPact gives you a specialised campus squad at package rates, with no long-term payroll.",
-  },
-  {
-    q: "What if I’m shy or don’t know what to say on camera?",
-    a: "That is our speciality. For the Clinic and authority package, our team writes simple, conversational scripts. During filming we guide you through short talking points, or record voiceovers, so you come across confident and natural.",
-  },
-  {
-    q: "Are invoices and payments officially registered?",
-    a: "Yes. UniPact is registered with Suruhanjaya Syarikat Malaysia (SSM no. 202603205508). Every milestone is held in escrow and invoiced with official documentation.",
   },
 ];
 

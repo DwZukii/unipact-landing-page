@@ -5,6 +5,7 @@ import ui from "@/components/site/ui.module.css";
 import home from "@/components/home/home.module.css";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
+import { CLIENTS_FAQS as FAQS } from "@/lib/faqs";
 
 const OPTIONS = [
   {
@@ -81,29 +82,6 @@ const STEPS = [
   {
     title: "Review and release",
     text: "Review the GitHub pull request or video draft, and release payment only when you’re satisfied.",
-  },
-];
-
-const FAQS = [
-  {
-    q: "How does milestone escrow protect my company?",
-    a: "You never pay an unverified contractor upfront. When a milestone is agreed, the payment goes into escrow. The student starts work, and the money is released only after you test and approve the deliverable.",
-  },
-  {
-    q: "Are the students fluent in English?",
-    a: "Yes. Malaysia ranks among Asia’s most English-proficient countries (High Proficiency in the EF English Proficiency Index). Every developer and creator on UniPact is vetted on communication, and writes clear English documentation, commit messages and scripts.",
-  },
-  {
-    q: "How do time zones work for US, UK and European clients?",
-    a: "We work asynchronously. You send instructions or feedback in your evening, the team builds while you sleep, and working code or videos are ready by your morning. Singapore and Australian clients share almost the same working hours.",
-  },
-  {
-    q: "Who owns the intellectual property and source code?",
-    a: "You do, fully. Once the final milestone is signed off and paid, all source code, repository access, design files and raw media are transferred to your company.",
-  },
-  {
-    q: "What if a deliverable doesn’t match the agreed brief?",
-    a: "Payments are tied to clear milestone criteria, so the student revises the work until it meets the brief. If work is not delivered or is abandoned, your escrow funds are refunded.",
   },
 ];
 

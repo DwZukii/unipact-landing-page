@@ -9,6 +9,7 @@ import { LINKS } from "@/lib/site";
 import type { CaseStudy } from "@/lib/sanity/queries";
 import ui from "@/components/site/ui.module.css";
 import styles from "./home.module.css";
+import { HOME_FAQS as FAQS } from "@/lib/faqs";
 
 type Point = { title: string; text: string };
 
@@ -180,33 +181,6 @@ const STUDENT_POINTS = [
   "Bring classmates onto your team with an agreed payout share",
   "Paid by bank transfer within 7 working days of each accepted milestone",
   "Every finished project is added to your verified record",
-];
-
-const FAQS = [
-  {
-    q: "How much does a project cost?",
-    a: "There is no fixed price list, because every project is scoped on its own. You set a budget or ask us for a quote, and the price is agreed in writing before any work starts. Posting is free, and UniPact’s service fee, 10% as standard, comes out of that price.",
-  },
-  {
-    q: "Who are the students, and how are they verified?",
-    a: "Students at Malaysian universities. Each one registers with their university details and a student ID or enrolment letter, and a UniPact admin checks their status before they can be matched to a project.",
-  },
-  {
-    q: "Do I get to choose the team?",
-    a: "A UniPact admin picks the team for your brief based on skills and track record, and proposes it within 48 hours. You review their profiles and portfolios, and nothing starts until you approve.",
-  },
-  {
-    q: "What if I am not happy with the work?",
-    a: "Every deliverable includes 2 rounds of minor revisions. You have 5 working days after each delivery to accept it or ask for changes; after that it counts as accepted. If a milestone still cannot be delivered to the brief, its payment is refunded in full.",
-  },
-  {
-    q: "How do I follow progress?",
-    a: "Every client gets a workspace on the UniPact platform: your team, each milestone and the work submitted against it, your payments and what is still in escrow, your files, and one message thread with the team and UniPact.",
-  },
-  {
-    q: "Do you work with companies outside Malaysia?",
-    a: "Most of our clients today are Malaysian businesses. If you are based elsewhere, send us an enquiry and we will tell you whether we can support your project.",
-  },
 ];
 
 export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy[] }) {
@@ -579,6 +553,11 @@ export default function HomePage({ caseStudies = [] }: { caseStudies?: CaseStudy
                 Log in
               </a>
             </div>
+            <p>
+              <Link href="/pelajar" lang="ms" className={ui.textLink}>
+                Baca dalam Bahasa Melayu: kerja freelance untuk pelajar
+              </Link>
+            </p>
           </div>
           <ul className={styles.pointList}>
             {STUDENT_POINTS.map((point) => (

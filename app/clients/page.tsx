@@ -3,7 +3,8 @@ import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
 import { SOCIAL_IMAGE } from "@/lib/site";
 import JsonLd from "@/components/site/JsonLd";
-import { providerRef } from "@/lib/schema";
+import { CLIENTS_FAQS } from "@/lib/faqs";
+import { faqSchema, providerRef } from "@/lib/schema";
 import ClientsContent from "@/components/landing/ClientsPage";
 import { client } from "@/lib/sanity/client";
 import { CASE_STUDIES_QUERY, type CaseStudy } from "@/lib/sanity/queries";
@@ -41,6 +42,7 @@ const jsonLd = {
       areaServed: ["US", "GB", "SG", "AU", "Global"],
       description: DESCRIPTION,
     },
+    faqSchema(CLIENTS_FAQS),
   ],
 };
 

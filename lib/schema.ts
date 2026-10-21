@@ -1,3 +1,4 @@
+import type { Faq } from "./faqs";
 import { CONTACT_EMAIL, CORE_TEAM, INSTAGRAM_URL, LEGAL_NAME, SITE_URL, SSM_NUMBER } from "./site";
 
 // One identifier per entity, shared by every page, so search engines and AI tools resolve
@@ -39,3 +40,55 @@ export const siteSchema = {
 };
 
 export const providerRef = { "@type": "Organization", "@id": ORG_ID, name: "UniPact" };
+
+export const faqSchema = (items: Faq[]) => ({
+  "@type": "FAQPage",
+  mainEntity: items.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+});
+
+// A page's own node, tied to the shared website and organization, with its breadcrumb trail.
+export function pageSchema({
+  path,
+  name,
+  description,
+  language,
+  crumbs,
+  faqs,
+}: {
+  path: string;
+  name: string;
+  description: string;
+  language: string;
+  crumbs: { name: string; path: string }[];
+  faqs?: Faq[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}${path}#webpage`,
+        url: `${SITE_URL}${path}`,
+        name,
+        description,
+        inLanguage: language,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": ORG_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: crumbs.map((crumb, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: crumb.name,
+          item: `${SITE_URL}${crumb.path}`,
+        })),
+      },
+      ...(faqs ? [faqSchema(faqs)] : []),
+    ],
+  };
+}

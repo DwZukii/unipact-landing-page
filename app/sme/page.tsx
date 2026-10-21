@@ -3,7 +3,8 @@ import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
 import { SOCIAL_IMAGE } from "@/lib/site";
 import JsonLd from "@/components/site/JsonLd";
-import { providerRef } from "@/lib/schema";
+import { SME_FAQS } from "@/lib/faqs";
+import { faqSchema, providerRef } from "@/lib/schema";
 import SmeContent from "@/components/landing/SmePage";
 
 const TITLE = "Viral Short-Form Video & Tech for Malaysian SMEs | UniPact";
@@ -39,6 +40,7 @@ const jsonLd = {
       areaServed: "Malaysia",
       description: DESCRIPTION,
     },
+    faqSchema(SME_FAQS),
   ],
 };
 

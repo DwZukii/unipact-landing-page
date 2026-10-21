@@ -42,6 +42,7 @@ export default function SiteFooter() {
             <li><a href={LINKS.postProject}>Post a project</a></li>
             <li><Link href="/#contact">Talk to us</Link></li>
             <li><Link href="/#students">For students</Link></li>
+            <li><Link href="/pelajar" lang="ms">Untuk pelajar (BM)</Link></li>
             <li><a href={LINKS.login}>Log in</a></li>
           </ul>
         </nav>
