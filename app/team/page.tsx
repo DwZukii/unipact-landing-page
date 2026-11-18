@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
-import { CORE_TEAM, LINKS, TALENTS, type Talent } from "@/lib/site";
+import JsonLd from "@/components/site/JsonLd";
+import { ORG_ID, personId, providerRef } from "@/lib/schema";
+import { CORE_TEAM, LINKS, SITE_URL, SOCIAL_IMAGE, TALENTS, type Talent } from "@/lib/site";
 import ui from "@/components/site/ui.module.css";
 import styles from "./team.module.css";
 
@@ -22,11 +24,36 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     type: "website",
     url: "https://www.unipact.my/team",
-    images: ["https://www.unipact.my/logo.png"],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
   },
+};
+
+// The organization itself comes from the site-wide schema in the root layout; this adds the
+// people and ties each one to it.
+const teamSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `${SITE_URL}/team#webpage`,
+      url: `${SITE_URL}/team`,
+      name: TITLE,
+      description: DESCRIPTION,
+      about: { "@id": ORG_ID },
+    },
+    ...CORE_TEAM.map(({ name, role, photo }) => ({
+      "@type": "Person",
+      "@id": personId(name),
+      name,
+      jobTitle: role,
+      image: `${SITE_URL}${photo}`,
+      url: `${SITE_URL}/team`,
+      worksFor: providerRef,
+    })),
+  ],
 };
 
 const TALENT_GROUPS: Talent[] = ["Software Development", "Digital Marketing"];
@@ -48,6 +75,7 @@ function Portrait({ name, photo, sizes }: { name: string; photo?: string; sizes:
 export default function TeamPage() {
   return (
     <>
+      <JsonLd data={teamSchema} />
       <SiteNav />
       <main id="main" className={styles.page}>
         <section className={styles.intro}>

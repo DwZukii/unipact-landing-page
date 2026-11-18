@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SiteNav from "@/components/site/SiteNav";
 import SiteFooter from "@/components/site/SiteFooter";
+import { SOCIAL_IMAGE } from "@/lib/site";
 
 const TITLE = "Privacy Policy | UniPact";
 const DESCRIPTION =
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: "Official Privacy Policy and PDPA Notice for UniPact (SSM: 202603205508).",
     type: "website",
     url: "https://www.unipact.my/privacy-policy",
-    images: ["https://www.unipact.my/logo.png"],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",

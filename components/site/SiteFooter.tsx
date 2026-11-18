@@ -1,7 +1,7 @@
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 import WhatsAppButton from "./WhatsAppButton";
-import { CONTACT_EMAIL, LINKS, SSM_NUMBER, TEAM } from "@/lib/site";
+import { CONTACT_EMAIL, INSTAGRAM_URL, LEGAL_NAME, LINKS, SSM_NUMBER, TEAM } from "@/lib/site";
 import styles from "./footer.module.css";
 
 export default function SiteFooter() {
@@ -17,6 +17,9 @@ export default function SiteFooter() {
           </p>
           <a href={`mailto:${CONTACT_EMAIL}`} className={styles.email}>
             {CONTACT_EMAIL}
+          </a>
+          <a href={INSTAGRAM_URL} className={styles.phone} rel="me noopener" target="_blank">
+            Instagram @unipactdigital
           </a>
         </div>
 
@@ -39,6 +42,7 @@ export default function SiteFooter() {
             <li><a href={LINKS.postProject}>Post a project</a></li>
             <li><Link href="/#contact">Talk to us</Link></li>
             <li><Link href="/#students">For students</Link></li>
+            <li><Link href="/pelajar" lang="ms">Untuk pelajar (BM)</Link></li>
             <li><a href={LINKS.login}>Log in</a></li>
           </ul>
         </nav>
@@ -73,7 +77,7 @@ export default function SiteFooter() {
 
       <div className={styles.band}>
         <p className={`container ${styles.legal}`}>
-          &copy; 2026 UniPact. Registered in Malaysia, SSM no. {SSM_NUMBER}. All rights reserved.
+          &copy; 2026 UniPact. {LEGAL_NAME}, registered in Malaysia, SSM no. {SSM_NUMBER}. All rights reserved.
         </p>
       </div>
       <WhatsAppButton />
