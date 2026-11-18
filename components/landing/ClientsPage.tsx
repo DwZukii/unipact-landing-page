@@ -153,7 +153,7 @@ export default function ClientsPage({ caseStudies = [] }: { caseStudies?: CaseSt
         <div className="container">
           <div className={ui.head}>
             <h2 className={ui.title}>Stop overpaying agencies, and stop gambling on freelance boards</h2>
-            <p className={`${ui.lead} ${styles.compareLead}`}>
+            <p className={`${ui.lead} ${styles.leadOnNavy}`}>
               Hiring overseas engineers takes months. Western agencies charge large retainers. Open marketplaces leave
               you sorting through 100+ unvetted proposals. UniPact gives you pre-screened people within 48 hours.
             </p>

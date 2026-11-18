@@ -1,5 +1,7 @@
 import Image from "next/image";
 import ui from "@/components/site/ui.module.css";
+import home from "@/components/home/home.module.css";
+import CreatorClip from "./CreatorClip";
 import PersonaTabs, { type Persona } from "./PersonaTabs";
 import { DotList, LandingContact, LandingFaq, LandingHero, SectionHead } from "./parts";
 import styles from "./landing.module.css";
@@ -69,6 +71,31 @@ const OBJECTIONS = [
 
 // The team's rate card: three monthly tiers, priced in ringgit. Silver is the one shown
 // in navy, as the middle option.
+// Raziq Syahmee's own client work (the clients agreed to it being shown here), cut to
+// 15-second loops at 450x800. Files are public/videos/creator-<name>.mp4 and .webp.
+const CLIPS = [
+  {
+    name: "event-promo",
+    title: "Event promo with motion graphics",
+    description: "A host introduces a community event, with animated scenes and shots of the crowd.",
+  },
+  {
+    name: "interview",
+    title: "Interview with captions",
+    description: "A rider at an equestrian centre talks about horse riding, with Malay captions.",
+  },
+  {
+    name: "stables",
+    title: "Brand video on a professional camera",
+    description: "A riding instructor shows the stables, filmed on a professional camera.",
+  },
+  {
+    name: "campus-skit",
+    title: "Event promo skit",
+    description: "A short comedy skit, with captions, promoting a university event.",
+  },
+];
+
 const PACKAGES = [
   {
     name: "Bronze",
@@ -204,6 +231,30 @@ export default function SmePage() {
               <li key={worry} className={styles.exchange}>
                 <p className={styles.said}>&ldquo;{worry}&rdquo;</p>
                 <p className={styles.reply}>{answer}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="videos" className={`${ui.section} ${home.navyBand}`}>
+        <div className="container">
+          <div className={ui.head}>
+            <h2 className={ui.title}>What the videos look like</h2>
+            <p className={`${ui.lead} ${styles.leadOnNavy}`}>
+              Client work by Raziq Syahmee, one of our Digital Marketing talents.
+            </p>
+          </div>
+          <ul className={styles.clips}>
+            {CLIPS.map(({ name, title, description }) => (
+              <li key={name}>
+                <CreatorClip
+                  src={`/videos/creator-${name}.mp4`}
+                  poster={`/videos/creator-${name}.webp`}
+                  title={title}
+                  description={description}
+                />
+                <p className={styles.clipCaption}>{title}</p>
               </li>
             ))}
           </ul>

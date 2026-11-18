@@ -203,6 +203,22 @@
     font-size: 0.9375rem;
 }
 
+/* Example videos: phone screens on navy, two across on phones and four from 900px. */
+.clips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 0.875rem;
+    list-style: none;
+}
+
+.clipCaption {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
 /* Packages: one panel split into columns, the featured one in navy */
 .packages {
     display: grid;
@@ -470,6 +486,11 @@
 }
 
 @media (min-width: 900px) {
+    .clips {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
     .panel {
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
         gap: 3rem;
@@ -585,7 +606,8 @@
     }
 }
 
-/* The compare lead sits on navy. */
-.compareLead {
+/* A section lead on a navy band. "p." outranks ui.module.css's .lead whatever order the
+   two stylesheets load in (on /sme they load the other way round). */
+p.leadOnNavy {
     color: rgba(255, 255, 255, 0.78);
 }
