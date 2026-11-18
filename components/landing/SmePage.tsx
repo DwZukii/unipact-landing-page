@@ -22,7 +22,7 @@ const PERSONAS: Persona[] = [
     tab: "Online shops",
     title: "The stalled e-commerce founder",
     situation:
-      "You sell on Shopee, TikTok Shop or Shopify. Ad fatigue is hurting your return on ad spend, and you need 10–20 fresh creative variations every month.",
+      "You sell on Shopee, TikTok Shop or Shopify. Ad fatigue is hurting your return on ad spend, and you need a steady run of fresh creative variations every month.",
     problems: [
       "Freelancers charge high fees for small revisions",
       "No time to film UGC, unboxings and hooks",
@@ -67,46 +67,55 @@ const OBJECTIONS = [
   },
 ];
 
+// The team's rate card: three monthly tiers, priced in ringgit. Silver is the one shown
+// in navy, as the middle option.
 const PACKAGES = [
   {
-    name: "Café starter",
-    desc: "Consistent, good-looking short videos that bring people through the door.",
+    name: "Bronze",
+    price: "1,000",
+    desc: "Steady, clean short videos that keep your page active.",
     bestFor: "For cafés, bakeries and retail",
     points: [
-      "8 edited videos a month",
-      "One 2-hour on-site shoot",
-      "Trending audio and hook research",
-      "48–72 hour batch delivery",
+      "8 videos a month",
+      "1 filming session",
+      "2 videos a week",
+      "Script and captions",
+      "Clean, standard cuts with text and music",
+      "A basic posting schedule",
+      "Filmed on iPhone",
       "2 rounds of revisions per video",
     ],
-    cta: "Ask about this package",
   },
   {
-    name: "TikTok Shop velocity",
-    tag: "Most popular",
-    desc: "High-volume UGC variations to beat ad fatigue and lift return on ad spend.",
+    name: "Silver",
+    price: "1,900",
+    featured: true,
+    desc: "More videos, filmed with professional gear and tested before they go out.",
+    bestFor: "For clinics and service businesses",
+    points: [
+      "12 videos a month",
+      "2 filming sessions",
+      "3 videos a week",
+      "Script and captions",
+      "Good pacing, graphics and a version for each platform",
+      "A/B testing with Instagram trial reels",
+      "Professional camera, microphone and lighting",
+    ],
+  },
+  {
+    name: "Gold",
+    price: "2,500",
+    desc: "The most videos, with premium production and storytelling scripts.",
     bestFor: "For Shopee and TikTok Shop sellers",
     points: [
-      "16 videos a month, made to convert",
-      "Product unboxing and problem–solution formats",
-      "Dynamic subtitles and calls to action",
-      "48-hour turnaround per batch",
-      "Split-test variations for your ads",
+      "16 videos a month",
+      "2 filming sessions",
+      "4 videos a week",
+      "Detailed storytelling scripts and captions",
+      "Premium production and graphics",
+      "A/B testing with Instagram trial reels",
+      "Professional camera, microphone and lighting",
     ],
-    cta: "Get the velocity pack",
-  },
-  {
-    name: "Clinic and authority",
-    desc: "Educational talking-head videos that build trust.",
-    bestFor: "For aesthetic clinics and B2B services",
-    points: [
-      "12 educational Reels a month",
-      "On-site lighting and wireless audio",
-      "Scripted talking points and hook coaching",
-      "Polished subtitles and brand styling",
-      "Formatted for Instagram, TikTok and LinkedIn",
-    ],
-    cta: "Ask about this package",
   },
 ];
 
@@ -121,11 +130,11 @@ const FAQS = [
   },
   {
     q: "How does this compare with hiring a full-time marketing staff member?",
-    a: "A junior marketing executive costs RM 3,000–4,500 a month plus EPF, SOCSO and equipment, and one person is rarely good at shooting, scripting, editing and analytics all at once. UniPact gives you a specialised campus squad at package rates, with no long-term payroll.",
+    a: "A junior marketing executive costs RM 3,000–4,500 a month plus EPF, SOCSO and equipment, and one person is rarely good at shooting, scripting, editing and analytics all at once. UniPact gives you a specialised campus squad from RM 1,000 a month, with no long-term payroll.",
   },
   {
     q: "What if I’m shy or don’t know what to say on camera?",
-    a: "That is our speciality. For the Clinic and authority package, our team writes simple, conversational scripts. During filming we guide you through short talking points, or record voiceovers, so you come across confident and natural.",
+    a: "That is our speciality. Every package includes scripts, and our team keeps them simple and conversational. During filming we guide you through short talking points, or record voiceovers, so you come across confident and natural.",
   },
   {
     q: "Are invoices and payments officially registered?",
@@ -142,7 +151,7 @@ export default function SmePage() {
             Viral short-form video for Malaysian SMEs, <span>with no agency lock-in</span>
           </>
         }
-        text="We match Malaysian business owners, TikTok Shop brands and clinics with verified university creators. Get 10–20 ready-to-post videos a month, on-site shooting and a 48–72 hour turnaround, at student rates and without a full-time marketing hire."
+        text="We match Malaysian business owners, TikTok Shop brands and clinics with verified university creators. Get 8–16 ready-to-post videos a month, on-site shooting and a 48–72 hour turnaround, at student rates and without a full-time marketing hire."
         primary={{ label: "Get a content squad", href: "#contact" }}
         secondary={{ label: "See the packages", href: "#packages" }}
         ticks={["48–72 hour turnaround", "On-site shooting", "Gen-Z creators", "No lock-in contract"]}
@@ -208,18 +217,20 @@ export default function SmePage() {
             lead="Choose how much content your brand needs. Every package includes management of your student team and escrow protection."
           />
           <div className={styles.packages}>
-            {PACKAGES.map(({ name, tag, desc, bestFor, points, cta }) => (
-              <div key={name} className={`${styles.package} ${tag ? styles.packageFeatured : ""}`}>
-                {tag ? <span className={styles.packageTag}>{tag}</span> : null}
+            {PACKAGES.map(({ name, price, featured, desc, bestFor, points }) => (
+              <div key={name} className={`${styles.package} ${featured ? styles.packageFeatured : ""}`}>
                 <h3>{name}</h3>
+                <p className={styles.packagePrice}>
+                  RM {price} <span>a month</span>
+                </p>
                 <p className={styles.packageDesc}>{desc}</p>
                 <p className={styles.packageFor}>{bestFor}</p>
                 <DotList items={points} />
                 <a
                   href="#contact"
-                  className={`${ui.btn} ${ui.btnBlock} ${tag ? ui.btnCyan : ui.btnSecondary}`}
+                  className={`${ui.btn} ${ui.btnBlock} ${featured ? ui.btnCyan : ui.btnSecondary}`}
                 >
-                  {cta}
+                  Ask about {name}
                 </a>
               </div>
             ))}
